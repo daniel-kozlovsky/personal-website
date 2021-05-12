@@ -1,5 +1,6 @@
 import React from 'react';
 import {Switch, Route, Link as NavLink} from 'react-router-dom';
+import withStyles from 'react-jss';
 
 import Contact from './routes/Contact';
 import About from './routes/About';
@@ -14,8 +15,9 @@ const RESUME_PATH = "/Resume";
 class App extends React.Component {
 
   render (){
+    const {classes} = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <NavLink to={ABOUT_PATH}>About Me</NavLink>
         <NavLink to={PROJECTS_PATH}>Projects</NavLink>
         <NavLink to={RESUME_PATH}>Resume</NavLink>
@@ -32,4 +34,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const styles = (theme) => ({
+  root: {
+    background: theme.background,
+  },
+});
+
+export default withStyles(styles)(App);
