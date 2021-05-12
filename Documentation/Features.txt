@@ -1,0 +1,13 @@
+-About me
+-Resume
+-Projects
+-github
+----------
+Maybe
+-Car
+-blogs/articles
+-playable apps
+-login 
+	-keep personal files
+		-music
+		-docs
