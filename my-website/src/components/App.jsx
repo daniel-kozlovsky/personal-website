@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route, Link as NavLink} from 'react-router-dom';
-import withStyles, { useTheme } from 'react-jss';
+import withStyles from 'react-jss';
 
 import Contact from './routes/Contact';
 import About from './routes/About';
@@ -55,12 +55,14 @@ const styles = (theme) => ({
   navBar: {
     display: 'flex',
     justifyContent: 'space-evenly',
+    maxWidth: '50vw',
+    margin: 'auto',
 
-    '& a': {
-      margin: 'auto'
-    }
+    '& a': {}
   },
-  page: {},
+  page: {
+    padding: '5% 10%',
+  },
 });
 
 export default withStyles(styles, {injectTheme: true})(App);

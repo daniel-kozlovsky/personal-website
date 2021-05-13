@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import {PROJECTS_PATH} from '../App.jsx';
 
-import myPortrait from '../../media/img/danielcartoon4.png';
+import myPortrait from '../../media/img/headshot.png';
 
 class About extends React.Component {
 
@@ -13,7 +13,7 @@ class About extends React.Component {
         return (
             <div className={classes.root}>
                 <img className={classes.portrait} src={myPortrait} alt="My Portrait"/>
-                <div className={classes.blockText}>
+                <div className={classes.textBlock}>
                     <p className={classes.text}>
                         Hi, I'm Daniel and I'm an adventurer through the world of computers. I'm mainly interested in programming and passionate about 
                         computer security. In fact, I'm always looking for opportunities to combine the two. I recently finished school, where I earned my Software Engineering degree
@@ -34,11 +34,24 @@ class About extends React.Component {
 const styles = (theme) => ({
     root: {
         display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         
     },
-    portrait: {},
-    blockText: {},
-    text: {},
+    portrait: {
+        maxWidth: '25%',
+        height: 'auto',
+        borderRadius: '20%',
+        marginRight: '10%',
+        
+    },
+    textBlock: {},
+    text: {
+        marginTop: '1.5em',
+        marginBottom: '1.5em',
+        font: theme.text.font,
+        color: theme.text.color,
+    },
 });
 
 export default withStyles(styles)(About);
