@@ -6,8 +6,13 @@ import {ThemeProvider} from 'react-jss';
 import App from './components/App';
 
 const theme = {
-  background: '#fafafa',
-  color: '#fff',
+  page: {
+    backgroundColor: '#f0f0f0',
+  },
+  text: {
+    color: '',
+  },
+
 };
 
 render(
