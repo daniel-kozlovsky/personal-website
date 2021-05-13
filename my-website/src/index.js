@@ -11,6 +11,7 @@ const theme = {
   },
   text: {
     color: '',
+    font: '',
   },
 
 };
