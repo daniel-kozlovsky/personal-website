@@ -1,18 +1,34 @@
 import React from 'react';
+import withStyles from 'react-jss';
+
+import {GoMarkGithub} from 'react-icons/go';
+import {AiOutlineMail} from 'react-icons/ai';
 
 
 class Contact extends React.Component {
 
+
     render() {
         return (
             <div>
-                <p>contact me at...</p>
-                <label>Email: myemail</label>
-                <label>github: mygit</label>
+                <h3>Feel free to reach out via email or checkout my Github</h3>
+                <a>
+                    <AiOutlineMail/>
+                    <label>Email: myemail</label>
+                </a>
+                <a>
+                    <GoMarkGithub/>
+                    <label>github: mygit</label>
+                </a>
             </div>
         );
     }
 
 }
 
-export default Contact;
+const styles = (theme) => ({
+    root: {},
+
+});
+
+export default withStyles(styles)(Contact);

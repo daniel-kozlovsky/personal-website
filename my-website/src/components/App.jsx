@@ -1,34 +1,44 @@
 import React from 'react';
 import {Switch, Route, Link as NavLink} from 'react-router-dom';
-import withStyles from 'react-jss';
+import withStyles, { useTheme } from 'react-jss';
 
 import Contact from './routes/Contact';
 import About from './routes/About';
 import Resume from './routes/Resume';
 import Projects from './routes/Projects';
 
-const ABOUT_PATH = "/";
-const PROJECTS_PATH = "/Projects";
-const CONTACT_PATH = "/Contact";
-const RESUME_PATH = "/Resume";
+export const ABOUT_PATH = "/";
+export const PROJECTS_PATH = "/Projects";
+export const CONTACT_PATH = "/Contact";
+export const RESUME_PATH = "/Resume";
 
 class App extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    const {theme} = this.props;
+    document.body.style.backgroundColor = theme.page.backgroundColor;
+  }
 
   render (){
     const {classes} = this.props;
     return (
       <div className={classes.root}>
-        <NavLink to={ABOUT_PATH}>About Me</NavLink>
-        <NavLink to={PROJECTS_PATH}>Projects</NavLink>
-        <NavLink to={RESUME_PATH}>Resume</NavLink>
-        <NavLink to={CONTACT_PATH}>Contact</NavLink>
-        
-        <Switch>
-          <Route path={PROJECTS_PATH} component={Projects}/>
-          <Route path={RESUME_PATH} component={Resume}/>
-          <Route path={CONTACT_PATH} component={Contact}/>
-          <Route path={ABOUT_PATH} component={About}/>
-        </Switch>
+        <h1 className={classes.name}>Daniel Kozlovsky</h1>
+        <div className={classes.navBar}>
+          <NavLink to={ABOUT_PATH}>About Me</NavLink>
+          <NavLink to={PROJECTS_PATH}>Projects</NavLink>
+          <NavLink to={RESUME_PATH}>Resume</NavLink>
+          <NavLink to={CONTACT_PATH}>Contact</NavLink>
+        </div>
+        <div className={classes.page}>
+          <Switch>
+            <Route path={PROJECTS_PATH} component={Projects}/>
+            <Route path={RESUME_PATH} component={Resume}/>
+            <Route path={CONTACT_PATH} component={Contact}/>
+            <Route path={ABOUT_PATH} component={About}/>
+          </Switch>
+        </div>
       </div>
     );
   }
@@ -36,8 +46,21 @@ class App extends React.Component {
 
 const styles = (theme) => ({
   root: {
-    background: theme.background,
+    height: '100vh'
   },
+  name: {
+    textAlign: 'center',
+    marginTop: '2%'
+  },
+  navBar: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+
+    '& a': {
+      margin: 'auto'
+    }
+  },
+  page: {},
 });
 
-export default withStyles(styles)(App);
+export default withStyles(styles, {injectTheme: true})(App);
