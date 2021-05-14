@@ -9,9 +9,19 @@ const theme = {
   page: {
     backgroundColor: '#f0f0f0',
   },
-  text: {
+  palette: {
+    primary: '',
+    secondary: '',
+    accent: '',
+    highlight: '',
+  },
+  mainText: {
     color: '',
-    font: '',
+    fontStyle: '',
+    fontWeight: '',
+    fontSize: '',
+    fontVariant: '',
+    fontFamily: '',
   },
 
 };
