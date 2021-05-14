@@ -31,4 +31,4 @@ const styles = (theme) => ({
 
 });
 
-export default withStyles(styles)(Contact);
+export default withStyles(styles, {injectTheme: true})(Contact);

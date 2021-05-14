@@ -49,9 +49,7 @@ const styles = (theme) => ({
     text: {
         marginTop: '1.5em',
         marginBottom: '1.5em',
-        font: theme.text.font,
-        color: theme.text.color,
     },
 });
 
-export default withStyles(styles)(About);
+export default withStyles(styles, {injectTheme: true})(About);

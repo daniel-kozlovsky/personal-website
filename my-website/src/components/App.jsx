@@ -39,6 +39,7 @@ class App extends React.Component {
             <Route path={ABOUT_PATH} component={About}/>
           </Switch>
         </div>
+        {/* footer goes here*/}
       </div>
     );
   }
