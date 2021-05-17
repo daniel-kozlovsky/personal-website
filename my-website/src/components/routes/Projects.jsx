@@ -34,18 +34,50 @@ class Projects extends React.Component {
                 </div>
                 <img className={classes.media} alt="pr2"/>
                 <div className={classes.description}>
-                    <h3>Shopping Website</h3>
-                    <p>This project was a Shopping Website</p>
+                    <h3>Clustering Android Malware</h3>
+                    <p>
+                        I’ve always been deeply interested in the software aspect of computer security, like the code behind malware and exploits, or the root cause of vulnerabilities.
+                        Consequently, one of my favourite parts of computer security is analysing malicious or vulnerable code and I got to do exactly this for a research paper. 
+                        I chose to research binaries from a specific Android malware family – DroidKungFu – and analyze patterns and IoCs that could help categorize or automatically 
+                        identify a binary as part of the family. 
+                    </p>
+                    <p>
+                        In order to analyze the binaries, I used a Kali Linux VM as a sandbox and various tools to facilitate the research. Tools like jadx and dex2jar helped me 
+                        decompile the binaries for analysis in an IDE. Looking at all of my binaries in the dataset I was able to discern a few patterns as outlined in my paper. 
+                    </p>
+                    <p>
+                        Feel free to download my paper, co-authored with Gagenpreet Benipal if you’re interested in malware analysis!
+                    </p>  
                 </div>
                 <img className={classes.media} alt="pr3"/>
                 <div className={classes.description}>
-                    <h3>Online Bookstore</h3>
-                    <p>this was an online bookstore project</p>
+                    <h3>The Smart Shopper</h3>
+                    <p>
+                        One of my first full web development experiences, The Smart Shopper, is a shopping website for a mock company. It was done as part of a school 
+                        project to build an application from requirements and required iterating and interfacing with our client. The website features accounts and roles, cart 
+                        management, product recommendations, product management, and shows the optimum route for shopping at a certain location. Working with a team to build this, my 
+                        role focused on the frontend and I was responsible for accounts and roles, user authentication, and product management. 
+                    </p>
+                    <p>
+                        This was my first experience with creating a great user experience and to do so, I used Node, Vue.js, Vuex and Vuetify to build the interface. In addition, 
+                        the application integrates AWS Cognito and is deployed on an EC2 server. Apart from becoming comfortable with JavaScript and web development, I also learned 
+                        key collaboration process skills. As a team, we had daily scrums to discuss our progress and tracked issues and tasks in our Github. The result is a complete, 
+                        user-centric web application that follows requirements and landed us an A!
+                    </p>
                 </div>
                 <img className={classes.media} alt="pr4"/>
                 <div className={classes.description}>
-                    <h3>Malware Family Research Paper</h3>
-                    <p>This project was a Malware Family Research Paper...</p>
+                    <h3>Online Bookstore</h3>
+                    <p>
+                        Online Bookstore is an e-commerce application, part of a course project, and allows users to view books; read and write book reviews; 
+                        and manage the users’ cart, account and orders. This project was done in a team where I took lead and was also responsible for the design documentation, 
+                        application security and features like user authentication, account creation, and cart management. 
+                    </p>
+                    <p>    
+                        Our website was written purely in the J2EE environment without any frontend frameworks so we could focus on learning fundamentals like Servlets, HTML and 
+                        AJAX as well as design patterns. As a result, I became comfortable with technologies like Servlets, JDBC, JSP, Apache2, SQL and Maven. With the java 
+                        framework, I was able to build a true MVC application that increased collaboration, enabled AJAX capability, and practiced separation of concerns. 
+                    </p>
                 </div>
             </div>
         );

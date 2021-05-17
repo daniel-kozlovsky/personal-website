@@ -7,7 +7,7 @@ import App from './components/App';
 
 const theme = {
   page: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: 'rgb(96,125,139,0.4)',
   },
   palette: {
     primary: '',
