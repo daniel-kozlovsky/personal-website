@@ -1,13 +1,17 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
+import virtualShowroomVideo from '../../media/video/Virtual_Showroom.mp4';
+import smartShopperImage from '../../media/img/braincart.png';
+
 class Projects extends React.Component {
 
     render() {
         const {classes} = this.props;
         return (
-            <div>
-                <video className={classes.media} alt="pr1">
+            <div className={classes.root}>
+                <video className={classes.media} controls>
+                    <source src={virtualShowroomVideo} type='video/mp4'/>
                     Hmm it seems your browser doesn't support Video
                 </video>
                 <div className={classes.description}>
@@ -49,7 +53,7 @@ class Projects extends React.Component {
                         Feel free to download my paper, co-authored with Gagenpreet Benipal if you’re interested in malware analysis!
                     </p>  
                 </div>
-                <img className={classes.media} alt="pr3"/>
+                <img className={classes.media} src={smartShopperImage} alt="pr3"/>
                 <div className={classes.description}>
                     <h3>The Smart Shopper</h3>
                     <p>
@@ -86,8 +90,18 @@ class Projects extends React.Component {
 }
 
 const styles = (theme) => ({
-    media: {},
-    description: {},
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    media: {
+        flexBasis: '30%',
+        height: 'auto',
+        width: '30%',
+    },
+    description: {
+        flexBasis: '70%'
+    },
 });
 
 export default withStyles(styles, {injectTheme: true})(Projects);

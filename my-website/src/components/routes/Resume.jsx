@@ -9,7 +9,7 @@ class Resume extends React.Component {
         super(props);
         this.state = {
             fluentSkills: ['Java', 'J2EE' ,'JUnit', 'JPA', 'JDBC', 'JSP', 'Servlets', 'Maven', 'C#', 'Git'],
-            familiarSkills: ['C/C++', 'Unix', 'HTML','CSS', 'JavaScript', 'React.js', 'Vue.js', 'SQL', 'PHP',
+            familiarSkills: ['C', 'C++', 'Unix', 'HTML','CSS', 'JavaScript', 'React.js', 'Vue.js', 'SQL', 'PHP',
              'PowerShell', 'Kali Linux', 'Docker', 'Firebase', 'IBM Cloud', 'Unity', 'SteamVR' ],
         };
         this.createSkillsHTML = this.createSkillsHTML.bind(this);

@@ -21,7 +21,7 @@ const theme = {
     fontWeight: '',
     fontSize: '',
     fontVariant: '',
-    fontFamily: '',
+    fontFamily: 'open_sansregular',
   },
 
 };

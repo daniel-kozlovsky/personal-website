@@ -46,6 +46,12 @@ class App extends React.Component {
 }
 
 const styles = (theme) => ({
+  '@font-face': {
+    fontFamily: 'open_sansregular',
+    src: "url('../fonts/opensans-regular-webfont.woff2') format('woff2'), url('../src/fonts/opensans-regular-webfont.woff') format('woff')",
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+  },
   root: {
     height: '100vh'
   },

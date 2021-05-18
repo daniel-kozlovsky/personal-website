@@ -25,7 +25,7 @@ class Toggleable extends Component {
         let button = <button type="button" onClick={this.toggleVisibility}><AiOutlineEllipsis/></button>;
         let newChildren = Children.map(children, (child, i) => {
             if(i === 0) {
-            return (<button type="button" onClick={this.toggleVisibility}>{child}</button>);//React.cloneElement(child, {}, ...child.props.children, button);
+            return (<a onClick={this.toggleVisibility}>{child}</a>);//React.cloneElement(child, {}, ...child.props.children, button);
             }
             else if(this.state.isVisible) {
                 return child;
