@@ -2,6 +2,8 @@ import React from 'react';
 import {Switch, Route, Link as NavLink} from 'react-router-dom';
 import withStyles from 'react-jss';
 
+
+
 import Contact from './routes/Contact';
 import About from './routes/About';
 import Resume from './routes/Resume';
@@ -46,12 +48,6 @@ class App extends React.Component {
 }
 
 const styles = (theme) => ({
-  '@font-face': {
-    fontFamily: 'open_sansregular',
-    src: "url('../fonts/opensans-regular-webfont.woff2') format('woff2'), url('../src/fonts/opensans-regular-webfont.woff') format('woff')",
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-  },
   root: {
     height: '100vh'
   },
@@ -65,7 +61,9 @@ const styles = (theme) => ({
     maxWidth: '50vw',
     margin: 'auto',
 
-    '& a': {}
+    '& a': {
+      font: theme.navBarText.font,
+    }
   },
   page: {
     padding: '5% 10%',

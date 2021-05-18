@@ -22,7 +22,7 @@ class Toggleable extends Component {
 
     renderChildren() {
         const {children} = this.props;
-        let button = <button type="button" onClick={this.toggleVisibility}><AiOutlineEllipsis/></button>;
+        //let button = <button type="button" onClick={this.toggleVisibility}><AiOutlineEllipsis/></button>;
         let newChildren = Children.map(children, (child, i) => {
             if(i === 0) {
             return (<a onClick={this.toggleVisibility}>{child}</a>);//React.cloneElement(child, {}, ...child.props.children, button);

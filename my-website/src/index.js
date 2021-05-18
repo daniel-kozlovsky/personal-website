@@ -4,6 +4,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {ThemeProvider} from 'react-jss';
 
 import App from './components/App';
+import './index.css';
 
 const theme = {
   page: {
@@ -15,15 +16,22 @@ const theme = {
     accent: '',
     highlight: '',
   },
+  navBarText: {
+    color: '',
+    font: '1.4em montserrat',
+  },
   mainText: {
     color: '',
-    fontStyle: '',
-    fontWeight: '',
-    fontSize: '',
-    fontVariant: '',
-    fontFamily: 'open_sansregular',
+    font: '1em openSans',
   },
-
+  heading: {
+    color: '',
+    font: '',
+  },
+  name: {
+    color: '',
+    font: '',
+  }
 };
 
 render(

@@ -186,6 +186,7 @@ const styles = (theme) => ({
     },
     download: {
         textAlign: 'center',
+        font: theme.mainText.font,
     },
     sectionDivider: {
         marginLeft: 0,
@@ -194,17 +195,18 @@ const styles = (theme) => ({
     section: {
         display: 'flex',
         flexDirection: 'column',
+        font: theme.mainText.font,
     },
     sectionHeader: {
         textAlign: 'center',
     },
     sectionContent: {},
     sectionEntry: {
-        '& button' : {
-            width: '100%',
-            borderStyle: 'none',
-            textAlign: 'left',
-        },
+        // '& button' : {
+        //     width: '100%',
+        //     borderStyle: 'none',
+        //     textAlign: 'left',
+        // },
     },
     sectionEntryHeader: {
         display: 'flex',

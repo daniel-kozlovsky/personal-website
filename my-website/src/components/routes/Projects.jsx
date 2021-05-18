@@ -36,7 +36,7 @@ class Projects extends React.Component {
                         and results. It really made me feel like an owner of the application that I could indeed be proud of!
                     </p>
                 </div>
-                <img className={classes.media} alt="pr2"/>
+                <img className={classes.media} alt="Research Paper Cover"/>
                 <div className={classes.description}>
                     <h3>Clustering Android Malware</h3>
                     <p>
@@ -53,7 +53,7 @@ class Projects extends React.Component {
                         Feel free to download my paper, co-authored with Gagenpreet Benipal if you’re interested in malware analysis!
                     </p>  
                 </div>
-                <img className={classes.media} src={smartShopperImage} alt="pr3"/>
+                <img className={classes.media} src={smartShopperImage} alt="Smart Shopper Cover"/>
                 <div className={classes.description}>
                     <h3>The Smart Shopper</h3>
                     <p>
@@ -69,7 +69,7 @@ class Projects extends React.Component {
                         user-centric web application that follows requirements and landed us an A!
                     </p>
                 </div>
-                <img className={classes.media} alt="pr4"/>
+                <img className={classes.media} alt="Online Bookstore Cover"/>
                 <div className={classes.description}>
                     <h3>Online Bookstore</h3>
                     <p>
@@ -93,14 +93,15 @@ const styles = (theme) => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
+        font: theme.mainText.font,
     },
     media: {
-        flexBasis: '30%',
+        flexBasis: '40%',
         height: 'auto',
-        width: '30%',
+        width: '40%',
     },
     description: {
-        flexBasis: '70%'
+        flexBasis: '60%'
     },
 });
 
