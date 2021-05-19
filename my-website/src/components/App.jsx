@@ -60,9 +60,19 @@ const styles = (theme) => ({
     justifyContent: 'space-evenly',
     maxWidth: '50vw',
     margin: 'auto',
+    position: '-webkit-sticky',
+    position: 'sticky',
+    top: '1em',
 
     '& a': {
       font: theme.navBarText.font,
+      color: theme.navBarText.color,
+      textDecoration: 'none',
+      
+      '&:visited': {
+        color: theme.navBarText.color,
+      },
+
     }
   },
   page: {

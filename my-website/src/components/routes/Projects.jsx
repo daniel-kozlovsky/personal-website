@@ -6,22 +6,34 @@ import smartShopperImage from '../../media/img/smart_shopper_thumbnail.png';
 import researchPaperImage from '../../media/img/malware_paper_thumbnail.png';
 import onlineBSImage from '../../media/img/online_bs_thumbnail.png';
 
+import FadeOverlayLink from '../FadeOverlayLink';
+import {FiExternalLink} from 'react-icons/fi';
+import {GrDocumentDownload} from 'react-icons/gr';
+
+const PAPER_HREF = "paper.pdf";
+const PAPER_NAME = "paper.pdf";
+const SS_HREF = "https://thesmartshopper.online";
+const KABLAN_HREF ="https://www.kablan.ca/";
+
 class Projects extends React.Component {
 
     render() {
         const {classes} = this.props;
+        
         return (
             <div className={classes.root}>
                 <div className={`${classes.row} ${classes.odd}`}>
-                    <video className={classes.media} controls>
-                        <source src={virtualShowroomVideo} type='video/mp4'/>
-                        Hmm it seems your browser doesn't support Video
-                    </video>
+                    <div className={classes.mediaContainer}>
+                        <video className={classes.media} controls>
+                            <source src={virtualShowroomVideo} type='video/mp4'/>
+                            Hmm it seems your browser doesn't support Video
+                        </video>
+                    </div>
                     <div className={classes.description}>
                         <h3>Virtual Showroom</h3>
                         <p>
                             As my capstone school project my team and I set out to solve real world problems through software engineering through a VR showroom application. 
-                            We had the chance to work with Kablan Developments Inc. to showcase their tiles in a realistic and convenient way, to save the time and effort of 
+                            We had the chance to work with <a href={KABLAN_HREF} rel="noreferrer noopener" target="_blank">Kablan Developments Inc.</a> to showcase their tiles in a realistic and convenient way, to save the time and effort of 
                             physically browsing their myriad of tile designs and styles. With so many tile designs, it’s impossible to hold them all in a showroom, and is even 
                             more tedious to transport them to construction sites showcase.
                         </p>
@@ -41,7 +53,11 @@ class Projects extends React.Component {
                     </div>
                 </div>
                 <div className={`${classes.row} ${classes.even}`}>
-                    <img src={researchPaperImage} className={classes.media} alt="Research Paper Cover"/>
+                    <div className={classes.mediaContainer}>
+                        <FadeOverlayLink href={PAPER_HREF} download={PAPER_NAME} linkText={<>Download My Paper <GrDocumentDownload/></>}>
+                            <img src={researchPaperImage} className={classes.media} alt="Research Paper Cover"/>
+                        </FadeOverlayLink>
+                    </div>
                     <div className={classes.description}>
                         <h3>Clustering Android Malware</h3>
                         <p>
@@ -55,16 +71,20 @@ class Projects extends React.Component {
                             decompile the binaries for analysis in an IDE. Looking at all of my binaries in the dataset I was able to discern a few patterns as outlined in my paper. 
                         </p>
                         <p>
-                            Feel free to download my paper, co-authored with Gagenpreet Benipal if you’re interested in malware analysis!
+                            Feel free to <a href={PAPER_HREF} download={PAPER_NAME}>download my paper</a> co-authored with Gagenpreet Benipal, if you’re interested in malware analysis!
                         </p>  
                     </div>
                 </div>
                 <div className={`${classes.row} ${classes.odd}`}>
-                    <img className={classes.media} src={smartShopperImage} alt="Smart Shopper Cover"/>
+                    <div className={classes.mediaContainer}>
+                        <FadeOverlayLink href={SS_HREF} rel="noreferrer noopener" target="_blank" linkText={<>Check out the website <FiExternalLink/></>}>
+                            <img className={classes.media} src={smartShopperImage} alt="Smart Shopper Cover"/>
+                        </FadeOverlayLink>
+                    </div>
                     <div className={classes.description}>
                         <h3>The Smart Shopper</h3>
                         <p>
-                            One of my first full web development experiences, The Smart Shopper, is a shopping website for a mock company. It was done as part of a school 
+                            One of my first full web development experiences, <a href={SS_HREF} rel="noreferrer noopener" target="_blank">The Smart Shopper</a>, is a shopping website for a mock company. It was done as part of a school 
                             project to build an application from requirements and required iterating and interfacing with our client. The website features accounts and roles, cart 
                             management, product recommendations, product management, and shows the optimum route for shopping at a certain location. Working with a team to build this, my 
                             role focused on the frontend and I was responsible for accounts and roles, user authentication, and product management. 
@@ -78,7 +98,9 @@ class Projects extends React.Component {
                     </div>
                 </div>
                 <div className={`${classes.row} ${classes.even}`}>
-                    <img src={onlineBSImage} className={classes.media} alt="Online Bookstore Cover"/>
+                    <div className={classes.mediaContainer}>
+                        <img src={onlineBSImage} className={classes.media} alt="Online Bookstore Cover"/>
+                    </div>
                     <div className={classes.description}>
                         <h3>Online Bookstore</h3>
                         <p>
@@ -110,36 +132,39 @@ const styles = (theme) => ({
         display: 'flex',
         columnGap: '2em',
         padding: '0.8em',
+        alignItems: 'center',
         '& h3': {
             textAlign: 'center',
         },
-        '& video': {
-            objectFit: 'contain',
-        },
     },
     odd: {
-        borderStyle: 'solid',
-        borderWidth: '1px',
-        borderColor: '#888',
-        borderRadius: '10px',
-        boxShadow: '4px 4px 12px #888',
+        borderStyle: theme.sectionBox.borderStyle,
+        borderWidth: theme.sectionBox.borderWidth,
+        borderColor: theme.sectionBox.borderColor,
+        borderRadius: theme.sectionBox.borderRadius,
+        boxShadow: theme.sectionBox.boxShadow,
     },
     even: {
-        '& $media': {
+        '& $mediaContainer': {
             order: 2,
         },
     },
-    media: {
-        objectFit: 'cover',
-        //flexBasis: 'calc(35% - 2em)',
+    mediaContainer: {
+        flexBasis: 'calc(35% - 2em)',
+        position: 'relative',
+        overflow: 'hidden',
         borderRadius: '2%',
-        height: 'auto',
-        maxWidth: 'calc(35% - 2em)',
-        filter: 'drop-shadow(0px 0px 1px rgba(0,0,0,.3))',
+    },
+    media: {
+        display: 'block',
+        //height: 'fit-content',
+        width: 'auto',
+        maxWidth: '100%',
         
     },
     description: {
-        flexBasis: 'calc(65% - 2em)'
+        flexBasis: 'calc(65% - 2em)',
+        flexGrow: 2,
     },
 });
 

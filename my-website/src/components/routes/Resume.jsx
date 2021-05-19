@@ -1,6 +1,7 @@
 import React from 'react';
-import {GrDocumentDownload} from 'react-icons/gr';
 import withStyles from 'react-jss';
+
+import {GrDocumentDownload} from 'react-icons/gr';
 import Toggleable from '../Toggleable'
 
 class Resume extends React.Component {
@@ -8,8 +9,8 @@ class Resume extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fluentSkills: ['Java', 'J2EE' ,'JUnit', 'JPA', 'JDBC', 'JSP', 'Servlets', 'Maven', 'C#', 'Git'],
-            familiarSkills: ['C', 'C++', 'Unix', 'HTML','CSS', 'JavaScript', 'React.js', 'Vue.js', 'SQL', 'PHP',
+            highSkills: ['Java', 'J2EE' ,'JUnit', 'JPA', 'JDBC', 'JSP', 'Servlets', 'Maven', 'C#', 'Git'],
+            mediumSkills: ['C', 'C++', 'Unix', 'HTML','CSS', 'JavaScript', 'React.js', 'Vue.js', 'SQL', 'PHP',
              'PowerShell', 'Kali Linux', 'Docker', 'Firebase', 'IBM Cloud', 'Unity', 'SteamVR' ],
         };
         this.createSkillsHTML = this.createSkillsHTML.bind(this);
@@ -19,13 +20,13 @@ class Resume extends React.Component {
         const {classes} = this.props;
         let elements = [];
         skillsArray.forEach((element) => {
-            if(className === "fluentSkill")
+            if(className === "highSkill")
             {
-                elements.push(<label key={element} className={classes.fluentSkill}>{element}</label>);
+                elements.push(<label key={element} className={classes.highSkill}>{element}</label>);
             }
-            else if(className === "familiarSkill")
+            else if(className === "mediumSkill")
             {
-                elements.push(<label key={element} className={classes.familiarSkill}>{element}</label>);
+                elements.push(<label key={element} className={classes.mediumSkill}>{element}</label>);
             }
             
         });
@@ -37,8 +38,8 @@ class Resume extends React.Component {
         return (
             <div className={classes.root}>
                 <a className={classes.download} href="resume.pdf" download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download my comprehensive resume</a>
-                <div className={classes.section}>
-                    <hr className={classes.sectionDivider}/>
+                <hr className={classes.mainDivider}/>
+                <div className={`${classes.section} ${classes.odd}`}>
                     <h3 className={classes.sectionHeader}>Employment</h3>
                     <div className={classes.sectionContent}>
                         <div className={classes.sectionEntry}>
@@ -90,8 +91,8 @@ class Resume extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className={classes.section}>
-                    <hr className={classes.sectionDivider}/>
+                <div className={`${classes.section} ${classes.even}`}>
+                    {/* <hr className={classes.sectionDivider}/> */}
                     <h3 className={classes.sectionHeader}>Education</h3>
                     <div className={classes.sectionContent}>
                         <div className={classes.sectionEntry}>
@@ -112,8 +113,8 @@ class Resume extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className={classes.section}>
-                    <hr className={classes.sectionDivider}/>
+                <div className={`${classes.section} ${classes.projects} ${classes.odd}`}>
+                    {/* <hr className={classes.sectionDivider}/> */}
                     <h3 className={classes.sectionHeader}>Projects</h3>
                     <div className={classes.sectionContent}>
                         <div className={classes.sectionEntry}>
@@ -162,14 +163,14 @@ class Resume extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className={classes.section}>
-                    <hr className={classes.sectionDivider}/>
+                <div className={`${classes.section} ${classes.skills} ${classes.even}`}>
+                    {/* <hr className={classes.sectionDivider}/> */}
                     <h3 className={classes.sectionHeader}>Skills</h3>
                     <div className={classes.sectionContent}>
-                        <h4>Fluent</h4>
-                        {this.createSkillsHTML(this.state.fluentSkills, "fluentSkill")}
-                        <h4>Familiar</h4>
-                        {this.createSkillsHTML(this.state.familiarSkills, "familiarSkill")}
+                        <h4>Proficient</h4>
+                        {this.createSkillsHTML(this.state.highSkills, "highSkill")}
+                        <h4>Intermediate</h4>
+                        {this.createSkillsHTML(this.state.mediumSkills, "mediumSkill")}
                     </div>
                 </div>
             </div>
@@ -182,11 +183,26 @@ const styles = (theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
+        rowGap: '1.5em',
 
     },
     download: {
+        color: theme.mainText.color,
+        textDecoration: 'none',
         textAlign: 'center',
         font: theme.mainText.font,
+        margin: 'auto',
+        //marginBottom: '1em',
+        padding: '5px 10px',
+        backgroundColor: theme.palette.primary,
+        borderRadius: '10px',
+        '&:hover': {
+            backgroundColor: '#FFF5',
+        },
+    },
+    mainDivider: {
+        marginLeft: 0,
+        marginRight: 0,
     },
     sectionDivider: {
         marginLeft: 0,
@@ -195,18 +211,46 @@ const styles = (theme) => ({
     section: {
         display: 'flex',
         flexDirection: 'column',
+        padding: '1em 0.7em',
         font: theme.mainText.font,
+    },
+    even: {},
+    odd: {
+        borderStyle: theme.sectionBox.borderStyle,
+        borderWidth: theme.sectionBox.borderWidth,
+        borderColor: theme.sectionBox.borderColor,
+        borderRadius: theme.sectionBox.borderRadius,
+        boxShadow: theme.sectionBox.boxShadow,
     },
     sectionHeader: {
         textAlign: 'center',
+        fontSize: '2em',
+        //padding: '1em 0',
+        margin: 'auto',
+        marginBottom: '0.5em',
+        //backgroundColor: '#FFF3',
     },
     sectionContent: {},
     sectionEntry: {
-        // '& button' : {
-        //     width: '100%',
-        //     borderStyle: 'none',
-        //     textAlign: 'left',
-        // },
+        '& button' : {
+            width: '100%',
+            borderStyle: 'none',
+            textAlign: 'left',
+            backgroundColor: 'initial',
+            '-webkit-appearance': 'none',
+            '-moz-appearance': 'none',
+            boxSizing: 'border-box',
+            padding: '1em 0em',
+            font: theme.mainText.font,
+            color: theme.mainText.color,
+            //margin: '1em 0',
+            fontSize: '1.2em',
+            borderRadius: '5px',
+        },
+        '& button:hover': {
+            backgroundColor: '#FFF4',
+        },
+
     },
     sectionEntryHeader: {
         display: 'flex',
@@ -214,13 +258,37 @@ const styles = (theme) => ({
         justifyContent: 'space-between',
         '& h4': {
             minWidth: '100%',
+            margin: 0,
         }
     },
-    fluentSkill: {
-    
+    projects: {
+        '& h4': {
+            minWidth: 0,
+        },
     },
-    familiarSkill: {
-    
+    skills: {
+        '& $sectionContent': {
+            display: 'flex',
+            flexWrap: 'wrap',
+            rowGap: '0.5em',
+            columnGap: '0.3em',
+        },
+        '& h4': {
+            flexBasis: '100%',
+            fontSize: '1.2em',
+        },
+        '& label': {
+            padding: '0.2em 0.6em',
+            borderRadius: '20px',
+        },
+        
+    },
+    highSkill: {
+        backgroundColor: theme.palette.primary,
+
+    },
+    mediumSkill: {
+        backgroundColor: theme.palette.secondary,
     },
 
 });

@@ -11,17 +11,17 @@ const theme = {
     backgroundColor: 'rgb(96,125,139,0.4)',
   },
   palette: {
-    primary: '',
-    secondary: '',
+    primary: '#456234',
+    secondary: '#A58B54',
     accent: '',
     highlight: '',
   },
   navBarText: {
-    color: '',
+    color: '#000',
     font: '1.4em montserrat',
   },
   mainText: {
-    color: '',
+    color: '#000',
     font: '1em openSans',
   },
   heading: {
@@ -31,7 +31,14 @@ const theme = {
   name: {
     color: '',
     font: '',
-  }
+  },
+  sectionBox: {
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    borderColor: '#888',
+    borderRadius: '10px',
+    boxShadow: '3px 3px 11px #888',
+  },
 };
 
 render(
