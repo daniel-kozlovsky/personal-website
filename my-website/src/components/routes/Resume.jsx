@@ -21,11 +21,11 @@ class Resume extends React.Component {
         skillsArray.forEach((element) => {
             if(className === "fluentSkill")
             {
-                elements.push(<label className={classes.fluentSkill}>{element}</label>);
+                elements.push(<label key={element} className={classes.fluentSkill}>{element}</label>);
             }
             else if(className === "familiarSkill")
             {
-                elements.push(<label className={classes.familiarSkill}>{element}</label>);
+                elements.push(<label key={element} className={classes.familiarSkill}>{element}</label>);
             }
             
         });
