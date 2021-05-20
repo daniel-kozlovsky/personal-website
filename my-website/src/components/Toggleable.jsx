@@ -1,6 +1,9 @@
 import React, {Component, Children} from 'react';
+import withStyles from 'react-jss';
 
-import {AiOutlineEllipsis} from 'react-icons/ai';
+//import {AiOutlineEllipsis} from 'react-icons/ai';
+import {AiOutlinePlus} from 'react-icons/ai';
+import {AiOutlineMinus} from 'react-icons/ai';
 
 //First element is the title bar (clickable), all other elements are the toggleable content
 class Toggleable extends Component {
@@ -22,10 +25,13 @@ class Toggleable extends Component {
 
     renderChildren() {
         const {children} = this.props;
+        const {classes} = this.props;
         //let button = <button type="button" onClick={this.toggleVisibility}><AiOutlineEllipsis/></button>;
         let newChildren = Children.map(children, (child, i) => {
             if(i === 0) {
-            return (<button type="button" onClick={this.toggleVisibility}>{child}</button>);//React.cloneElement(child, {}, ...child.props.children, button);
+            let icon = this.state.isVisible ? <AiOutlineMinus class={classes.collapseIcon}/> : <AiOutlinePlus class={classes.collapseIcon}/>;
+                let withIcon = React.cloneElement(child, {}, ...child.props.children, icon);
+                return (<button type="button" onClick={this.toggleVisibility}>{withIcon}</button>);//React.cloneElement(child, {}, ...child.props.children, button);
             }
             else if(this.state.isVisible) {
                 return child;
@@ -40,6 +46,15 @@ class Toggleable extends Component {
         <>{this.renderChildren()}</>
         );
     }
-}
 
-export default Toggleable;
+    
+}
+const styles = (theme) => ({
+    collapseIcon: {
+        position: 'absolute',
+        bottom: '29px',
+        right: '-2px',
+    },
+});
+
+export default withStyles(styles, {injectTheme: true})(Toggleable);

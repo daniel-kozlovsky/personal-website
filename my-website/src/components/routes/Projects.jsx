@@ -15,6 +15,11 @@ const PAPER_NAME = "paper.pdf";
 const SS_HREF = "https://thesmartshopper.online";
 const KABLAN_HREF ="https://www.kablan.ca/";
 
+export const VIRTUAL_SHOWROOM_ID = "virtual-showroom";
+export const RESEARCH_PAPER_ID = "research-paper";
+export const SMART_SHOPPER_ID = "smart-shopper";
+export const ONLINE_BOOKSTORE_ID = "online-bookstore";
+
 class Projects extends React.Component {
 
     render() {
@@ -22,7 +27,7 @@ class Projects extends React.Component {
         
         return (
             <div className={classes.root}>
-                <div className={`${classes.row} ${classes.odd}`}>
+                <div id={VIRTUAL_SHOWROOM_ID} className={`${classes.row} ${classes.odd}`}>
                     <div className={classes.mediaContainer}>
                         <video className={classes.media} controls>
                             <source src={virtualShowroomVideo} type='video/mp4'/>
@@ -52,7 +57,7 @@ class Projects extends React.Component {
                         </p>
                     </div>
                 </div>
-                <div className={`${classes.row} ${classes.even}`}>
+                <div id={RESEARCH_PAPER_ID} className={`${classes.row} ${classes.even}`}>
                     <div className={classes.mediaContainer}>
                         <FadeOverlayLink href={PAPER_HREF} download={PAPER_NAME} linkText={<>Download My Paper <GrDocumentDownload/></>}>
                             <img src={researchPaperImage} className={classes.media} alt="Research Paper Cover"/>
@@ -75,7 +80,7 @@ class Projects extends React.Component {
                         </p>  
                     </div>
                 </div>
-                <div className={`${classes.row} ${classes.odd}`}>
+                <div id={SMART_SHOPPER_ID} className={`${classes.row} ${classes.odd}`}>
                     <div className={classes.mediaContainer}>
                         <FadeOverlayLink href={SS_HREF} rel="noreferrer noopener" target="_blank" linkText={<>Check out the website <FiExternalLink/></>}>
                             <img className={classes.media} src={smartShopperImage} alt="Smart Shopper Cover"/>
@@ -97,7 +102,7 @@ class Projects extends React.Component {
                         </p>
                     </div>
                 </div>
-                <div className={`${classes.row} ${classes.even}`}>
+                <div id={ONLINE_BOOKSTORE_ID} className={`${classes.row} ${classes.even}`}>
                     <div className={classes.mediaContainer}>
                         <img src={onlineBSImage} className={classes.media} alt="Online Bookstore Cover"/>
                     </div>

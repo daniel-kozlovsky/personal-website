@@ -8,7 +8,7 @@ import './index.css';
 
 const theme = {
   page: {
-    backgroundColor: 'rgb(96,125,139,0.4)',
+    backgroundColor: '#bfcbd1',
   },
   palette: {
     primary: '#456234',
@@ -26,7 +26,7 @@ const theme = {
   },
   heading: {
     color: '',
-    font: '',
+    font: '2em montserrat',
   },
   name: {
     color: '',

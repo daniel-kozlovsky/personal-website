@@ -3,7 +3,8 @@ import withStyles from 'react-jss';
 
 import {GrDocumentDownload} from 'react-icons/gr';
 import Toggleable from '../Toggleable'
-
+import {PROJECTS_PATH} from '../App';
+import {VIRTUAL_SHOWROOM_ID, RESEARCH_PAPER_ID, SMART_SHOPPER_ID, ONLINE_BOOKSTORE_ID} from './Projects';
 class Resume extends React.Component {
 
     constructor(props) {
@@ -38,7 +39,7 @@ class Resume extends React.Component {
         return (
             <div className={classes.root}>
                 <a className={classes.download} href="resume.pdf" download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download my comprehensive resume</a>
-                <hr className={classes.mainDivider}/>
+                <hr className={`${classes.mainDivider} ${classes.sectionDivider}`}/>
                 <div className={`${classes.section} ${classes.odd}`}>
                     <h3 className={classes.sectionHeader}>Employment</h3>
                     <div className={classes.sectionContent}>
@@ -92,7 +93,7 @@ class Resume extends React.Component {
                     </div>
                 </div>
                 <div className={`${classes.section} ${classes.even}`}>
-                    {/* <hr className={classes.sectionDivider}/> */}
+                    <hr className={classes.sectionDivider}/>
                     <h3 className={classes.sectionHeader}>Education</h3>
                     <div className={classes.sectionContent}>
                         <div className={classes.sectionEntry}>
@@ -102,7 +103,7 @@ class Resume extends React.Component {
                                     <label>York University, Toronto, Canada</label>
                                     <label>June 2021</label>
                                 </div>
-                                <label>Key Coursework:</label>
+                                <p>Key Coursework:</p>
                                 <ul>
                                     <li>
                                         Data structures, algorithms, OOP, web development, networking, embedded systems, operating systems, e-commerce,  mission-critical systems,
@@ -114,7 +115,7 @@ class Resume extends React.Component {
                     </div>
                 </div>
                 <div className={`${classes.section} ${classes.projects} ${classes.odd}`}>
-                    {/* <hr className={classes.sectionDivider}/> */}
+                    <hr className={classes.sectionDivider}/>
                     <h3 className={classes.sectionHeader}>Projects</h3>
                     <div className={classes.sectionContent}>
                         <div className={classes.sectionEntry}>
@@ -124,7 +125,8 @@ class Resume extends React.Component {
                                     <label>2021</label>
                                 </div>
                                 <p>
-                                    My school culminating project; A virtual reality application that showcases tiling in a home setting, with high graphical fidelity.
+                                    My school culminating project; A virtual reality application that showcases tiling in a home setting, with high graphical 
+                                    fidelity. <a href={`${PROJECTS_PATH}#${VIRTUAL_SHOWROOM_ID}`}>More info...</a>
                                 </p>
                             </Toggleable>
                         </div>
@@ -135,7 +137,7 @@ class Resume extends React.Component {
                                     <label>2021</label>
                                 </div>
                                 <p>
-                                    E-commerce website allowing one to buy books, read/leave reviews and keep an account.
+                                    E-commerce website allowing one to buy books, read/leave reviews and keep an account. <a href={`${PROJECTS_PATH}#${ONLINE_BOOKSTORE_ID}`}>More info...</a>
                                 </p>
                             </Toggleable>
                         </div>
@@ -146,7 +148,7 @@ class Resume extends React.Component {
                                     <label>2021</label>
                                 </div>
                                 <p>
-                                    Analysis of two Android malware families focusing on indicators and techniques. 
+                                    Analysis of two Android malware families focusing on indicators and techniques. <a href={`${PROJECTS_PATH}#${RESEARCH_PAPER_ID}`}>More info...</a> 
                                 </p>
                             </Toggleable>
                         </div>
@@ -157,14 +159,14 @@ class Resume extends React.Component {
                                     <label>2020</label>
                                 </div>
                                 <p>
-                                    User-centric mock shopping website that features recommendations, accounts, administration and intuitive UI. 
+                                    User-centric mock shopping website that features recommendations, accounts, administration and intuitive UI. <a href={`${PROJECTS_PATH}#${SMART_SHOPPER_ID}`}>More info...</a> 
                                 </p>
                             </Toggleable>
                         </div>
                     </div>
                 </div>
                 <div className={`${classes.section} ${classes.skills} ${classes.even}`}>
-                    {/* <hr className={classes.sectionDivider}/> */}
+                    <hr className={classes.sectionDivider}/>
                     <h3 className={classes.sectionHeader}>Skills</h3>
                     <div className={classes.sectionContent}>
                         <h4>Proficient</h4>
@@ -200,35 +202,43 @@ const styles = (theme) => ({
             backgroundColor: '#FFF5',
         },
     },
-    mainDivider: {
-        marginLeft: 0,
-        marginRight: 0,
-    },
     sectionDivider: {
         marginLeft: 0,
         marginRight: 0,
+        marginBottom: '4%',
+        border: 0,
+        height: '1px', 
+        backgroundImage: `linear-gradient(left, ${theme.page.backgroundColor} 5%, #8c8b8b, ${theme.page.backgroundColor} 95%)`,
+    },
+    mainDivider: {
+        height: '3px',
+        marginBottom: 'calc(4% - 1.5em)', 
     },
     section: {
         display: 'flex',
         flexDirection: 'column',
-        padding: '1em 0.7em',
         font: theme.mainText.font,
+
     },
     even: {},
     odd: {
-        borderStyle: theme.sectionBox.borderStyle,
-        borderWidth: theme.sectionBox.borderWidth,
-        borderColor: theme.sectionBox.borderColor,
-        borderRadius: theme.sectionBox.borderRadius,
-        boxShadow: theme.sectionBox.boxShadow,
+        //backgroundColor: '#FFF4',
+        // borderStyle: theme.sectionBox.borderStyle,
+        // borderWidth: theme.sectionBox.borderWidth,
+        // borderColor: theme.sectionBox.borderColor,
+        // borderRadius: theme.sectionBox.borderRadius,
+        // boxShadow: theme.sectionBox.boxShadow,
     },
     sectionHeader: {
-        textAlign: 'center',
-        fontSize: '2em',
+        
+        font: theme.heading.font, 
+        fontStyle: 'bold',
         //padding: '1em 0',
         margin: 'auto',
         marginBottom: '0.5em',
         //backgroundColor: '#FFF3',
+        //position: 'sticky',
+        //top: 0,
     },
     sectionContent: {},
     sectionEntry: {
@@ -240,7 +250,7 @@ const styles = (theme) => ({
             '-webkit-appearance': 'none',
             '-moz-appearance': 'none',
             boxSizing: 'border-box',
-            padding: '1em 0em',
+            padding: '0.8em',
             font: theme.mainText.font,
             color: theme.mainText.color,
             //margin: '1em 0',
@@ -250,12 +260,15 @@ const styles = (theme) => ({
         '& button:hover': {
             backgroundColor: '#FFF4',
         },
-
+        '& p': {
+            margin: '1em',
+        },
     },
     sectionEntryHeader: {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        position: 'relative',
         '& h4': {
             minWidth: '100%',
             margin: 0,
