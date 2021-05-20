@@ -5,6 +5,8 @@ import {GrDocumentDownload} from 'react-icons/gr';
 import Toggleable from '../Toggleable'
 import {PROJECTS_PATH} from '../App';
 import {VIRTUAL_SHOWROOM_ID, RESEARCH_PAPER_ID, SMART_SHOPPER_ID, ONLINE_BOOKSTORE_ID} from './Projects';
+import {IoEllipsisVertical} from 'react-icons/io5';
+
 class Resume extends React.Component {
 
     constructor(props) {
@@ -46,9 +48,11 @@ class Resume extends React.Component {
                         <div className={classes.sectionEntry}>
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
-                                    <h4>Cyber Threat Intelligence Analyst</h4>
-                                    <label>BMO Financial Group - Toronto, Canada</label>
-                                    <label>May 2020 - Sept 2020</label>
+                                    <div className={classes.workInfo}>
+                                        <h4>Cyber Threat Intelligence Analyst</h4>
+                                        <label>BMO Financial Group - Toronto, Canada</label>
+                                    </div>
+                                    <label className={classes.date}>May 2020 - Sept 2020</label>
                                 </div>
                                 <p>
                                     For my last internship, I wanted to explore my love for computer security so I started working in Cyber Threat Intelligence. I was tasked with researching
@@ -62,9 +66,11 @@ class Resume extends React.Component {
                         <div className={classes.sectionEntry}>
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
-                                    <h4>Software Developer</h4>
-                                    <label>BMO Financial Group - Toronto, Canada</label>
-                                    <label>Mar 2019 – Sept 2019</label>
+                                    <div className={classes.workInfo}>
+                                        <h4>Software Developer</h4>
+                                        <label>BMO Financial Group - Toronto, Canada</label>
+                                    </div>
+                                    <label className={classes.date}>Mar 2019 – Sept 2019</label>
                                 </div>
                                 <p>
                                     In my role as developer at BMO, I was on the team responsible for the bank’s wire transfer system and worked on maintaining and updating the system, as
@@ -76,9 +82,11 @@ class Resume extends React.Component {
                         <div className={classes.sectionEntry}>
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
-                                    <h4>Quality Assurance Analyst</h4>
-                                    <label>BMO Financial Group - Toronto, Canada</label>
-                                    <label>Sept 2018 – Mar 2019</label>
+                                    <div className={classes.workInfo}>
+                                        <h4>Quality Assurance Analyst</h4>
+                                        <label>BMO Financial Group - Toronto, Canada</label>
+                                    </div>
+                                    <label className={classes.date}>Sept 2018 – Mar 2019</label>
                                 </div>
                                 <p>
                                     This was my first job in the industry as an intern and it was a massive learning experience. As a QA on the team responsible 
@@ -99,9 +107,11 @@ class Resume extends React.Component {
                         <div className={classes.sectionEntry}>
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
-                                    <h4>B.Eng., Spec. Hons. Software Engineering (Security)</h4>
-                                    <label>York University, Toronto, Canada</label>
-                                    <label>June 2021</label>
+                                    <div className={classes.workInfo}>
+                                        <h4>B.Eng., Spec. Hons. Software Engineering (Security)</h4>
+                                        <label>York University, Toronto, Canada</label>
+                                    </div>
+                                    <label className={classes.date}>June 2021</label>
                                 </div>
                                 <p>Key Coursework:</p>
                                 <ul>
@@ -122,7 +132,7 @@ class Resume extends React.Component {
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
                                     <h4>Virtual Reality Showroom</h4>
-                                    <label>2021</label>
+                                    <label className={classes.date}>2021</label>
                                 </div>
                                 <p>
                                     My school culminating project; A virtual reality application that showcases tiling in a home setting, with high graphical 
@@ -134,7 +144,7 @@ class Resume extends React.Component {
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
                                     <h4>Online Bookstore</h4>
-                                    <label>2021</label>
+                                    <label className={classes.date}>2021</label>
                                 </div>
                                 <p>
                                     E-commerce website allowing one to buy books, read/leave reviews and keep an account. <a href={`${PROJECTS_PATH}#${ONLINE_BOOKSTORE_ID}`}>More info...</a>
@@ -145,7 +155,7 @@ class Resume extends React.Component {
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
                                     <h4>Malware Family Research Paper</h4>
-                                    <label>2021</label>
+                                    <label className={classes.date}>2021</label>
                                 </div>
                                 <p>
                                     Analysis of two Android malware families focusing on indicators and techniques. <a href={`${PROJECTS_PATH}#${RESEARCH_PAPER_ID}`}>More info...</a> 
@@ -156,7 +166,7 @@ class Resume extends React.Component {
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
                                     <h4>Shopping Website</h4>
-                                    <label>2020</label>
+                                    <label className={classes.date}>2020</label>
                                 </div>
                                 <p>
                                     User-centric mock shopping website that features recommendations, accounts, administration and intuitive UI. <a href={`${PROJECTS_PATH}#${SMART_SHOPPER_ID}`}>More info...</a> 
@@ -195,9 +205,9 @@ const styles = (theme) => ({
         font: theme.mainText.font,
         margin: 'auto',
         //marginBottom: '1em',
-        padding: '5px 10px',
+        padding: '0.3em 0.6em',
         backgroundColor: theme.palette.primary,
-        borderRadius: '10px',
+        borderRadius: '20px',
         '&:hover': {
             backgroundColor: '#FFF5',
         },
@@ -261,18 +271,30 @@ const styles = (theme) => ({
             backgroundColor: '#FFF4',
         },
         '& p': {
-            margin: '1em',
+            margin: '1em 4em',
+        },
+        '& ul': {
+            marginLeft: '4em',
         },
     },
     sectionEntryHeader: {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        alignItems: 'center',
+        //for the SVG icon
         position: 'relative',
         '& h4': {
             minWidth: '100%',
             margin: 0,
         }
+    },
+    workInfo: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    date: {
+        marginRight: '0.8em',
     },
     projects: {
         '& h4': {

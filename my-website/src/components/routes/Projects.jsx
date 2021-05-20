@@ -5,6 +5,7 @@ import virtualShowroomVideo from '../../media/video/Virtual_Showroom.mp4';
 import smartShopperImage from '../../media/img/smart_shopper_thumbnail.png';
 import researchPaperImage from '../../media/img/malware_paper_thumbnail.png';
 import onlineBSImage from '../../media/img/online_bs_thumbnail.png';
+import videoPoster from '../../media/img/VS_poster.png';
 
 import FadeOverlayLink from '../FadeOverlayLink';
 import {FiExternalLink} from 'react-icons/fi';
@@ -29,7 +30,7 @@ class Projects extends React.Component {
             <div className={classes.root}>
                 <div id={VIRTUAL_SHOWROOM_ID} className={`${classes.row} ${classes.odd}`}>
                     <div className={classes.mediaContainer}>
-                        <video className={classes.media} controls>
+                        <video className={classes.media} controls poster={videoPoster}>
                             <source src={virtualShowroomVideo} type='video/mp4'/>
                             Hmm it seems your browser doesn't support Video
                         </video>

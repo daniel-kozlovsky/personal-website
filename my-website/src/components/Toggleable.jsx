@@ -29,7 +29,7 @@ class Toggleable extends Component {
         //let button = <button type="button" onClick={this.toggleVisibility}><AiOutlineEllipsis/></button>;
         let newChildren = Children.map(children, (child, i) => {
             if(i === 0) {
-            let icon = this.state.isVisible ? <AiOutlineMinus class={classes.collapseIcon}/> : <AiOutlinePlus class={classes.collapseIcon}/>;
+            let icon = this.state.isVisible ? <AiOutlineMinus className={classes.collapseIcon}/> : <AiOutlinePlus className={classes.collapseIcon}/>;
                 let withIcon = React.cloneElement(child, {}, ...child.props.children, icon);
                 return (<button type="button" onClick={this.toggleVisibility}>{withIcon}</button>);//React.cloneElement(child, {}, ...child.props.children, button);
             }
@@ -52,8 +52,9 @@ class Toggleable extends Component {
 const styles = (theme) => ({
     collapseIcon: {
         position: 'absolute',
-        bottom: '29px',
-        right: '-2px',
+        top: '50%',
+        right: '-18px',
+        transform: 'translate(-50%, -48%)',
     },
 });
 

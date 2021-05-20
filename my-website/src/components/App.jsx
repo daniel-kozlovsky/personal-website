@@ -49,7 +49,7 @@ class App extends React.Component {
 
 const styles = (theme) => ({
   root: {
-    height: '100vh'
+    height: '100%'
   },
   name: {
     textAlign: 'center',
@@ -58,17 +58,16 @@ const styles = (theme) => ({
   navBar: {
     display: 'flex',
     justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
     maxWidth: '50vw',
     margin: 'auto',
-    position: '-webkit-sticky',
-    position: 'sticky',
-    top: '1em',
 
     '& a': {
       font: theme.navBarText.font,
       color: theme.navBarText.color,
       textDecoration: 'none',
-      
+      whiteSpace: 'nowrap',
+      margin: '0.2em 0.5em',
       '&:visited': {
         color: theme.navBarText.color,
       },
