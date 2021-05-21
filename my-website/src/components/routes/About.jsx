@@ -36,17 +36,23 @@ const styles = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%',
+        flexWrap: 'wrap',
+        //height: '100%',
         
     },
     portrait: {
-        maxWidth: '25%',
-        height: 'auto',
+        maxWidth: '30%',
+        minWidth: '15em',
+        //height: 'auto',
         borderRadius: '20%',
         marginRight: '10%',
+
         
     },
-    textBlock: {},
+    textBlock: {
+        flexBasis: '60%',
+        flexGrow: '1',
+    },
     text: {
         marginTop: '1.5em',
         marginBottom: '1.5em',

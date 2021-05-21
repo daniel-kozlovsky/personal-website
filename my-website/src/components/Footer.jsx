@@ -1,8 +1,6 @@
 import {Component} from 'react';
 import withStyles from 'react-jss';
 
-import {Link} from 'react-router-dom';
-
 import Modal from './Modal';
 
 class Footer extends Component {

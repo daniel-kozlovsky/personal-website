@@ -5,7 +5,6 @@ import {GrDocumentDownload} from 'react-icons/gr';
 import Toggleable from '../Toggleable'
 import {PROJECTS_PATH} from '../App';
 import {VIRTUAL_SHOWROOM_ID, RESEARCH_PAPER_ID, SMART_SHOPPER_ID, ONLINE_BOOKSTORE_ID} from './Projects';
-import {IoEllipsisVertical} from 'react-icons/io5';
 
 class Resume extends React.Component {
 
@@ -40,7 +39,7 @@ class Resume extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <a className={classes.download} href="resume.pdf" download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download my comprehensive resume</a>
+                <a className={classes.download} href="resume.pdf" download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download My Comprehensive Resume</a>
                 <hr className={`${classes.mainDivider} ${classes.sectionDivider}`}/>
                 <div className={`${classes.section} ${classes.odd}`}>
                     <h3 className={classes.sectionHeader}>Employment</h3>
@@ -52,7 +51,7 @@ class Resume extends React.Component {
                                         <h4>Cyber Threat Intelligence Analyst</h4>
                                         <label>BMO Financial Group - Toronto, Canada</label>
                                     </div>
-                                    <label className={classes.date}>May 2020 - Sept 2020</label>
+                                    <label className={classes.date}>May 2020 – Sept 2020</label>
                                 </div>
                                 <p>
                                     For my last internship, I wanted to explore my love for computer security so I started working in Cyber Threat Intelligence. I was tasked with researching
@@ -199,18 +198,9 @@ const styles = (theme) => ({
 
     },
     download: {
-        color: theme.mainText.color,
+        ...theme.buttonStyle,
         textDecoration: 'none',
-        textAlign: 'center',
-        font: theme.mainText.font,
         margin: 'auto',
-        //marginBottom: '1em',
-        padding: '0.3em 0.6em',
-        backgroundColor: theme.palette.primary,
-        borderRadius: '20px',
-        '&:hover': {
-            backgroundColor: '#FFF5',
-        },
     },
     sectionDivider: {
         marginLeft: 0,
@@ -242,13 +232,9 @@ const styles = (theme) => ({
     sectionHeader: {
         
         font: theme.heading.font, 
-        fontStyle: 'bold',
-        //padding: '1em 0',
         margin: 'auto',
-        marginBottom: '0.5em',
-        //backgroundColor: '#FFF3',
-        //position: 'sticky',
-        //top: 0,
+        marginBottom: '1em',
+        
     },
     sectionContent: {},
     sectionEntry: {
@@ -273,16 +259,24 @@ const styles = (theme) => ({
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         alignItems: 'center',
+        font: theme.heading.font,
+        fontSize: '1.05em',
         //for the SVG icon
         position: 'relative',
         '& h4': {
             minWidth: '100%',
             margin: 0,
-        }
+        },
+        '& label': {
+            fontSize: '0.9em',
+        },
     },
     workInfo: {
         display: 'flex',
         flexDirection: 'column',
+        '& h4': {
+            marginBottom: '0.1em',
+        }
     },
     date: {
         marginRight: '0.8em',

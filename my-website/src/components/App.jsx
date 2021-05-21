@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Link as NavLink} from 'react-router-dom';
+import {Switch, Route, NavLink} from 'react-router-dom';
 import withStyles from 'react-jss';
 
 
@@ -28,12 +28,12 @@ class App extends React.Component {
     return (
       <div className={classes.root}>
         <h1 className={classes.name}>Daniel Kozlovsky</h1>
-        <div className={classes.navBar}>
-          <NavLink to={ABOUT_PATH}>About Me</NavLink>
-          <NavLink to={PROJECTS_PATH}>Projects</NavLink>
-          <NavLink to={RESUME_PATH}>Resume</NavLink>
-          <NavLink to={CONTACT_PATH}>Contact</NavLink>
-        </div>
+        <nav className={classes.navBar}>
+          <NavLink exact to={ABOUT_PATH} activeClassName={classes.activeNavbar}>About Me</NavLink>
+          <NavLink to={PROJECTS_PATH} activeClassName={classes.activeNavbar}>Projects</NavLink>
+          <NavLink to={RESUME_PATH} activeClassName={classes.activeNavbar}>Resume</NavLink>
+          <NavLink to={CONTACT_PATH} activeClassName={classes.activeNavbar}>Contact</NavLink>
+        </nav>
         <div className={classes.page}>
           <Switch>
             <Route path={PROJECTS_PATH} component={Projects}/>
@@ -66,19 +66,22 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'space-evenly',
     flexWrap: 'wrap',
-    maxWidth: '50vw',
-    margin: '0 auto',
 
     '& a': {
+      ...theme.buttonStyle,
       font: theme.navBarText.font,
       color: theme.navBarText.color,
       textDecoration: 'none',
       whiteSpace: 'nowrap',
-      margin: '0.2em 0.5em',
+      backgroundColor: 'none',
+      margin: '0 0.3em',
       '&:visited': {
         color: theme.navBarText.color,
       },
-    }
+    },
+  },
+  activeNavbar: {
+    backgroundColor: theme.palette.highlight,
   },
   page: {
     padding: '5% 15%',

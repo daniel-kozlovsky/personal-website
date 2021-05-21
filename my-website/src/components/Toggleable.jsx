@@ -54,7 +54,7 @@ const styles = (theme) => ({
         position: 'absolute',
         top: '50%',
         right: '-18px',
-        transform: 'translate(-50%, -48%)',
+        transform: 'translate(-50%, -55%)',
     },
 });
 

@@ -27,7 +27,7 @@ const theme = {
   },
   heading: {
     color: '#000',
-    font: '1.5em montserrat',
+    font: '1.9em montserrat',
   },
   name: {
     color: '#000',
@@ -54,6 +54,7 @@ const theme = {
     color: this.mainText.color,
     padding: '0.3em 0.6em',
     borderRadius: '20px',
+    cursor: 'pointer',
       '&:hover': {
           backgroundColor: this.palette.select,
       },
