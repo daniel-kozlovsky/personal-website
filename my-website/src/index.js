@@ -14,7 +14,7 @@ const theme = {
     primary: '#456234',
     secondary: '#A58B54',
     accent: '#888',
-    highlight: '#FAE',
+    highlight: '#c3bdc2',
     select: '#FFF',
   },
   navBarText: {

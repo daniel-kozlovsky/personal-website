@@ -43,7 +43,7 @@ const styles = (theme) => ({
     portrait: {
         maxWidth: '30%',
         minWidth: '15em',
-        //height: 'auto',
+        height: 'auto',
         borderRadius: '20%',
         marginRight: '10%',
 

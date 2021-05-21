@@ -64,7 +64,7 @@ const styles = (theme) => ({
   },
   navBar: {
     display: 'flex',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     flexWrap: 'wrap',
 
     '& a': {

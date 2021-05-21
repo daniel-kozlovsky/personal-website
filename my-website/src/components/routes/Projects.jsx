@@ -28,7 +28,8 @@ class Projects extends React.Component {
         
         return (
             <div className={classes.root}>
-                <div id={VIRTUAL_SHOWROOM_ID} className={`${classes.row} ${classes.odd}`}>
+                <div id={VIRTUAL_SHOWROOM_ID} className={`${classes.row} ${classes.odd} ${classes.first}`}>
+                    <h3>Virtual Showroom</h3>
                     <div className={classes.mediaContainer}>
                         <video className={classes.media} controls poster={videoPoster}>
                             <source src={virtualShowroomVideo} type='video/mp4'/>
@@ -36,7 +37,6 @@ class Projects extends React.Component {
                         </video>
                     </div>
                     <div className={classes.description}>
-                        <h3>Virtual Showroom</h3>
                         <p>
                             As my capstone school project my team and I set out to solve real world problems through software engineering through a VR showroom application. 
                             We had the chance to work with <a href={KABLAN_HREF} rel="noreferrer noopener" target="_blank">Kablan Developments Inc.</a> to showcase their tiles in a realistic and convenient way, to save the time and effort of 
@@ -53,7 +53,7 @@ class Projects extends React.Component {
                         <p>
                             While this project taught me Unity and graphical programming, the real value of the experience came from the process. I took the role of team leader and project 
                             manager which entailed work planning, task management, and client interfacing. I became really comfortable with the SDLC and the key documentation for each phase, 
-                            helping me improve me design and planning skills. As leader I learned to guide the team and make executive decisions, consequently being accountable for deliverables 
+                            helping me improve my design and planning skills. As leader I learned to guide the team and make executive decisions, consequently being accountable for deliverables 
                             and results. It really made me feel like an owner of the application that I could indeed be proud of!
                         </p>
                     </div>
@@ -154,6 +154,7 @@ const styles = (theme) => ({
     },
     mediaContainer: {
         flexBasis: 'calc(35% - 2em)',
+        //for the overlays (positioned ancestor)
         position: 'relative',
         overflow: 'hidden',
         borderRadius: '2%',
@@ -168,6 +169,14 @@ const styles = (theme) => ({
     description: {
         flexBasis: 'calc(65% - 2em)',
         flexGrow: 2,
+    },
+    first: {
+        flexDirection: 'column',
+        '& $mediaContainer': {
+            maxWidth: '95%',
+            marginBottom: '2em',
+        },
+
     },
 });
 
