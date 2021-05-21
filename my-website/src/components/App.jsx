@@ -8,6 +8,7 @@ import Contact from './routes/Contact';
 import About from './routes/About';
 import Resume from './routes/Resume';
 import Projects from './routes/Projects';
+import Footer from './Footer';
 
 export const ABOUT_PATH = "/";
 export const PROJECTS_PATH = "/Projects";
@@ -41,7 +42,9 @@ class App extends React.Component {
             <Route path={ABOUT_PATH} component={About}/>
           </Switch>
         </div>
-        {/* footer goes here*/}
+        <div className={classes.footer}>
+          <Footer/>
+        </div>
       </div>
     );
   }
@@ -49,7 +52,9 @@ class App extends React.Component {
 
 const styles = (theme) => ({
   root: {
-    height: '100%'
+    height: 'calc(100vh - 6em)',
+    minHeight: 'calc(100vh - 6em)',
+    position: 'relative',
   },
   name: {
     textAlign: 'center',
@@ -76,6 +81,11 @@ const styles = (theme) => ({
   },
   page: {
     padding: '5% 10%',
+    minHeight: 'calc(100% - 19em)',
+  },
+  footer: {
+    padding: '3em 0',
+
   },
 });
 
