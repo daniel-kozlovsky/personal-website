@@ -81,10 +81,11 @@ const styles = (theme) => ({
   },
   page: {
     padding: '5% 10%',
-    minHeight: 'calc(100% - 19em)',
+    minHeight: 'calc(100% - 17em)',
   },
   footer: {
-    padding: '3em 0',
+    paddingTop: '3em',
+    paddingBottom: '1em',
 
   },
 });

@@ -253,22 +253,13 @@ const styles = (theme) => ({
     sectionContent: {},
     sectionEntry: {
         '& button' : {
+            ...theme.buttonStyle,
             width: '100%',
-            borderStyle: 'none',
             textAlign: 'left',
-            backgroundColor: 'initial',
-            '-webkit-appearance': 'none',
-            '-moz-appearance': 'none',
-            boxSizing: 'border-box',
             padding: '0.8em',
-            font: theme.mainText.font,
-            color: theme.mainText.color,
             //margin: '1em 0',
             fontSize: '1.2em',
             borderRadius: '5px',
-        },
-        '& button:hover': {
-            backgroundColor: '#FFF4',
         },
         '& p': {
             margin: '1em 4em',

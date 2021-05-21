@@ -39,6 +39,23 @@ const theme = {
     borderRadius: '10px',
     boxShadow: '3px 3px 11px #888',
   },
+  get buttonStyle() {
+    return ({
+    borderStyle: 'none',
+    textAlign: 'center',
+    backgroundColor: 'initial',
+    '-webkit-appearance': 'none',
+    '-moz-appearance': 'none',
+    boxSizing: 'border-box',
+    font: this.mainText.font,
+    color: this.mainText.color,
+    padding: '0.3em 0.6em',
+    borderRadius: '20px',
+      '&:hover': {
+          backgroundColor: '#FFF',
+      },
+    });
+  },
 };
 
 render(

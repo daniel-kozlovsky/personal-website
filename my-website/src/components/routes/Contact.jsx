@@ -87,20 +87,9 @@ const styles = (theme) => ({
         },
     },
     copyEmail: {
-        borderStyle: 'none',
-        textAlign: 'left',
-        '-webkit-appearance': 'none',
-        '-moz-appearance': 'none',
-        boxSizing: 'border-box',
-        font: theme.mainText.font,
-        color: theme.mainText.color,
+        ...theme.buttonStyle,
+        
         marginTop: '8%',
-        padding: '0.3em 0.6em',
-        borderRadius: '20px',
-        backgroundColor: '#AAA',
-        '&:hover': {
-            backgroundColor: '#FFF',
-        },
     },
 
 });
