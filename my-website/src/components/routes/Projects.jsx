@@ -141,14 +141,11 @@ const styles = (theme) => ({
         alignItems: 'center',
         '& h3': {
             textAlign: 'center',
+            font: theme.heading.font,
         },
     },
     odd: {
-        borderStyle: theme.sectionBox.borderStyle,
-        borderWidth: theme.sectionBox.borderWidth,
-        borderColor: theme.sectionBox.borderColor,
-        borderRadius: theme.sectionBox.borderRadius,
-        boxShadow: theme.sectionBox.boxShadow,
+        ...theme.sectionBox,
     },
     even: {
         '& $mediaContainer': {

@@ -5,7 +5,7 @@ import {ThemeProvider} from 'react-jss';
 
 import App from './components/App';
 import './index.css';
-
+//#bfcbd1 <- my fav 
 const theme = {
   page: {
     backgroundColor: '#bfcbd1',
@@ -13,31 +13,34 @@ const theme = {
   palette: {
     primary: '#456234',
     secondary: '#A58B54',
-    accent: '',
-    highlight: '',
+    accent: '#888',
+    highlight: '#FAE',
+    select: '#FFF',
   },
   navBarText: {
     color: '#000',
-    font: '1.4em montserrat',
+    font: '2.3em quicksand',
   },
   mainText: {
     color: '#000',
     font: '1em openSans',
   },
   heading: {
-    color: '',
-    font: '2em montserrat',
+    color: '#000',
+    font: '1.5em montserrat',
   },
   name: {
-    color: '',
-    font: '',
+    color: '#000',
+    font: '4em quicksand',
   },
-  sectionBox: {
+  get sectionBox() {
+    return ({
     borderStyle: 'solid',
     borderWidth: '1px',
-    borderColor: '#888',
+    borderColor: this.palette.accent,
     borderRadius: '10px',
     boxShadow: '3px 3px 11px #888',
+    });
   },
   get buttonStyle() {
     return ({
@@ -52,7 +55,7 @@ const theme = {
     padding: '0.3em 0.6em',
     borderRadius: '20px',
       '&:hover': {
-          backgroundColor: '#FFF',
+          backgroundColor: this.palette.select,
       },
     });
   },

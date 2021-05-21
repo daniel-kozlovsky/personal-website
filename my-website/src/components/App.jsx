@@ -52,20 +52,22 @@ class App extends React.Component {
 
 const styles = (theme) => ({
   root: {
-    height: 'calc(100vh - 6em)',
-    minHeight: 'calc(100vh - 6em)',
-    position: 'relative',
+    minHeight: 'calc(100vh - 1em)',
+    display: 'flex',
+    flexDirection: 'column',
   },
   name: {
     textAlign: 'center',
-    marginTop: '2%'
+    marginTop: '1%',
+    font: theme.name.font,
+    color: theme.name.color,
   },
   navBar: {
     display: 'flex',
     justifyContent: 'space-evenly',
     flexWrap: 'wrap',
     maxWidth: '50vw',
-    margin: 'auto',
+    margin: '0 auto',
 
     '& a': {
       font: theme.navBarText.font,
@@ -76,15 +78,17 @@ const styles = (theme) => ({
       '&:visited': {
         color: theme.navBarText.color,
       },
-
     }
   },
   page: {
-    padding: '5% 10%',
-    minHeight: 'calc(100% - 17em)',
+    padding: '5% 15%',
   },
   footer: {
-    paddingTop: '3em',
+    flexGrow: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    paddingTop: '2em',
     paddingBottom: '1em',
 
   },

@@ -30,7 +30,8 @@ const style = (theme) => ({
     },
     box: {
         backgroundColor: theme.palette.primary,
-        padding: '1em',
+        padding: '2em',
+        maxWidth: '25%',
         borderRadius: '5px',
     }
 });

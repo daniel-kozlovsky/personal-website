@@ -71,7 +71,9 @@ const style = (theme) => ({
         textAlign: 'center',
     },
     modalContent: {
-        
+        '& $copyNotice': {
+            marginTop: '10%',
+        },
     },
 });
 

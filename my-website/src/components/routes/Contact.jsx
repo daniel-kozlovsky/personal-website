@@ -67,7 +67,7 @@ const styles = (theme) => ({
         '& h4': {
             font: theme.heading.font,
             fontSize: '1.5em',
-            margin: '1% 0',
+            margin: '4% 0',
         },
         '& a': {
             color: theme.mainText.color,
@@ -88,8 +88,8 @@ const styles = (theme) => ({
     },
     copyEmail: {
         ...theme.buttonStyle,
-        
-        marginTop: '8%',
+        font: theme.heading.font,
+        marginTop: '4%',
     },
 
 });
