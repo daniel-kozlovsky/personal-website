@@ -59,13 +59,14 @@ class Projects extends React.Component {
                     </div>
                 </div>
                 <div id={RESEARCH_PAPER_ID} className={`${classes.row} ${classes.even}`}>
+                    <h3>Clustering Android Malware</h3>
                     <div className={classes.mediaContainer}>
                         <FadeOverlayLink href={PAPER_HREF} download={PAPER_NAME} linkText={<>Download My Paper <GrDocumentDownload/></>}>
                             <img src={researchPaperImage} className={classes.media} alt="Research Paper Cover"/>
                         </FadeOverlayLink>
                     </div>
                     <div className={classes.description}>
-                        <h3>Clustering Android Malware</h3>
+                        
                         <p>
                             I’ve always been deeply interested in the software aspect of computer security, like the code behind malware and exploits, or the root cause of vulnerabilities.
                             Consequently, one of my favourite parts of computer security is analysing malicious or vulnerable code and I got to do exactly this for a research paper. 
@@ -82,13 +83,14 @@ class Projects extends React.Component {
                     </div>
                 </div>
                 <div id={SMART_SHOPPER_ID} className={`${classes.row} ${classes.odd}`}>
+                    <h3>The Smart Shopper</h3>
                     <div className={classes.mediaContainer}>
                         <FadeOverlayLink href={SS_HREF} rel="noreferrer noopener" target="_blank" linkText={<>Check out the website <FiExternalLink/></>}>
                             <img className={classes.media} src={smartShopperImage} alt="Smart Shopper Cover"/>
                         </FadeOverlayLink>
                     </div>
                     <div className={classes.description}>
-                        <h3>The Smart Shopper</h3>
+                        
                         <p>
                             One of my first full web development experiences, <a href={SS_HREF} rel="noreferrer noopener" target="_blank">The Smart Shopper</a>, is a shopping website for a mock company. It was done as part of a school 
                             project to build an application from requirements and required iterating and interfacing with our client. The website features accounts and roles, cart 
@@ -99,16 +101,17 @@ class Projects extends React.Component {
                             This was my first experience with creating a great user experience and to do so, I used Node, Vue.js, Vuex and Vuetify to build the interface. In addition, 
                             the application integrates AWS Cognito and is deployed on an EC2 server. Apart from becoming comfortable with JavaScript and web development, I also learned 
                             key collaboration process skills. As a team, we had daily scrums to discuss our progress and tracked issues and tasks in our Github. The result is a complete, 
-                            user-centric web application that follows requirements and landed us an A!
+                            user-centric web application that follows requirements and landed me an A!
                         </p>
                     </div>
                 </div>
                 <div id={ONLINE_BOOKSTORE_ID} className={`${classes.row} ${classes.even}`}>
+                    <h3>Online Bookstore</h3>
                     <div className={classes.mediaContainer}>
                         <img src={onlineBSImage} className={classes.media} alt="Online Bookstore Cover"/>
                     </div>
                     <div className={classes.description}>
-                        <h3>Online Bookstore</h3>
+                        
                         <p>
                             Online Bookstore is an e-commerce application, part of a course project, and allows users to view books; read and write book reviews; 
                             and manage the users’ cart, account and orders. This project was done in a team where I took lead and was also responsible for the design documentation, 
@@ -128,6 +131,7 @@ class Projects extends React.Component {
 }
 
 const styles = (theme) => ({
+    
     root: {
         display: 'flex',
         flexDirection: 'column',
@@ -136,16 +140,19 @@ const styles = (theme) => ({
     },
     row: {
         display: 'flex',
+        flexWrap: 'wrap',
         columnGap: '2em',
         padding: '0.8em',
         alignItems: 'center',
         '& h3': {
+            flexBasis: 'calc(65%)',
             textAlign: 'center',
             font: theme.heading.font,
         },
     },
     odd: {
         ...theme.sectionBox,
+        justifyContent: 'flex-end',
     },
     even: {
         '& $mediaContainer': {
@@ -153,11 +160,13 @@ const styles = (theme) => ({
         },
     },
     mediaContainer: {
-        flexBasis: 'calc(35% - 2em)',
+        flexBasis: 'calc(35%)',
         //for the overlays (positioned ancestor)
         position: 'relative',
         overflow: 'hidden',
         borderRadius: '2%',
+        flexGrow: '1',
+        //minWidth: '15em',
     },
     media: {
         display: 'block',
@@ -177,6 +186,20 @@ const styles = (theme) => ({
             marginBottom: '2em',
         },
 
+    },
+    '@media(max-width: 1024px)' :{
+        mediaContainer: {
+            minWidth: '90%',
+            margin: '1em 0.5em',
+        },
+        row: {
+            justifyContent: 'center',
+        },
+        even: {
+            '& $mediaContainer': {
+                order: 0,
+            },
+        },
     },
 });
 
