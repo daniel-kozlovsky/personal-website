@@ -6,13 +6,12 @@ import smartShopperImage from '../../media/img/smart_shopper_thumbnail.png';
 import researchPaperImage from '../../media/img/malware_paper_thumbnail.png';
 import onlineBSImage from '../../media/img/online_bs_thumbnail.png';
 import videoPoster from '../../media/img/VS_poster.png';
-
+import malwarePaper from '../../media/content/clustering_android_malware_web.pdf';
 import FadeOverlayLink from '../FadeOverlayLink';
 import {FiExternalLink} from 'react-icons/fi';
 import {GrDocumentDownload} from 'react-icons/gr';
 
-const PAPER_HREF = "paper.pdf";
-const PAPER_NAME = "paper.pdf";
+const PAPER_NAME = "Clustering_Android_Malware.pdf";
 const SS_HREF = "https://thesmartshopper.online";
 const KABLAN_HREF ="https://www.kablan.ca/";
 
@@ -60,7 +59,7 @@ class Projects extends React.Component {
                 <div id={RESEARCH_PAPER_ID} className={`${classes.row} ${classes.even}`}>
                     <h3>Clustering Android Malware</h3>
                     <div className={classes.mediaContainer}>
-                        <FadeOverlayLink href={PAPER_HREF} download={PAPER_NAME} linkText={<>Download My Paper <GrDocumentDownload/></>}>
+                        <FadeOverlayLink href={malwarePaper} download={PAPER_NAME} linkText={<>Download My Paper <GrDocumentDownload/></>}>
                             <img src={researchPaperImage} className={classes.media} alt="Research Paper Cover"/>
                         </FadeOverlayLink>
                     </div>
@@ -77,7 +76,7 @@ class Projects extends React.Component {
                             decompile the binaries for analysis in an IDE. Looking at all of my binaries in the dataset I was able to discern a few patterns as outlined in my paper. 
                         </p>
                         <p>
-                            Feel free to <a href={PAPER_HREF} download={PAPER_NAME}>download my paper</a> co-authored with Gagenpreet Benipal, if you’re interested in malware analysis!
+                            Feel free to <a href={malwarePaper} download={PAPER_NAME}>download my paper</a> co-authored with Gagenpreet Benipal, if you’re interested in malware analysis!
                         </p>  
                     </div>
                 </div>

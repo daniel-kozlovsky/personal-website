@@ -1,6 +1,8 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
+import resume from '../../media/content/full_resume_web.pdf';
+
 import {GrDocumentDownload} from 'react-icons/gr';
 import Toggleable from '../Toggleable'
 import {PROJECTS_PATH} from '../App';
@@ -39,7 +41,7 @@ class Resume extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <a className={classes.download} href="resume.pdf" download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download My Comprehensive Resume</a>
+                <a className={classes.download} href={resume} download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download My Comprehensive Resume</a>
                 <hr className={`${classes.mainDivider} ${classes.sectionDivider}`}/>
                 <div className={`${classes.section} ${classes.odd}`}>
                     <h3 className={classes.sectionHeader}>Employment</h3>

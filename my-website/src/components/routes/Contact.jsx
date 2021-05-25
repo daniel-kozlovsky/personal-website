@@ -4,7 +4,7 @@ import withStyles from 'react-jss';
 import {GoMarkGithub} from 'react-icons/go';
 import {AiOutlineMail} from 'react-icons/ai';
 
-
+const ea = [100, 97, 110, 105, 101, 108, 46, 107, 111, 122, 108, 111, 118, 115, 107, 121, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109];
 class Contact extends React.Component {
 
     constructor(props) {
@@ -13,15 +13,19 @@ class Contact extends React.Component {
             isCopiedAlert: false,
         };
         this.handleEmailCopyClick = this.handleEmailCopyClick.bind(this);
+        this.getStringFromByteArray = this.getStringFromByteArray.bind(this);
     }
     
     handleEmailCopyClick() {
-        navigator.clipboard.writeText("daniel.kozlovsky@gmail.com");
+        navigator.clipboard.writeText(this.getStringFromByteArray(ea));
         this.setState({
             isCopiedAlert: true,
         });
         setTimeout(()=>{this.setState({isCopiedAlert: false})}, 1000);
 
+    }
+    getStringFromByteArray(array) {
+        return String.fromCharCode(...array);
     }
 
     render() {
@@ -30,7 +34,7 @@ class Contact extends React.Component {
             <div className={classes.root}>
                 <div className={classes.column}>
                 <h3>Email Me</h3>
-                <a href="mailto:daniel.kozlovsky@gmail.com" rel="noopener noreferrer">
+                <a href={`mailto:${this.getStringFromByteArray(ea)}`} rel="noopener noreferrer">
                     <AiOutlineMail/> 
                 </a>
                 <h4>- or -</h4>
