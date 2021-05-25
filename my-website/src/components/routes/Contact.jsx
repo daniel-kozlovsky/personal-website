@@ -83,7 +83,7 @@ const styles = (theme) => ({
                 color: theme.mainText.color,
             },
             '&:hover': {
-                backgroundColor: '#FFF',
+                backgroundColor: theme.palette.select,
                 borderRadius: '50%',
             },
         },

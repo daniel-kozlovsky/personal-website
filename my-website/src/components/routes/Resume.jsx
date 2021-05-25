@@ -208,10 +208,10 @@ const styles = (theme) => ({
         marginBottom: '4%',
         border: 0,
         height: '1px', 
-        backgroundImage: `linear-gradient(left, ${theme.page.backgroundColor} 5%, #8c8b8b, ${theme.page.backgroundColor} 95%)`,
+        backgroundImage: `linear-gradient(left, ${theme.page.backgroundColor} 5%, ${theme.palette.accent}, ${theme.page.backgroundColor} 95%)`,
     },
     mainDivider: {
-        height: '3px',
+        height: '2px',
         marginBottom: 'calc(4% - 1.5em)', 
     },
     section: {

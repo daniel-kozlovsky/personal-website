@@ -33,7 +33,7 @@ const styles = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#FFFA',
+        backgroundColor: `${theme.palette.highlight}aa`,
         transition: '.5s ease',
 
         '&:hover': {
