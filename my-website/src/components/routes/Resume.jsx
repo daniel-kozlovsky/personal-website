@@ -100,6 +100,7 @@ class Resume extends React.Component {
                     </div>
                 </div>
                 <div className={`${classes.section} ${classes.even}`}>
+
                     <hr className={classes.sectionDivider}/>
                     <h3 className={classes.sectionHeader}>Education</h3>
                     <div className={classes.sectionContent}>
@@ -124,6 +125,7 @@ class Resume extends React.Component {
                     </div>
                 </div>
                 <div className={`${classes.section} ${classes.projects} ${classes.odd}`}>
+
                     <hr className={classes.sectionDivider}/>
                     <h3 className={classes.sectionHeader}>Projects</h3>
                     <div className={classes.sectionContent}>
@@ -234,7 +236,6 @@ const styles = (theme) => ({
         font: theme.heading.font, 
         margin: 'auto',
         marginBottom: '1em',
-        
     },
     sectionContent: {},
     sectionEntry: {

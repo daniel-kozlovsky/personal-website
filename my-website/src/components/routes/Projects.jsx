@@ -25,7 +25,6 @@ class Projects extends React.Component {
 
     render() {
         const {classes} = this.props;
-        
         return (
             <div className={classes.root}>
                 <div id={VIRTUAL_SHOWROOM_ID} className={`${classes.row} ${classes.odd} ${classes.first}`}>

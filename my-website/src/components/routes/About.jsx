@@ -57,7 +57,6 @@ const styles = (theme) => ({
         marginTop: '1.5em',
         marginBottom: '1.5em',
         font: theme.mainText.font,
-        
     },
 });
 
