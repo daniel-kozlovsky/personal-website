@@ -34,7 +34,7 @@ class Contact extends React.Component {
                     <AiOutlineMail/> 
                 </a>
                 <h4>- or -</h4>
-                <button className={classes.copyEmail} type="button" onClick={this.handleEmailCopyClick}>{!this.state.isCopiedAlert ? "Click to Copy my Email" : "Copied!"}</button>
+                <button className={classes.copyEmail} type="button" onClick={this.handleEmailCopyClick}>{!this.state.isCopiedAlert ? "Copy my Email" : "Copied!"}</button>
                 </div>
                 <div className={classes.column}>
                     <h3>See My Github</h3>
@@ -53,20 +53,28 @@ const styles = (theme) => ({
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
-        font: theme.mainText.font,
+        alignItems: 'flex-start',
     },
     column: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
         alignItems: 'center',
-        minWidth: '20%',
+        margin: '1em 0',
+        textAlign: 'center',
+        columnGap: '3%',
+        flex: '1 0 40%',
+        minWidth: '15em',
         '& h3': {
             font: theme.heading.font,
-            color: theme.heading.color
+            color: theme.heading.color,
+            marginBottom: '2em',
+            flexBasis: '100%',
         },
         '& h4': {
             font: theme.heading.font,
-            fontSize: '1.5em',
+            fontSize: '1em',
             margin: '4% 0',
         },
         '& a': {
@@ -89,7 +97,8 @@ const styles = (theme) => ({
     copyEmail: {
         ...theme.buttonStyle,
         font: theme.heading.font,
-        marginTop: '4%',
+        fontSize: '1.5em',
+        minWidth: '8.7em',
     },
 
 });
