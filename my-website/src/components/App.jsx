@@ -29,10 +29,10 @@ class App extends React.Component {
       <div className={classes.root}>
         <h1 className={classes.name}>Daniel Kozlovsky</h1>
         <nav className={classes.navBar}>
-          <NavLink exact to={ABOUT_PATH} activeClassName={classes.activeNavbar}>About Me</NavLink>
-          <NavLink to={PROJECTS_PATH} activeClassName={classes.activeNavbar}>Projects</NavLink>
-          <NavLink to={RESUME_PATH} activeClassName={classes.activeNavbar}>Resume</NavLink>
-          <NavLink to={CONTACT_PATH} activeClassName={classes.activeNavbar}>Contact</NavLink>
+          <NavLink className={classes.navLink} exact to={ABOUT_PATH} activeClassName={classes.activeNavbar}>About Me</NavLink>
+          <NavLink className={classes.navLink} to={PROJECTS_PATH} activeClassName={classes.activeNavbar}>Projects</NavLink>
+          <NavLink className={classes.navLink} to={RESUME_PATH} activeClassName={classes.activeNavbar}>Resume</NavLink>
+          <NavLink className={classes.navLink} to={CONTACT_PATH} activeClassName={classes.activeNavbar}>Contact</NavLink>
         </nav>
         <div className={classes.page}>
           <Switch>
@@ -66,22 +66,27 @@ const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-
-    '& a': {
-      ...theme.buttonStyle,
-      font: theme.navBarText.font,
+  },
+  navLink: {
+    ...theme.buttonStyle,
+    font: theme.navBarText.font,
+    color: theme.navBarText.color,
+    textDecoration: 'none',
+    whiteSpace: 'nowrap',
+    backgroundColor: 'none',
+    margin: '0 0.3em',
+    '&:visited': {
       color: theme.navBarText.color,
-      textDecoration: 'none',
-      whiteSpace: 'nowrap',
-      backgroundColor: 'none',
-      margin: '0 0.3em',
-      '&:visited': {
-        color: theme.navBarText.color,
-      },
     },
+    '&:hover': {
+      backgroundColor: theme.palette.select,
+    }
   },
   activeNavbar: {
     backgroundColor: theme.palette.highlight,
+    '&:hover': {
+      backgroundColor: theme.palette.highlight,
+    },
   },
   page: {
     padding: '5% 15%',

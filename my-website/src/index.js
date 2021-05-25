@@ -11,10 +11,10 @@ const theme = {
     backgroundColor: '#bfcbd1',
   },
   palette: {
-    primary: '#586F7C',
-    secondary: '#506C64',
-    accent: '#735D78',
-    highlight: '#735D78',
+    primary: '#735D78',
+    secondary: '#8D5A97',
+    accent: '#FF206E',
+    highlight: '#8D5A97',
     select: '#c3bdc2'//'#7F534B',
   },
   navBarText: {
