@@ -11,6 +11,9 @@
 # production
 /build
 
+#large files
+**/media/videos
+
 # misc
 .DS_Store
 .env.local
