@@ -16,8 +16,14 @@ class Contact extends React.Component {
         this.getStringFromByteArray = this.getStringFromByteArray.bind(this);
     }
     
-    handleEmailCopyClick() {
-        navigator.clipboard.writeText(this.getStringFromByteArray(ea));
+    async handleEmailCopyClick() {
+
+        if (!navigator.clipboard || !navigator.clipboard.writeText) {
+            alert('Copy to clipboard is not supported on your browser');
+            return;
+        }
+
+        await navigator.clipboard.writeText(this.getStringFromByteArray(ea));
         this.setState({
             isCopiedAlert: true,
         });
