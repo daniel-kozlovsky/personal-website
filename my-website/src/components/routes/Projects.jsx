@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from 'react-jss';
 
-import virtualShowroomVideo from '../../media/video/Virtual_Showroom.mp4';
+import virtualShowroomVideo from '../../media/video/Virtual_Showroom_Showcase.mp4';
 import smartShopperImage from '../../media/img/smart_shopper_thumbnail.png';
 import researchPaperImage from '../../media/img/malware_paper_thumbnail.png';
 import onlineBSImage from '../../media/img/online_bs_thumbnail.png';
