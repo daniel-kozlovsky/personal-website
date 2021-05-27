@@ -24,3 +24,6 @@
     font-style: normal;
 
 }
+html {
+    overflow-y: scroll;
+}

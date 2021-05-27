@@ -1,14 +1,9 @@
 import React, { Component, Children} from 'react';
 import withStyles from 'react-jss';
-import {CSSTransition} from 'react-transition-group';
 
 //import {AiOutlineEllipsis} from 'react-icons/ai';
 import {AiOutlinePlus} from 'react-icons/ai';
 import {AiOutlineMinus} from 'react-icons/ai';
-import {GoDiffRenamed } from 'react-icons/go';
-
-//Transition duration for toggle
-const duration = 1000;
 
 //First element is the title bar (clickable), all other elements are the toggleable content
 class Toggleable extends Component {
@@ -60,7 +55,6 @@ class Toggleable extends Component {
     }
 
     render() {
-        const {classes} = this.props;
         return (
             this.renderChildren()
             // <CSSTransition in={this.state.isVisible}
@@ -87,50 +81,15 @@ const styles = (theme) => ({
         justifyContent: 'flex-start',
     },
     collapsible: {
-        //position: 'absolute',
-        //flex: 1,
         height: 0,
         overflow: 'hidden',
-        transition: 'height 1s',
-    },
-    header: {
-        //flex: 1,
+        transition: 'height 300ms ease-out',
     },
     collapseIcon: {
         position: 'absolute',
         top: '50%',
         right: '-18px',
         transform: 'translate(-50%, -55%)',
-    },
-    // overlay: {
-    //     height: '100px',
-    // },
-    enter: {
-        // maxHeight: '0',
-        // visibility: 'hidden',
-    },
-    enterActive: {
-        // maxHeight: 'calc(1 / calc(100vw))',
-        // // visibility: 'hidden',
-        // transition: `max-height ${duration}ms`,
-    },
-    enterDone: {
-        // height: '250px',
-        // maxHeight: 'calc(1 / calc(100vw))',
-    },
-    exit: {
-        //maxHeight: 'calc(1 / calc(100vw))',
-        //height: '250px',
-    },
-    exitActive: {
-        //  transform: 'scaleY(0)',
-        //  transformOrigin: 'top',
-        //height: 0,
-        //maxHeight: '0',
-        //transition: `max-height ${duration}ms`,
-    },
-    exitDone: {
-        //maxHeight: '0',
     },
 });
 

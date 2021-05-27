@@ -42,7 +42,9 @@ class Resume extends React.Component {
         return (
             <div className={classes.root}>
                 <a className={classes.download} href={resume} download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download My Comprehensive Resume</a>
-                <hr className={`${classes.mainDivider} ${classes.sectionDivider}`}/>
+                <div>
+                    <hr className={`${classes.mainDivider} ${classes.sectionDivider}`}/>
+                </div>
                 <div className={`${classes.section} ${classes.odd}`}>
                     <h3 className={classes.sectionHeader}>Employment</h3>
                     <div className={classes.sectionContent}>
