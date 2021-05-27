@@ -30,24 +30,25 @@ class App extends React.Component {
     super(props);
     const {theme} = this.props;
     const {classes} = this.props;
+    this.footer = React.createRef();
     this.state = {
       leftSlide: true,
-      leftSlideClasses: {
-        enter: classes.enter,
-        enterActive: classes.enterActive,
-        enterDone: classes.enterDone,
-        exit: classes.exit,
-        exitActive: classes.exitActive,
-        exitDone: classes.exitDone
-      },
-      rightSlideClasses: {
-        enter: classes.enterRight,
-        enterActive: classes.enterRightActive,
-        enterDone: classes.enterRightDone,
-        exit: classes.exitRight,
-        exitActive: classes.exitRightActive,
-        exitDone: classes.exitRightDone
-      },
+      // leftSlideClasses: {
+      //   enter: classes.enter,
+      //   enterActive: classes.enterActive,
+      //   enterDone: classes.enterDone,
+      //   exit: classes.exit,
+      //   exitActive: classes.exitActive,
+      //   exitDone: classes.exitDone
+      // },
+      // rightSlideClasses: {
+      //   enter: classes.enterRight,
+      //   enterActive: classes.enterRightActive,
+      //   enterDone: classes.enterRightDone,
+      //   exit: classes.exitRight,
+      //   exitActive: classes.exitRightActive,
+      //   exitDone: classes.exitRightDone
+      // },
     };
     document.body.style.backgroundColor = theme.page.backgroundColor;
 
@@ -77,6 +78,7 @@ class App extends React.Component {
     }
   }
   enter(node, isAppear) {
+    this.footer.current.style.opacity = 0;
     node.style.cssText += `\
     height:100%;\
     width:100%;\
@@ -93,6 +95,7 @@ class App extends React.Component {
     transition:transform ${SLIDE_DUR}ms ease-out`
   }
   entered(node, isAppear) {
+    this.footer.current.style.opacity = 1;
     node.style.cssText += `\
     height:100%;\
     width:100%;\
@@ -161,8 +164,8 @@ class App extends React.Component {
           </TransitionGroup>
           
         </div>
-        <div className={classes.footer}>
-          <Footer/>
+        <div ref={this.footer} className={classes.footer}>
+          <Footer />
         </div>
       </div>
     );
@@ -170,7 +173,6 @@ class App extends React.Component {
 }
 
 const styles = (theme) => ({
-  a:{},b:{},
   root: {
     minHeight: 'calc(100vh - 1em)',
     display: 'flex',
@@ -222,7 +224,8 @@ const styles = (theme) => ({
     justifyContent: 'flex-end',
     paddingTop: '2em',
     paddingBottom: '1em',
-
+    
+    transition: `opacity ${SLIDE_DUR / 2}ms ease-out`,
   },
   // enter: {
   //   height: '100%',
