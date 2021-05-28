@@ -315,6 +315,14 @@ const styles = (theme) => ({
     mediumSkill: {
         backgroundColor: theme.palette.secondary,
     },
+    '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
+        date: {
+            order: 2,
+        },
+        sectionHeader: {
+            textAlign: 'center',
+        }
+    },
 
 });
 

@@ -59,7 +59,7 @@ class Projects extends React.Component {
                 <div id={RESEARCH_PAPER_ID} className={`${classes.row} ${classes.even}`}>
                     <h3>Clustering Android Malware</h3>
                     <div className={classes.mediaContainer}>
-                        <FadeOverlayLink href={malwarePaper} download={PAPER_NAME} linkText={<>Download My Paper <GrDocumentDownload/></>}>
+                        <FadeOverlayLink href={malwarePaper} target="_blank" download={PAPER_NAME} linkText={<>Download My Paper <GrDocumentDownload/></>}>
                             <img src={researchPaperImage} className={classes.media} alt="Research Paper Cover"/>
                         </FadeOverlayLink>
                     </div>
@@ -143,7 +143,7 @@ const styles = (theme) => ({
         padding: '0.8em',
         alignItems: 'center',
         '& h3': {
-            flexBasis: 'calc(65%)',
+            flexBasis: '65%',
             textAlign: 'center',
             font: theme.heading.font,
         },
@@ -158,7 +158,7 @@ const styles = (theme) => ({
         },
     },
     mediaContainer: {
-        flexBasis: 'calc(35%)',
+        flexBasis: '35%',
         //for the overlays (positioned ancestor)
         position: 'relative',
         overflow: 'hidden',
@@ -185,6 +185,7 @@ const styles = (theme) => ({
         },
 
     },
+    //Smaller screens, like tablet and mobile
     '@media(max-width: 1024px)' :{
         mediaContainer: {
             minWidth: '90%',
@@ -196,6 +197,36 @@ const styles = (theme) => ({
         even: {
             '& $mediaContainer': {
                 order: 0,
+            },
+        },
+    },
+    //for IE 10+
+    '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
+        row: {
+            flex: '0 0 auto',
+            '& h3': {
+                flex: '0 1 65%',
+            },
+        },
+        mediaContainer: {
+            flex: '1 1 35%',
+            margin: '0 1em',
+        },
+        description: {
+            flexGrow: '2',
+            flexShrink: '1',
+            flexBasis: 'calc(65% - 2em)',
+        },
+        first: {
+            '& h3': {
+                flex: '0 1 auto',
+            },
+            '& $mediaContainer': {
+                flex: '0 0 auto',
+            },
+            '& $description': {
+                flex: '1 1 auto',
+                maxWidth: '100%',
             },
         },
     },

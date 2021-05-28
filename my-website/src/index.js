@@ -1,3 +1,5 @@
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
@@ -23,12 +25,13 @@ const theme = {
   page: {
     backgroundColor: '#DFE7F6',
   },
+  //Convert all to RGB for ie11?
   palette: {
     primary: '#91ACE0',
     secondary: '#ABC0E7',
     accent: '#BB3D41',
     highlight: '#C95A5E',
-    select: '#E4ACAE',
+    select: 'rgb(228, 172, 174)',
   },
   navBarText: {
     color: '#000',
@@ -59,7 +62,7 @@ const theme = {
     return ({
     borderStyle: 'none',
     textAlign: 'center',
-    backgroundColor: 'initial',
+    backgroundColor: 'transparent',
     '-webkit-appearance': 'none',
     '-moz-appearance': 'none',
     boxSizing: 'border-box',

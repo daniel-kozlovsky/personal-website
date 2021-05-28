@@ -26,13 +26,28 @@ const style = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backdropFilter: 'blur(5px)',
+        backgroundColor: 'rgba(223,231,246,0.8)',
     },
     box: {
         backgroundColor: theme.palette.primary,
         padding: '2em',
         maxWidth: '25%',
         borderRadius: '5px',
-    }
+    },
+    //for browsers that don't support backdrop blur
+    '@supports ((-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px)))':
+    {
+        root: {
+            backgroundColor: 'transparent',
+            backdropFilter: 'blur(5px)',
+        },
+    },
+    // //for IE 10+
+    // '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
+    //     root: {
+    //         backgroundColor: 'transparent',
+    //         backdropFilter: 'blur(5px)',
+    //     },
+    // }
 });
 export default withStyles(style, {injectTheme: true})(Modal);

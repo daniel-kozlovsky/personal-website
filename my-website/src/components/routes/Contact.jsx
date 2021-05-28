@@ -19,7 +19,14 @@ class Contact extends React.Component {
     async handleEmailCopyClick() {
 
         if (!navigator.clipboard || !navigator.clipboard.writeText) {
-            alert('Copy to clipboard is not supported on your browser');
+            if(!window.clipboardData) {
+                alert('Copy to clipboard is not supported on your browser');
+            }
+            else
+            {
+                await window.clipboardData.setData('Text', this.getStringFromByteArray(ea));
+            }
+                
             return;
         }
 

@@ -22,33 +22,17 @@ const pathMap = {
   [RESUME_PATH]: 3,
   [CONTACT_PATH]: 4,
 };
-const SLIDE_DUR = 600;
+const SLIDE_DUR = 500;
 
 class App extends React.Component {
   
   constructor(props) {
     super(props);
     const {theme} = this.props;
-    const {classes} = this.props;
     this.footer = React.createRef();
     this.state = {
       leftSlide: true,
-      // leftSlideClasses: {
-      //   enter: classes.enter,
-      //   enterActive: classes.enterActive,
-      //   enterDone: classes.enterDone,
-      //   exit: classes.exit,
-      //   exitActive: classes.exitActive,
-      //   exitDone: classes.exitDone
-      // },
-      // rightSlideClasses: {
-      //   enter: classes.enterRight,
-      //   enterActive: classes.enterRightActive,
-      //   enterDone: classes.enterRightDone,
-      //   exit: classes.exitRight,
-      //   exitActive: classes.exitRightActive,
-      //   exitDone: classes.exitRightDone
-      // },
+      
     };
     document.body.style.backgroundColor = theme.page.backgroundColor;
 
@@ -59,7 +43,6 @@ class App extends React.Component {
   {
 
     const {location} = this.props;
-    console.log("target:" + pathMap[e.target.pathname], "current:" +pathMap[location.pathname]);
     if(pathMap[e.target.pathname] > pathMap[location.pathname])
     {
       this.setState({
@@ -212,7 +195,6 @@ const styles = (theme) => ({
   },
   page: {
     // minWidth: '70%',
-    // minHeight: 'calc(100vh - 29em)',
     margin: '5% 15%',
     position: 'relative',
     // overflow: 'hidden',
@@ -227,94 +209,12 @@ const styles = (theme) => ({
     
     transition: `opacity ${SLIDE_DUR / 2}ms ease-out`,
   },
-  // enter: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'absolute',
-  //   transform: 'translate(-100vw, 0)',
-    
-  // },
-  // enterActive: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'absolute',
-  //   transform: 'translate(0,0)',
-  //   transition: `transform ${SLIDE_DUR}ms ease-out`,
-    
-  // },
-  // enterDone: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'relative',
-  //   transform: 'translate(0,0)',
-    
-  // },
-  // exit: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'absolute',
-  //   transform: 'translate(0,0)',
-    
-  // },
-  // exitActive: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'absolute',
-  //   transform: 'translate(100vw, 0)',
-  //   transition: `transform ${SLIDE_DUR}ms ease-out`,
-    
-  // },
-  // exitDone: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'relative',
-  //   transform: 'translate(100vw, 0)',
-  // },
-  // /***********************slide "screen" right *******************/
-  // enterRight: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'absolute',
-  //   transform: 'translate(100vw, 0)',
-    
-  // },
-  // enterRightActive: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'absolute',
-  //   transform: 'translate(0,0)',
-  //   transition: `transform ${SLIDE_DUR}ms ease-out`,
-    
-  // },
-  // enterRightDone: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'relative',
-  //   transform: 'translate(0,0)',
-    
-  // },
-  // exitRight: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'absolute',
-  //   transform: 'translate(0,0)',
-    
-  // },
-  // exitRightActive: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'absolute',
-  //   transform: 'translate(-100vw, 0)',
-  //   transition: `transform ${SLIDE_DUR}ms ease-out`,
-    
-  // },
-  // exitRightDone: {
-  //   height: '100%',
-  //   width: '100%',
-  //   position: 'relative',
-  //   transform: 'translate(-100vw, 0)',
-  // },
-
+  //for IE 10+
+  '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
+        page: {
+          minHeight: '100%',
+        },
+  },
 });
 
-export default withStyles(styles, {injectTheme: true})(withRouter(App));
+export default withRouter(withStyles(styles, {injectTheme: true})(App));
