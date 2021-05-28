@@ -75,7 +75,7 @@ class App extends React.Component {
     width:100%;\
     position:absolute;\
     transform:translate(0,0);
-    transition:transform ${SLIDE_DUR}ms ease-out`
+    transition:transform ${SLIDE_DUR}ms ease-out;`
   }
   entered(node, isAppear) {
     this.footer.current.style.opacity = 1;
@@ -83,7 +83,9 @@ class App extends React.Component {
     height:100%;\
     width:100%;\
     position:relative;\
-    transform:translate(0,0);`
+    transform:translate(0,0);\
+    transition:transform ${SLIDE_DUR}ms ease-out;`
+    //^needs to be here for IE
   }
   exit(node, isAppear) {
     node.style.cssText += `\
