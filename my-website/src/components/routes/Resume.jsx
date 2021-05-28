@@ -315,13 +315,23 @@ const styles = (theme) => ({
     mediumSkill: {
         backgroundColor: theme.palette.secondary,
     },
+    //For IE 11:
     '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
         date: {
             order: 2,
         },
         sectionHeader: {
             textAlign: 'center',
-        }
+        },
+        highSkill : {
+            margin: '0.25em 0.15em',
+        },
+        mediumSkill :{
+            margin: '0.25em 0.15em',
+        },
+        download: {
+            marginBottom: '1.5em',
+        },
     },
 
 });

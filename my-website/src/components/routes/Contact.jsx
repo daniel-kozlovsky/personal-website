@@ -71,6 +71,7 @@ const styles = (theme) => ({
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
         alignItems: 'flex-start',
+        minWidth: '100%',
     },
     column: {
         display: 'flex',
@@ -116,6 +117,16 @@ const styles = (theme) => ({
         font: theme.heading.font,
         fontSize: '1.5em',
         minWidth: '8.7em',
+    },
+    //For IE 11:
+    '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
+        root: {
+            justifyContent: 'space-between',
+            
+        },
+        column : {
+            flex: '1 0 auto'
+        },
     },
 
 });

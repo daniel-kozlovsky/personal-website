@@ -23,13 +23,14 @@ const pathMap = {
   [CONTACT_PATH]: 4,
 };
 const SLIDE_DUR = 500;
-
+const transistionDistance = "150%";
 class App extends React.Component {
   
   constructor(props) {
     super(props);
     const {theme} = this.props;
     this.footer = React.createRef();
+    
     this.state = {
       leftSlide: true,
       
@@ -61,27 +62,26 @@ class App extends React.Component {
     }
   }
   enter(node, isAppear) {
+    this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3}ms linear`;
     this.footer.current.style.opacity = 0;
     node.style.cssText += `\
-    height:100%;\
-    width:100%;\
+    max-width:100%;\
     position:absolute;`
 
-    node.style.transform = `translate(${this.state.leftSlide ? "-100vw" : "100vw"},0)`;
+    node.style.transform = `translate(${this.state.leftSlide ? "-" + transistionDistance : transistionDistance},0)`;
   }
   entering(node, isAppear) {
     node.style.cssText += `\
-    height:100%;\
-    width:100%;\
+    max-width:100%;\
     position:absolute;\
     transform:translate(0,0);
     transition:transform ${SLIDE_DUR}ms ease-out;`
   }
   entered(node, isAppear) {
+    this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3 * 2}ms ease-out`;
     this.footer.current.style.opacity = 1;
     node.style.cssText += `\
-    height:100%;\
-    width:100%;\
+    max-width:100%;\
     position:relative;\
     transform:translate(0,0);\
     transition:transform ${SLIDE_DUR}ms ease-out;`
@@ -89,33 +89,30 @@ class App extends React.Component {
   }
   exit(node, isAppear) {
     node.style.cssText += `\
-    height:100%;\
-    width:100%;\
+    max-width:100%;\
     position:absolute;\
     transform:translate(0,0);`
   }
   exiting(node, isAppear) {
     node.style.cssText += `\
-    height:100%;\
-    width:100%;\
+    max-width:100%;\
     position:absolute;\
     transition:transform ${SLIDE_DUR}ms ease-out`
 
-    node.style.transform = `translate(${this.state.leftSlide ? "100vw" : "-100vw"},0)`;
+    node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
   }
   exited(node, isAppear) {
     node.style.cssText += `\
-    height:100%;\
-    width:100%;\
-    position:relative;`
+    max-width:100%;\
+    position:absolute;`
 
-    node.style.transform = `translate(${this.state.leftSlide ? "100vw" : "-100vw"},0)`;
+    node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
   }
 
   render (){
     const {classes} = this.props;
     const {location} = this.props;
-    
+    console.log(window.innerWidth);
     return (
       <div className={classes.root}>
         <h1 className={classes.name}>Daniel Kozlovsky</h1>
@@ -209,7 +206,7 @@ const styles = (theme) => ({
     paddingTop: '2em',
     paddingBottom: '1em',
     
-    transition: `opacity ${SLIDE_DUR / 2}ms ease-out`,
+    //transition: `opacity ${SLIDE_DUR / 2}ms ease-out`,
   },
   //for IE 10+
   '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
@@ -220,3 +217,56 @@ const styles = (theme) => ({
 });
 
 export default withRouter(withStyles(styles, {injectTheme: true})(App));
+
+/*Working animations for most but IE*/
+// enter(node, isAppear) {
+//   this.footer.current.style.opacity = 0;
+//   node.style.cssText += `\
+//   height:100%;\
+//   width:100%;\
+//   position:absolute;`
+
+//   node.style.transform = `translate(${this.state.leftSlide ? "-100vw" : "100vw"},0)`;
+// }
+// entering(node, isAppear) {
+//   node.style.cssText += `\
+//   height:100%;\
+//   width:100%;\
+//   position:absolute;\
+//   transform:translate(0,0);
+//   transition:transform ${SLIDE_DUR}ms ease-out;`
+// }
+// entered(node, isAppear) {
+//   this.footer.current.style.opacity = 1;
+//   node.style.cssText += `\
+//   height:100%;\
+//   width:100%;\
+//   position:relative;\
+//   transform:translate(0,0);\
+//   transition:transform ${SLIDE_DUR}ms ease-out;`
+//   //^needs to be here for IE
+// }
+// exit(node, isAppear) {
+//   node.style.cssText += `\
+//   height:100%;\
+//   width:100%;\
+//   position:absolute;\
+//   transform:translate(0,0);`
+// }
+// exiting(node, isAppear) {
+//   node.style.cssText += `\
+//   height:100%;\
+//   width:100%;\
+//   position:absolute;\
+//   transition:transform ${SLIDE_DUR}ms ease-out`
+
+//   node.style.transform = `translate(${this.state.leftSlide ? "100vw" : "-100vw"},0)`;
+// }
+// exited(node, isAppear) {
+//   node.style.cssText += `\
+//   height:100%;\
+//   width:100%;\
+//   position:relative;`
+
+//   node.style.transform = `translate(${this.state.leftSlide ? "100vw" : "-100vw"},0)`;
+// }

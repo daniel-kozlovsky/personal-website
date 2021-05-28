@@ -39,7 +39,7 @@ class Footer extends Component {
                             This website is owned and operated by me, Daniel Kozlovsky :). 
                         </p>
                         <p>
-                            I built it with React.js on Node.js with a few modules like React Router and JSS. SVG icons are from React Icons.
+                            I built it with React.js on Node.js with a few modules like React Router and JSS. Various icons are from React Icons.
                             My portrait was drawn by my sister! 
                         </p>
                         <label className={classes.copyNotice}>&#169; Copyright 2021 Daniel Kozlovsky</label>
