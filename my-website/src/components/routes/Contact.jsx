@@ -109,7 +109,7 @@ const styles = (theme) => ({
             display: 'block',
             fontSize: '4em',
             padding: '0.2em',
-            overflow: 'initial',
+            overflow: 'inherit',
         },
     },
     copyEmail: {

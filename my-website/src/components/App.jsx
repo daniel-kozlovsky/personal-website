@@ -112,7 +112,7 @@ class App extends React.Component {
   render (){
     const {classes} = this.props;
     const {location} = this.props;
-    console.log(window.innerWidth);
+ 
     return (
       <div className={classes.root}>
         <h1 className={classes.name}>Daniel Kozlovsky</h1>
