@@ -28,7 +28,6 @@ function addAlphaToRGB(rgb, alpha) {
     parts[0] = "rgba("+ parts[0].split("(")[1];
     parts[2] = parts[2].split(")")[0];
     parts[3] = `${alpha})`;
-    console.log(parts);
     return parts.join();
 }
 const styles = (theme) => ({
