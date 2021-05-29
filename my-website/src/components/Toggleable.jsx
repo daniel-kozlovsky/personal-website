@@ -18,30 +18,51 @@ class Toggleable extends Component {
         this.renderChildren = this.renderChildren.bind(this);
     }
 
+    componentDidMount()
+    {
+        const expand = this.collapsible.current;
+        //Set height to auto for resizing after transitions
+        //IE 11
+        if(!expand.ontransitionend) {
+            expand.addEventListener('transitionend', async() => {
+                this.setState({isVisible: !this.state.isVisible}, () => {expand.style.height = this.state.isVisible ? "auto" : "0px";});
+            });
+        }
+        else //most other browsers
+        {
+            expand.ontransitionend = async() => {
+                this.setState({isVisible: !this.state.isVisible}, () => {expand.style.height = this.state.isVisible ? "auto" : "0px";});
+            };
+        }
+    }
 
-    toggleVisibility() {
+    async toggleVisibility() {
         
-        //can add active state + checks here
-        let expand = this.collapsible.current;
-        if(this.state.isVisible){
+        const {isVisible} = this.state;
+        const expand = this.collapsible.current;
+
+        expand.style.height = `${expand.offsetHeight}px`;
+        //timeout for the browser to catch the css change
+        await new Promise(r => setTimeout(r, 50));
+        if(isVisible){
             expand.style.height = "0px";
+            
         }
         else
         {
             expand.style.height = expand.scrollHeight + 'px';
+            
         }
-        this.setState({isVisible: !this.state.isVisible});
     }
 
     renderChildren() {
         const {children} = this.props;
         const {classes} = this.props;
-        //let button = <button type="button" onClick={this.toggleVisibility}><AiOutlineEllipsis/></button>;
         let newChildren = Children.map(children, (child, i) => {
             if(i === 0) {
             let icon = this.state.isVisible ? <AiOutlineMinus className={classes.collapseIcon}/> : <AiOutlinePlus className={classes.collapseIcon}/>;
                 let withIcon = React.cloneElement(child, {}, ...child.props.children, icon);
-                return (<button className={classes.header} type="button" onClick={this.toggleVisibility}>{withIcon}</button>);//React.cloneElement(child, {}, ...child.props.children, button);
+                return (<button className={classes.header} type="button" onClick={this.toggleVisibility}>{withIcon}</button>);
             }
             else{
                 return (
@@ -57,19 +78,6 @@ class Toggleable extends Component {
     render() {
         return (
             this.renderChildren()
-            // <CSSTransition in={this.state.isVisible}
-            //     timeout={duration}
-            //     classNames={{
-            //         enter: classes.enter,
-            //         enterActive: classes.enterActive,
-            //         enterDone: classes.enterDone,
-            //         exit: classes.exit,
-            //         exitActive: classes.exitActive,
-            //         exitDone: classes.exitDone}}>
-            //     <div className={classes.root}>
-            //         {this.renderChildren()}
-            //     </div>
-            // </CSSTransition>
         );
     }
 }
@@ -81,7 +89,7 @@ const styles = (theme) => ({
         justifyContent: 'flex-start',
     },
     collapsible: {
-        height: 0,
+        height: "0px",
         overflow: 'hidden',
         transition: 'height 300ms ease-out',
     },
