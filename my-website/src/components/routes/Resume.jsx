@@ -41,7 +41,7 @@ class Resume extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <a className={classes.download} href={resume} download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download My Comprehensive Resume</a>
+                <a className={classes.download} rel="noopener noreferrer" target="_blank" href={resume} download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download My Comprehensive Resume</a>
                 <div>
                     <hr className={`${classes.mainDivider} ${classes.sectionDivider}`}/>
                 </div>
@@ -148,17 +148,6 @@ class Resume extends React.Component {
                         <div className={classes.sectionEntry}>
                             <Toggleable isVisible={false}>
                                 <div className={classes.sectionEntryHeader}>
-                                    <h4>Online Bookstore</h4>
-                                    <label className={classes.date}>2021</label>
-                                </div>
-                                <p>
-                                    E-commerce website allowing one to buy books, read/leave reviews and keep an account. <a href={`${PROJECTS_PATH}#${ONLINE_BOOKSTORE_ID}`}>More info...</a>
-                                </p>
-                            </Toggleable>
-                        </div>
-                        <div className={classes.sectionEntry}>
-                            <Toggleable isVisible={false}>
-                                <div className={classes.sectionEntryHeader}>
                                     <h4>Malware Family Research Paper</h4>
                                     <label className={classes.date}>2021</label>
                                 </div>
@@ -175,6 +164,17 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     User-centric mock shopping website that features recommendations, accounts, administration and intuitive UI. <a href={`${PROJECTS_PATH}#${SMART_SHOPPER_ID}`}>More info...</a> 
+                                </p>
+                            </Toggleable>
+                        </div>
+                        <div className={classes.sectionEntry}>
+                            <Toggleable isVisible={false}>
+                                <div className={classes.sectionEntryHeader}>
+                                    <h4>Online Bookstore</h4>
+                                    <label className={classes.date}>2021</label>
+                                </div>
+                                <p>
+                                    E-commerce website allowing one to buy books, read/leave reviews and keep an account. <a href={`${PROJECTS_PATH}#${ONLINE_BOOKSTORE_ID}`}>More info...</a>
                                 </p>
                             </Toggleable>
                         </div>
@@ -214,11 +214,11 @@ const styles = (theme) => ({
         marginBottom: '4%',
         border: 0,
         height: '1px', 
-        backgroundImage: `linear-gradient(left, ${theme.page.backgroundColor} 5%, ${theme.palette.accent}, ${theme.page.backgroundColor} 95%)`,
+        backgroundImage: `linear-gradient(to left, ${theme.page.backgroundColor} 5%, ${theme.palette.accent}, ${theme.page.backgroundColor} 95%)`,
     },
     mainDivider: {
         height: '2px',
-        marginBottom: 'calc(4% - 1.5em)', 
+        marginBottom: '1.5em', 
     },
     section: {
         display: 'flex',
@@ -323,6 +323,18 @@ const styles = (theme) => ({
         sectionHeader: {
             textAlign: 'center',
         },
+        highSkill : {
+            margin: '0.25em 0.15em',
+        },
+        mediumSkill :{
+            margin: '0.25em 0.15em',
+        },
+        download: {
+            marginBottom: '1.5em',
+        },
+    },
+    //For EDGEHtml
+    '@supports (-ms-ime-align:auto)' : {
         highSkill : {
             margin: '0.25em 0.15em',
         },

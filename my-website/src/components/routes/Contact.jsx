@@ -21,15 +21,18 @@ class Contact extends React.Component {
         if (!navigator.clipboard || !navigator.clipboard.writeText) {
             if(!window.clipboardData) {
                 alert('Copy to clipboard is not supported on your browser');
+                
             }
             else
             {
-                await window.clipboardData.setData('Text', this.getStringFromByteArray(ea));
+                window.clipboardData.setData('Text', this.getStringFromByteArray(ea));
+                this.setState({
+                    isCopiedAlert: true,
+                });
+                setTimeout(()=>{this.setState({isCopiedAlert: false})}, 1000);
             }
-                
             return;
         }
-
         await navigator.clipboard.writeText(this.getStringFromByteArray(ea));
         this.setState({
             isCopiedAlert: true,

@@ -29,7 +29,7 @@ class Projects extends React.Component {
                 <div id={VIRTUAL_SHOWROOM_ID} className={`${classes.row} ${classes.odd} ${classes.first}`}>
                     <h3>Virtual Showroom</h3>
                     <div className={classes.mediaContainer}>
-                        <video className={classes.media} controls poster={videoPoster}>
+                        <video className={classes.media} controls preload="metadata" poster={videoPoster}>
                             <source src={virtualShowroomVideo} type='video/mp4'/>
                             Hmm it seems your browser doesn't support Video
                         </video>
@@ -76,7 +76,7 @@ class Projects extends React.Component {
                             decompile the binaries for analysis in an IDE. Looking at all of my binaries in the dataset I was able to discern a few patterns as outlined in my paper. 
                         </p>
                         <p>
-                            Feel free to <a href={malwarePaper} download={PAPER_NAME}>download my paper</a> co-authored with Gagenpreet Benipal, if you’re interested in malware analysis!
+                            Feel free to <a href={malwarePaper} download={PAPER_NAME} rel="noreferrer noopener" target="_blank">download my paper</a> co-authored with Gagenpreet Benipal, if you’re interested in malware analysis!
                         </p>  
                     </div>
                 </div>
@@ -171,7 +171,6 @@ const styles = (theme) => ({
         //height: 'fit-content',
         width: 'auto',
         maxWidth: '100%',
-        
     },
     description: {
         flexBasis: 'calc(65% - 2em)',
@@ -183,25 +182,9 @@ const styles = (theme) => ({
             maxWidth: '95%',
             marginBottom: '2em',
         },
-
     },
-    //Smaller screens, like tablet and mobile
-    '@media(max-width: 1024px)' :{
-        mediaContainer: {
-            minWidth: '90%',
-            margin: '1em 0.5em',
-        },
-        row: {
-            justifyContent: 'center',
-        },
-        even: {
-            '& $mediaContainer': {
-                order: 0,
-            },
-        },
-    },
-    //for IE 10+
-    '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
+    //For EdgeHTML
+    '@supports (-ms-ime-align:auto)': {
         row: {
             flex: '0 0 auto',
             '& h3': {
@@ -229,6 +212,52 @@ const styles = (theme) => ({
                 maxWidth: '100%',
             },
         },
+    },
+    //Smaller screens, like tablet and mobile
+    '@media(max-width: 1024px)': {
+        mediaContainer: {
+            minWidth: '90%',
+            margin: '1em 0.5em',
+        },
+        row: {
+            justifyContent: 'center',
+        },
+        even: {
+            '& $mediaContainer': {
+                order: 0,
+            },
+        },
+    },
+    //for IE 10+
+    '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+        row: {
+            flex: '0 0 auto',
+            '& h3': {
+                flex: '0 1 65%',
+            },
+        },
+        mediaContainer: {
+            flex: '1 1 35%',
+            margin: '0 1em',
+        },
+        description: {
+            flexGrow: '2',
+            flexShrink: '1',
+            flexBasis: 'calc(65% - 2em)',
+        },
+        first: {
+            '& h3': {
+                flex: '0 1 auto',
+            },
+            '& $mediaContainer': {
+                flex: '0 0 auto',
+            },
+            '& $description': {
+                flex: '1 1 auto',
+                maxWidth: '100%',
+            },
+        },
+        
     },
 });
 
