@@ -137,10 +137,18 @@ class App extends React.Component {
               onExited={(node, isAppear) => this.exited(node, isAppear)}>
               {/* classNames={this.state.leftSlide ? this.state.leftSlideClasses : this.state.rightSlideClasses}> */}
               <Switch location={location}>
-                <Route path={PROJECTS_PATH} component={Projects}/>
-                <Route path={RESUME_PATH} component={Resume}/>
-                <Route path={CONTACT_PATH} component={Contact}/>
-                <Route path={ABOUT_PATH} component={About}/>
+                <Route path={PROJECTS_PATH}>
+                  <Projects determineSlide={this.updateSlideDirection}/>
+                </Route>
+                <Route path={RESUME_PATH}>
+                  <Resume determineSlide={this.updateSlideDirection}/>
+                </Route>
+                <Route path={CONTACT_PATH}>
+                  <Contact determineSlide={this.updateSlideDirection}/>
+                </Route>
+                <Route path={ABOUT_PATH}>
+                  <About determineSlide={this.updateSlideDirection}/>
+                </Route>
               </Switch>
             </CSSTransition>
           </TransitionGroup>
