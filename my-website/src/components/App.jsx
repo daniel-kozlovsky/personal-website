@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, NavLink, withRouter} from 'react-router-dom';
+import {Switch, Route, NavLink, withRouter, Redirect} from 'react-router-dom';
 import withStyles from 'react-jss';
 import {TransitionGroup} from 'react-transition-group';
 import {CSSTransition} from 'react-transition-group';
@@ -11,7 +11,7 @@ import Resume from './routes/Resume';
 import Projects from './routes/Projects';
 import Footer from './Footer';
 
-export const ABOUT_PATH = "/";
+export const ABOUT_PATH = "/About";
 export const PROJECTS_PATH = "/Projects";
 export const CONTACT_PATH = "/Contact";
 export const RESUME_PATH = "/Resume";
@@ -24,6 +24,7 @@ const pathMap = {
 };
 const SLIDE_DUR = 500;
 const transistionDistance = "150%";
+
 class App extends React.Component {
   
   constructor(props) {
@@ -62,51 +63,68 @@ class App extends React.Component {
     }
   }
   enter(node, isAppear) {
-    this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3}ms linear`;
-    this.footer.current.style.opacity = 0;
-    node.style.cssText += `\
-    max-width:100%;\
-    position:absolute;`
+    if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
+      this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3}ms linear`;
+      this.footer.current.style.opacity = 0;
+      node.style.cssText += `\
+      max-width:100%;\
+      position:absolute;`
 
-    node.style.transform = `translate(${this.state.leftSlide ? "-" + transistionDistance : transistionDistance},0)`;
+      node.style.transform = `translate(${this.state.leftSlide ? "-" + transistionDistance : transistionDistance},0)`;
+      
+    }
   }
   entering(node, isAppear) {
-    node.style.cssText += `\
-    max-width:100%;\
-    position:absolute;\
-    transform:translate(0,0);
-    transition:transform ${SLIDE_DUR}ms ease-out;`
+    if(node && (this.props.location.state ? this.props.location.state.Redirect : true))
+    {
+      node.style.cssText += `\
+      max-width:100%;\
+      position:absolute;\
+      transform:translate(0,0);
+      transition:transform ${SLIDE_DUR}ms ease-out;`
+    }
   }
   entered(node, isAppear) {
-    this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3 * 2}ms ease-out`;
-    this.footer.current.style.opacity = 1;
-    node.style.cssText += `\
-    max-width:100%;\
-    position:relative;\
-    transform:translate(0,0);\
-    transition:transform ${SLIDE_DUR}ms ease-out;`
-    //^needs to be here for IE
+    if(node && (this.props.location.state ? this.props.location.state.Redirect : true))
+    {
+      this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3 * 2}ms ease-out`;
+      this.footer.current.style.opacity = 1;
+      node.style.cssText += `\
+      max-width:100%;\
+      position:relative;\
+      transform:translate(0,0);\
+      transition:transform ${SLIDE_DUR}ms ease-out;`
+      //^needs to be here for IE
+    }
+    
   }
-  exit(node, isAppear) {
-    node.style.cssText += `\
-    max-width:100%;\
-    position:absolute;\
-    transform:translate(0,0);`
+  exit(node) {
+    if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
+      node.style.cssText += `\
+      max-width:100%;\
+      position:absolute;\
+      transform:translate(0,0);`
+    }
+    
   }
-  exiting(node, isAppear) {
-    node.style.cssText += `\
-    max-width:100%;\
-    position:absolute;\
-    transition:transform ${SLIDE_DUR}ms ease-out`
+  exiting(node) {
+    if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
+      node.style.cssText += `\
+      max-width:100%;\
+      position:absolute;\
+      transition:transform ${SLIDE_DUR}ms ease-out`
+      node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
+    }
+  }
+  exited(node) {
+    if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
 
-    node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
-  }
-  exited(node, isAppear) {
-    node.style.cssText += `\
-    max-width:100%;\
-    position:absolute;`
-
-    node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
+      node.style.cssText += `\
+      max-width:100%;\
+      position:absolute;`
+  
+      node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
+    }
   }
 
   render (){
@@ -132,9 +150,9 @@ class App extends React.Component {
               onEnter={(node, isAppear) => this.enter(node, isAppear)}
               onEntering={(node, isAppear) => this.entering(node, isAppear)}
               onEntered={(node, isAppear) => this.entered(node, isAppear)}
-              onExit={(node, isAppear) => this.exit(node, isAppear)}
-              onExiting={(node, isAppear) => this.exiting(node, isAppear)}
-              onExited={(node, isAppear) => this.exited(node, isAppear)}>
+              onExit={(node) => this.exit(node)}
+              onExiting={(node) => this.exiting(node)}
+              onExited={(node) => this.exited(node)}>
               {/* classNames={this.state.leftSlide ? this.state.leftSlideClasses : this.state.rightSlideClasses}> */}
               <Switch location={location}>
                 <Route path={PROJECTS_PATH}>
@@ -148,6 +166,11 @@ class App extends React.Component {
                 </Route>
                 <Route path={ABOUT_PATH}>
                   <About determineSlide={this.updateSlideDirection}/>
+                </Route>
+                <Route>
+                  <Redirect to={{
+                    pathname: ABOUT_PATH,
+                    state: {isRedirect: true}}}/>
                 </Route>
               </Switch>
             </CSSTransition>
