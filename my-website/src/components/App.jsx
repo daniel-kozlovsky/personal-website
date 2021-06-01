@@ -51,10 +51,10 @@ class App extends React.Component {
     }
   }
 
-  async scrollToID(elementID) {
+  scrollToID(elementID) {
     let element = document.getElementById(elementID);
     if(element) {
-      window.scrollTo(0, element.offsetTop);
+      element.scrollIntoView({block: 'center'});
     }
   }
 
@@ -79,6 +79,7 @@ class App extends React.Component {
       });
     }
   }
+
   enter(node, isAppear) {
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
       this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3}ms linear`;
@@ -93,6 +94,7 @@ class App extends React.Component {
       if(container) {
         container.style.height = `${node.getBoundingClientRect().height}px`;
       }
+      
     }
   }
   entering(node, isAppear) {
