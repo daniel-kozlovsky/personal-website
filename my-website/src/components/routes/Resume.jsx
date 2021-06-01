@@ -283,6 +283,7 @@ const styles = (theme) => ({
     workInfo: {
         display: 'flex',
         flexDirection: 'column',
+        marginRight: '1em',
         '& h4': {
             marginBottom: '0.1em',
         }
