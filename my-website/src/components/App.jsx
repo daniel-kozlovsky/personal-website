@@ -39,6 +39,23 @@ class App extends React.Component {
     document.body.style.backgroundColor = theme.page.backgroundColor;
 
     this.updateSlideDirection = this.updateSlideDirection.bind(this);
+    this.scrollToID = this.scrollToID.bind(this);
+  }
+
+  componentDidUpdate() {
+    const {hash} = this.props.location;
+
+    if(hash) {
+      let id = hash.split("#")[1];
+      this.scrollToID(id);
+    }
+  }
+
+  async scrollToID(elementID) {
+    let element = document.getElementById(elementID);
+    if(element) {
+      window.scrollTo(0, element.offsetTop);
+    }
   }
 
   updateSlideDirection(e)
@@ -66,22 +83,30 @@ class App extends React.Component {
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
       this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3}ms linear`;
       this.footer.current.style.opacity = 0;
-      node.style.cssText += `\
-      max-width:100%;\
+      node.style.cssText += `
+      max-width:100%;
       position:absolute;`
 
       node.style.transform = `translate(${this.state.leftSlide ? "-" + transistionDistance : transistionDistance},0)`;
-      
+
+      let container = node.parentElement;
+      if(container) {
+        container.style.height = `${node.getBoundingClientRect().height}px`;
+      }
     }
   }
   entering(node, isAppear) {
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true))
     {
-      node.style.cssText += `\
-      max-width:100%;\
-      position:absolute;\
+      node.style.cssText += `
+      max-width:100%;
+      position:absolute;
       transform:translate(0,0);
       transition:transform ${SLIDE_DUR}ms ease-out;`
+      let container = node.parentElement;
+      if(container) {
+        container.style.height = `${node.getBoundingClientRect().height}px`;
+      }
     }
   }
   entered(node, isAppear) {
@@ -89,29 +114,33 @@ class App extends React.Component {
     {
       this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3 * 2}ms ease-out`;
       this.footer.current.style.opacity = 1;
-      node.style.cssText += `\
-      max-width:100%;\
-      position:relative;\
-      transform:translate(0,0);\
+      node.style.cssText += `
+      max-width:100%;
+      position:relative;
+      transform:translate(0,0);
       transition:transform ${SLIDE_DUR}ms ease-out;`
       //^needs to be here for IE
+      let container = node.parentElement;
+      if(container) {
+        container.style.height = "auto";
+      }
     }
     
   }
   exit(node) {
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
-      node.style.cssText += `\
-      max-width:100%;\
-      position:absolute;\
+      node.style.cssText += `
+      max-width:100%;
+      position:absolute;
       transform:translate(0,0);`
     }
     
   }
   exiting(node) {
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
-      node.style.cssText += `\
-      max-width:100%;\
-      position:absolute;\
+      node.style.cssText += `
+      max-width:100%;
+      position:absolute;
       transition:transform ${SLIDE_DUR}ms ease-out`
       node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
     }
@@ -119,8 +148,8 @@ class App extends React.Component {
   exited(node) {
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
 
-      node.style.cssText += `\
-      max-width:100%;\
+      node.style.cssText += `
+      max-width:100%;
       position:absolute;`
   
       node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
@@ -145,7 +174,7 @@ class App extends React.Component {
             <CSSTransition 
               key={location.key}
               timeout={SLIDE_DUR}
-              mountOnEnter={false}
+              mountOnEnter={true}
               unmountOnExit={true}
               onEnter={(node, isAppear) => this.enter(node, isAppear)}
               onEntering={(node, isAppear) => this.entering(node, isAppear)}
@@ -189,7 +218,7 @@ class App extends React.Component {
                 <Route path={ABOUT_PATH}>
                   <About determineSlide={this.updateSlideDirection}/>
                 </Route>
-                
+
                 <Route>
                   <Redirect to={{
                     pathname: ABOUT_PATH,
@@ -271,56 +300,3 @@ const styles = (theme) => ({
 });
 
 export default withRouter(withStyles(styles, {injectTheme: true})(App));
-
-/*Working animations for most but IE*/
-// enter(node, isAppear) {
-//   this.footer.current.style.opacity = 0;
-//   node.style.cssText += `\
-//   height:100%;\
-//   width:100%;\
-//   position:absolute;`
-
-//   node.style.transform = `translate(${this.state.leftSlide ? "-100vw" : "100vw"},0)`;
-// }
-// entering(node, isAppear) {
-//   node.style.cssText += `\
-//   height:100%;\
-//   width:100%;\
-//   position:absolute;\
-//   transform:translate(0,0);
-//   transition:transform ${SLIDE_DUR}ms ease-out;`
-// }
-// entered(node, isAppear) {
-//   this.footer.current.style.opacity = 1;
-//   node.style.cssText += `\
-//   height:100%;\
-//   width:100%;\
-//   position:relative;\
-//   transform:translate(0,0);\
-//   transition:transform ${SLIDE_DUR}ms ease-out;`
-//   //^needs to be here for IE
-// }
-// exit(node, isAppear) {
-//   node.style.cssText += `\
-//   height:100%;\
-//   width:100%;\
-//   position:absolute;\
-//   transform:translate(0,0);`
-// }
-// exiting(node, isAppear) {
-//   node.style.cssText += `\
-//   height:100%;\
-//   width:100%;\
-//   position:absolute;\
-//   transition:transform ${SLIDE_DUR}ms ease-out`
-
-//   node.style.transform = `translate(${this.state.leftSlide ? "100vw" : "-100vw"},0)`;
-// }
-// exited(node, isAppear) {
-//   node.style.cssText += `\
-//   height:100%;\
-//   width:100%;\
-//   position:relative;`
-
-//   node.style.transform = `translate(${this.state.leftSlide ? "100vw" : "-100vw"},0)`;
-// }

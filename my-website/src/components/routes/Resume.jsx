@@ -1,6 +1,6 @@
 import React from 'react';
 import withStyles from 'react-jss';
-import {HashLink} from 'react-router-hash-link';
+import {Link} from 'react-router-dom';
 import resume from '../../media/content/full_resume_web.pdf';
 
 import {GrDocumentDownload} from 'react-icons/gr';
@@ -142,7 +142,7 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     My school culminating project; A virtual reality application that showcases tiling in a home setting, with high graphical 
-                                    fidelity. <HashLink to={{pathname: PROJECTS_PATH, hash: VIRTUAL_SHOWROOM_ID}} onClick={e => determineSlide(e)}>More info...</HashLink>
+                                    fidelity. <Link to={{pathname: PROJECTS_PATH, hash: VIRTUAL_SHOWROOM_ID}} onClick={e => determineSlide(e)}>More info...</Link>
                                 </p>
                             </Toggleable>
                         </div>
@@ -154,7 +154,7 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     Analysis of two Android malware families focusing on indicators and 
-                                    techniques. <HashLink to={{pathname: PROJECTS_PATH, hash: RESEARCH_PAPER_ID}} onClick={e => determineSlide(e)}>More info...</HashLink> 
+                                    techniques. <Link to={{pathname: PROJECTS_PATH, hash: RESEARCH_PAPER_ID}} onClick={e => determineSlide(e)}>More info...</Link> 
                                 </p>
                             </Toggleable>
                         </div>
@@ -166,7 +166,7 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     User-centric mock shopping website that features recommendations, accounts, 
-                                    administration and intuitive UI. <HashLink to={{pathname: PROJECTS_PATH, hash: SMART_SHOPPER_ID}} onClick={e => determineSlide(e)}>More info...</HashLink> 
+                                    administration and intuitive UI. <Link to={{pathname: PROJECTS_PATH, hash: SMART_SHOPPER_ID}} onClick={e => determineSlide(e)}>More info...</Link> 
                                 </p>
                             </Toggleable>
                         </div>
@@ -178,7 +178,7 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     E-commerce website allowing one to buy books, read/leave reviews and keep an 
-                                    account. <HashLink to={{pathname: PROJECTS_PATH, hash: ONLINE_BOOKSTORE_ID}} onClick={e => determineSlide(e)}>More info...</HashLink>
+                                    account. <Link to={{pathname: PROJECTS_PATH, hash: ONLINE_BOOKSTORE_ID}} onClick={e => determineSlide(e)}>More info...</Link>
                                 </p>
                             </Toggleable>
                         </div>

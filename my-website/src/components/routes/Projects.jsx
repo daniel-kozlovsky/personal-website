@@ -31,7 +31,7 @@ class Projects extends React.Component {
                     <div className={classes.mediaContainer}>
                         <video className={classes.media} controls preload="metadata" poster={videoPoster}>
                             <source src={virtualShowroomVideo} type='video/mp4'/>
-                            Hmm it seems your browser doesn't support Video
+                            Hmm it seems your browser doesn't support video
                         </video>
                     </div>
                     <div className={classes.description}>
