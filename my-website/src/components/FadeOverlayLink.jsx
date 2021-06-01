@@ -1,15 +1,24 @@
-import {Children, Component} from 'react';
+import {createRef, Children, Component} from 'react';
 import withStyles from 'react-jss'
 
 class FadeOverlayLink extends Component {
 
+    constructor(props) {
+        super(props);
+        this.anchor = createRef();
+        this.handleOverlayClick = this.handleOverlayClick.bind(this);
+    }
+
+    handleOverlayClick() {
+        this.anchor.current.click();
+    }
 
     render() {
         const childImg = Children.only(this.props.children);
         const {classes} = this.props;
         let overlay = 
-        <div className={classes.overlay}>
-            <a className={classes.link} href={this.props.href} download={this.props.download} rel={this.props.rel} target={this.props.target}>{this.props.linkText}</a> 
+        <div onClick={this.handleOverlayClick} className={classes.overlay}>
+            <a ref={this.anchor} className={classes.link} href={this.props.href} download={this.props.download} rel={this.props.rel} target={this.props.target}>{this.props.linkText}</a> 
         </div>;
 
         return (
@@ -43,7 +52,7 @@ const styles = (theme) => ({
         alignItems: 'center',
         backgroundColor: `${addAlphaToRGB(theme.palette.select, 0.4)}`,
         transition: '.5s ease',
-
+        cursor: 'pointer',
         '&:hover': {
             opacity: 1,
         },

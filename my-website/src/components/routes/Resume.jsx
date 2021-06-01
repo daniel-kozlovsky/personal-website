@@ -257,7 +257,7 @@ const styles = (theme) => ({
             borderRadius: '5px',
         },
         '& p': {
-            margin: '1em 4em',
+            margin: '1em 5%',
         },
         '& ul': {
             marginLeft: '4em',

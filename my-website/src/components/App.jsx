@@ -153,20 +153,43 @@ class App extends React.Component {
               onExit={(node) => this.exit(node)}
               onExiting={(node) => this.exiting(node)}
               onExited={(node) => this.exited(node)}>
-              {/* classNames={this.state.leftSlide ? this.state.leftSlideClasses : this.state.rightSlideClasses}> */}
               <Switch location={location}>
+                <Route path={PROJECTS_PATH +"/*"}>
+                  <Redirect to={{
+                      pathname: PROJECTS_PATH,
+                      state: {isRedirect: true}}}/>
+                </Route>
                 <Route path={PROJECTS_PATH}>
                   <Projects determineSlide={this.updateSlideDirection}/>
+                </Route>
+
+                <Route path={RESUME_PATH +"/*"}>
+                  <Redirect to={{
+                      pathname: RESUME_PATH,
+                      state: {isRedirect: true}}}/>
                 </Route>
                 <Route path={RESUME_PATH}>
                   <Resume determineSlide={this.updateSlideDirection}/>
                 </Route>
+
+                <Route path={CONTACT_PATH +"/*"}>
+                  <Redirect to={{
+                      pathname: CONTACT_PATH,
+                      state: {isRedirect: true}}}/>
+                </Route>
                 <Route path={CONTACT_PATH}>
                   <Contact determineSlide={this.updateSlideDirection}/>
+                </Route>
+
+                <Route path={ABOUT_PATH +"/*"}>
+                  <Redirect to={{
+                      pathname: ABOUT_PATH,
+                      state: {isRedirect: true}}}/>
                 </Route>
                 <Route path={ABOUT_PATH}>
                   <About determineSlide={this.updateSlideDirection}/>
                 </Route>
+                
                 <Route>
                   <Redirect to={{
                     pathname: ABOUT_PATH,

@@ -21,8 +21,8 @@ class About extends React.Component {
                     </p>
                     <p className={classes.text}>
                         Programming allows me to build things, exercising my creativity and problem solving technique. As a result I have fun programming, and learning new technologies on the way.
-                        In addition, computer security is important to me because I believe it's essential for advancing cyber technologies. It's also an interesting field in the way that there are 
-                        creative solutions to curious problems. 
+                        In addition, computer security is important to me because I believe it's essential for advancing cyber technologies. I believe people should feel safe and comfortable when using
+                        software; online and offline. The security field itself deeply interests me because of the puzzling problems faced, which require clever solutions. 
                     </p>
                 </div>
             </div>
