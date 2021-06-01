@@ -162,7 +162,7 @@ const styles = (theme) => ({
         //for the overlays (positioned ancestor)
         position: 'relative',
         overflow: 'hidden',
-        borderRadius: '2%',
+        borderRadius: '10px',
         flexGrow: '1',
         //minWidth: '15em',
     },

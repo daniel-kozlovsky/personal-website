@@ -50,7 +50,7 @@ const styles = (theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: `${addAlphaToRGB(theme.palette.select, 0.4)}`,
+        backgroundColor: `${addAlphaToRGB(theme.palette.select, 0.8)}`,
         transition: '.5s ease',
         cursor: 'pointer',
         '&:hover': {
