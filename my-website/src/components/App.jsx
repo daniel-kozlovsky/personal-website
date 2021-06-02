@@ -293,6 +293,16 @@ const styles = (theme) => ({
     
     //transition: `opacity ${SLIDE_DUR / 2}ms ease-out`,
   },
+  '@media(max-width: 1024px)': {
+    page: {
+      margin: '5% 5%',
+    },
+  },
+  '@media(max-width: 500px)': {
+    page: {
+      margin: '2% 0',
+    },
+  },
   //for IE 10+
   '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
         page: {
