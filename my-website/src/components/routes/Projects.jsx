@@ -181,7 +181,12 @@ const styles = (theme) => ({
         '& $mediaContainer': {
             maxWidth: '95%',
             marginBottom: '2em',
+            width: '100%',
         },
+        '& video' :
+        {
+            width: '100%',
+        }
     },
     //For EdgeHTML
     '@supports (-ms-ime-align:auto)': {
