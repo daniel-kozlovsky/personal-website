@@ -17,7 +17,7 @@ class About extends React.Component {
                     <p className={classes.text}>
                         Hi, I'm Daniel and I'm an adventurer through the world of computers. I'm mainly interested in programming and passionate about 
                         computer security. In fact, I'm always looking for opportunities to combine the two. I recently finished school, where I earned my Software Engineering degree
-                        and got the chance to work on cool projects like <Link onClick={e => this.props.determineSlide(e)} to={PROJECTS_PATH}>these</Link>.
+                        and got the chance to work on cool projects like <Link to={PROJECTS_PATH}>these</Link>.
                     </p>
                     <p className={classes.text}>
                         Programming allows me to build things, exercising my creativity and problem solving technique. As a result I have fun programming, and learning new 

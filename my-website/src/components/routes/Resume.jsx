@@ -39,7 +39,6 @@ class Resume extends React.Component {
 
     render() {
         const {classes} = this.props;
-        const {determineSlide} = this.props;
         return (
             <div className={classes.root}>
                 <a className={classes.download} rel="noopener noreferrer" target="_blank" href={resume} download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download My Comprehensive Resume</a>
@@ -142,7 +141,7 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     My school culminating project; A virtual reality application that showcases tiling in a home setting, with high graphical 
-                                    fidelity. <Link to={{pathname: PROJECTS_PATH, hash: VIRTUAL_SHOWROOM_ID}} onClick={e => determineSlide(e)}>More info...</Link>
+                                    fidelity. <Link to={{pathname: PROJECTS_PATH, hash: VIRTUAL_SHOWROOM_ID}} >More info...</Link>
                                 </p>
                             </Toggleable>
                         </div>
@@ -154,7 +153,7 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     Analysis of two Android malware families focusing on indicators and 
-                                    techniques. <Link to={{pathname: PROJECTS_PATH, hash: RESEARCH_PAPER_ID}} onClick={e => determineSlide(e)}>More info...</Link> 
+                                    techniques. <Link to={{pathname: PROJECTS_PATH, hash: RESEARCH_PAPER_ID}} >More info...</Link> 
                                 </p>
                             </Toggleable>
                         </div>
@@ -166,7 +165,7 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     User-centric mock shopping website that features recommendations, accounts, 
-                                    administration and intuitive UI. <Link to={{pathname: PROJECTS_PATH, hash: SMART_SHOPPER_ID}} onClick={e => determineSlide(e)}>More info...</Link> 
+                                    administration and intuitive UI. <Link to={{pathname: PROJECTS_PATH, hash: SMART_SHOPPER_ID}}>More info...</Link> 
                                 </p>
                             </Toggleable>
                         </div>
@@ -178,7 +177,7 @@ class Resume extends React.Component {
                                 </div>
                                 <p>
                                     E-commerce website allowing one to buy books, read/leave reviews and keep an 
-                                    account. <Link to={{pathname: PROJECTS_PATH, hash: ONLINE_BOOKSTORE_ID}} onClick={e => determineSlide(e)}>More info...</Link>
+                                    account. <Link to={{pathname: PROJECTS_PATH, hash: ONLINE_BOOKSTORE_ID}}>More info...</Link>
                                 </p>
                             </Toggleable>
                         </div>

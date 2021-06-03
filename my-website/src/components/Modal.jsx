@@ -31,8 +31,14 @@ const style = (theme) => ({
     box: {
         backgroundColor: theme.palette.primary,
         padding: '2em',
-        maxWidth: '25%',
+        maxWidth: '35%',
         borderRadius: '5px',
+    },
+    '@media(max-width: 700px)':
+    {
+        box: {
+            maxWidth: '80%',
+        },
     },
     //for browsers that don't support backdrop blur
     '@supports ((-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px)))':

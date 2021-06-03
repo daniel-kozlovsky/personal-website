@@ -34,53 +34,109 @@ class App extends React.Component {
     
     this.state = {
       leftSlide: true,
-      
+      transitionKey: this.props.location.key,
+      currentLocation: this.props.location,
     };
     document.body.style.backgroundColor = theme.page.backgroundColor;
 
-    this.updateSlideDirection = this.updateSlideDirection.bind(this);
     this.scrollToID = this.scrollToID.bind(this);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    //console.log(prevProps, this.props, prevProps === this.props ? "true": "false");
+    //console.log(prevState, this.state, prevState === this.state);
+    //slide direction on page change
+    const newKey = this.props.location.key;
+    const {pathname} = this.props.location;
+    const oldPath = prevProps.location.pathname;
+    //console.log(oldPath, pathname);
+    //path change
+    if(pathname !== oldPath) {
+      //console.log("new ", pathname, "old ", oldPath);
+      if(pathMap[pathname] > pathMap[oldPath])
+      {
+
+        this.setState({
+          leftSlide: false,
+          transitionKey: newKey,
+          currentLocation: this.props.location,
+        });
+      }
+      else
+      {
+        this.setState({
+          leftSlide: true,
+          transitionKey: newKey,
+          currentLocation: this.props.location,
+        });
+      }
+    }
+
+    //when link to URI fragment
     const {hash} = this.props.location;
-
-    if(hash) {
-      let id = hash.split("#")[1];
-      this.scrollToID(id);
+    const prevHash = prevProps.location.hash;
+    
+    if(hash && (prevHash !== hash)) {
+      //console.log("hash ", hash, "prev ",prevHash);
+      //let id = hash.split("#")[1];
+      //this.scrollToID(id);
     }
   }
 
-  scrollToID(elementID) {
-    let element = document.getElementById(elementID);
+  // updateKey() {
+  //   const {location} = this.props;
+  //   console.log("updated key: ", location.key);
+  //   this.setState({transitionKey: location.key});
+  //   console.log("updated key: ", location.key);
+
+  // }
+  
+  scrollToID(hash) {
+    let id = hash.split("#")[1];
+    let element = document.getElementById(id);
+    //console.log(element);
     if(element) {
-      element.scrollIntoView({block: 'center'});
+      //element too big to center
+      if(element.getBoundingClientRect().height > window.innerHeight) {
+        //put element to top of screen
+        //console.log("y: ", window.scrollY, "top: ", element.getBoundingClientRect().top)
+        window.scrollTo(0, element.getBoundingClientRect().top + window.scrollY)
+        
+      }
+      else {
+        //center element
+        window.scrollTo(0, element.getBoundingClientRect().top + window.scrollY - (window.innerHeight/2 - element.getBoundingClientRect().height / 2));
+      }
+      //console.log("scrolledto: ", window.scrollY);
+      
     }
   }
 
-  updateSlideDirection(e)
-  {
+  // updateSlideDirection(e)
+  // {
 
-    const {location} = this.props;
-    if(pathMap[e.target.pathname] > pathMap[location.pathname])
-    {
-      this.setState({
-        leftSlide: false,
-      });
-    }
-    else if(pathMap[e.target.pathname] === pathMap[location.pathname])
-    {
-      e.preventDefault();
-    }
-    else
-    {
-      this.setState({
-        leftSlide: true,
-      });
-    }
-  }
+  //   const {location} = this.props;
+  //   if(pathMap[e.target.pathname] > pathMap[location.pathname])
+  //   {
+  //     this.setState({
+  //       leftSlide: false,
+  //     });
+  //   }
+  //   else if(pathMap[e.target.pathname] === pathMap[location.pathname])
+  //   {
+  //     e.preventDefault();
+  //   }
+  //   else
+  //   {
+  //     this.setState({
+  //       leftSlide: true,
+  //     });
+  //   }
+  // }
 
-  enter(node, isAppear) {
+   enter(node, isAppear) {
+    //console.log("enter ", this.state.leftSlide, node);
+    
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
       this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3}ms linear`;
       this.footer.current.style.opacity = 0;
@@ -94,10 +150,10 @@ class App extends React.Component {
       if(container) {
         container.style.height = `${node.getBoundingClientRect().height}px`;
       }
-      
     }
   }
   entering(node, isAppear) {
+    //console.log("entering", this.state.leftSlide, node);
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true))
     {
       node.style.cssText += `
@@ -110,8 +166,14 @@ class App extends React.Component {
         container.style.height = `${node.getBoundingClientRect().height}px`;
       }
     }
+    //scroll to anchor if there's a hash
+    if(this.state.currentLocation.hash)
+    {
+      this.scrollToID(this.state.currentLocation.hash);
+    }
   }
   entered(node, isAppear) {
+    //console.log("entered", this.state.leftSlide, node);
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true))
     {
       this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3 * 2}ms ease-out`;
@@ -130,6 +192,7 @@ class App extends React.Component {
     
   }
   exit(node) {
+    //console.log("exit ", this.state.leftSlide, node);
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
       node.style.cssText += `
       max-width:100%;
@@ -139,6 +202,7 @@ class App extends React.Component {
     
   }
   exiting(node) {
+    //console.log("exiting ", this.state.leftSlide, node);
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
       node.style.cssText += `
       max-width:100%;
@@ -148,6 +212,7 @@ class App extends React.Component {
     }
   }
   exited(node) {
+    //console.log("exited ", this.state.leftSlide, node);
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
 
       node.style.cssText += `
@@ -160,23 +225,22 @@ class App extends React.Component {
 
   render (){
     const {classes} = this.props;
-    const {location} = this.props;
- 
+    const {transitionKey} = this.state;
     return (
       <div className={classes.root}>
         <h1 className={classes.name}>Daniel Kozlovsky</h1>
         <nav className={classes.navBar}>
-          <NavLink className={classes.navLink} exact onClick={e => this.updateSlideDirection(e)} to={ABOUT_PATH} activeClassName={classes.activeNavbar}>About Me</NavLink>
-          <NavLink className={classes.navLink} onClick={e => this.updateSlideDirection(e)} to={PROJECTS_PATH} activeClassName={classes.activeNavbar}>Projects</NavLink>
-          <NavLink className={classes.navLink} onClick={e => this.updateSlideDirection(e)} to={RESUME_PATH} activeClassName={classes.activeNavbar}>Resume</NavLink>
-          <NavLink className={classes.navLink} onClick={e => this.updateSlideDirection(e)} to={CONTACT_PATH} activeClassName={classes.activeNavbar}>Contact</NavLink>
+          <NavLink className={classes.navLink} exact  to={ABOUT_PATH} activeClassName={classes.activeNavbar}>About Me</NavLink>
+          <NavLink className={classes.navLink}  to={PROJECTS_PATH} activeClassName={classes.activeNavbar}>Projects</NavLink>
+          <NavLink className={classes.navLink}  to={RESUME_PATH} activeClassName={classes.activeNavbar}>Resume</NavLink>
+          <NavLink className={classes.navLink}  to={CONTACT_PATH} activeClassName={classes.activeNavbar}>Contact</NavLink>
         </nav>
         <div className={classes.page}>
           <TransitionGroup component={null}>
             <CSSTransition 
-              key={location.key}
+              key={transitionKey}
               timeout={SLIDE_DUR}
-              mountOnEnter={true}
+              mountOnEnter={false}
               unmountOnExit={true}
               onEnter={(node, isAppear) => this.enter(node, isAppear)}
               onEntering={(node, isAppear) => this.entering(node, isAppear)}
@@ -184,14 +248,14 @@ class App extends React.Component {
               onExit={(node) => this.exit(node)}
               onExiting={(node) => this.exiting(node)}
               onExited={(node) => this.exited(node)}>
-              <Switch location={location}>
+              <Switch location={this.state.currentLocation}>
                 <Route path={PROJECTS_PATH +"/*"}>
                   <Redirect to={{
                       pathname: PROJECTS_PATH,
                       state: {isRedirect: true}}}/>
                 </Route>
                 <Route path={PROJECTS_PATH}>
-                  <Projects determineSlide={this.updateSlideDirection}/>
+                  <Projects/>
                 </Route>
 
                 <Route path={RESUME_PATH +"/*"}>
@@ -200,7 +264,7 @@ class App extends React.Component {
                       state: {isRedirect: true}}}/>
                 </Route>
                 <Route path={RESUME_PATH}>
-                  <Resume determineSlide={this.updateSlideDirection}/>
+                  <Resume />
                 </Route>
 
                 <Route path={CONTACT_PATH +"/*"}>
@@ -209,7 +273,7 @@ class App extends React.Component {
                       state: {isRedirect: true}}}/>
                 </Route>
                 <Route path={CONTACT_PATH}>
-                  <Contact determineSlide={this.updateSlideDirection}/>
+                  <Contact />
                 </Route>
 
                 <Route path={ABOUT_PATH +"/*"}>
@@ -218,7 +282,7 @@ class App extends React.Component {
                       state: {isRedirect: true}}}/>
                 </Route>
                 <Route path={ABOUT_PATH}>
-                  <About determineSlide={this.updateSlideDirection}/>
+                  <About />
                 </Route>
 
                 <Route>

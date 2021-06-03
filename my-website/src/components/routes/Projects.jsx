@@ -31,7 +31,7 @@ class Projects extends React.Component {
                     <div className={classes.mediaContainer}>
                         <video className={classes.media} controls preload="metadata" poster={videoPoster}>
                             <source src={virtualShowroomVideo} type='video/mp4'/>
-                            Hmm it seems your browser doesn't support video
+                            Your browser doesn't support video
                         </video>
                     </div>
                     <div className={classes.description}>
@@ -158,6 +158,7 @@ const styles = (theme) => ({
         },
     },
     mediaContainer: {
+        // display: 'none',
         flexBasis: '35%',
         //for the overlays (positioned ancestor)
         position: 'relative',
@@ -179,13 +180,24 @@ const styles = (theme) => ({
     first: {
         flexDirection: 'column',
         '& $mediaContainer': {
+            borderRadius: 'none',
             maxWidth: '95%',
             marginBottom: '2em',
             width: '100%',
+            position: 'relative',
+            paddingBottom: '56.25%',
         },
         '& video' :
         {
+            height: '100%',
             width: '100%',
+            position: 'absolute',
+            borderRadius: '10px',
+            objectFit: 'fill',
+            top: 0, 
+            left: 0,
+            right: 0,
+            bottom: 0,
         }
     },
     //For EdgeHTML
