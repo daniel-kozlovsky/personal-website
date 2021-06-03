@@ -117,13 +117,15 @@ class Resume extends React.Component {
                                     </div>
                                     <label className={classes.date}>June 2021</label>
                                 </div>
-                                <p>Key Coursework:</p>
-                                <ul>
-                                    <li>
-                                        Data structures, algorithms, OOP, web development, networking, embedded systems, operating systems, e-commerce,  mission-critical systems,
-                                        software engineering (requirements, design, testing), computer security, network security &amp; forensics, cryptography
-                                    </li>
-                                </ul>
+                                <div>
+                                    <p>Key Coursework:</p>
+                                    <ul>
+                                        <li>
+                                            Data structures, algorithms, OOP, web development, networking, embedded systems, operating systems, e-commerce,  mission-critical systems,
+                                            software engineering (requirements, design, testing), computer security, network security &amp; forensics, cryptography
+                                        </li>
+                                    </ul>
+                                </div>
                             </Toggleable>
                         </div>
                     </div>
@@ -259,7 +261,7 @@ const styles = (theme) => ({
             margin: '1em 5%',
         },
         '& ul': {
-            marginLeft: '4em',
+            marginLeft: '5%',
         },
     },
     sectionEntryHeader: {
@@ -318,6 +320,14 @@ const styles = (theme) => ({
     },
     mediumSkill: {
         backgroundColor: theme.palette.secondary,
+    },
+    '@media(max-width:700px)' :
+    {
+        sectionEntry: {
+            '& ul': {
+                marginLeft: '1%',
+            },
+        },
     },
     //For IE 11:
     '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {

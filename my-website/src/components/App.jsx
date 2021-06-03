@@ -94,20 +94,18 @@ class App extends React.Component {
   scrollToID(hash) {
     let id = hash.split("#")[1];
     let element = document.getElementById(id);
-    //console.log(element);
     if(element) {
       //element too big to center
+      let scrollPosY = window.scrollY? window.scrollY : window.pageYOffset;
       if(element.getBoundingClientRect().height > window.innerHeight) {
         //put element to top of screen
-        //console.log("y: ", window.scrollY, "top: ", element.getBoundingClientRect().top)
-        window.scrollTo(0, element.getBoundingClientRect().top + window.scrollY)
-        
+        window.scrollTo(0, element.getBoundingClientRect().top + scrollPosY)
       }
       else {
         //center element
-        window.scrollTo(0, element.getBoundingClientRect().top + window.scrollY - (window.innerHeight/2 - element.getBoundingClientRect().height / 2));
+        window.scrollTo(0, element.getBoundingClientRect().top + scrollPosY - (window.innerHeight/2 - element.getBoundingClientRect().height / 2));
       }
-      //console.log("scrolledto: ", window.scrollY);
+      
       
     }
   }
