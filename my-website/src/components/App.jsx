@@ -4,6 +4,7 @@ import withStyles from 'react-jss';
 import {TransitionGroup} from 'react-transition-group';
 import {CSSTransition} from 'react-transition-group';
 
+import {ABOUT_PATH, PROJECTS_PATH, RESUME_PATH, CONTACT_PATH} from '../utility.js';
 
 import Contact from './routes/Contact';
 import About from './routes/About';
@@ -11,20 +12,22 @@ import Resume from './routes/Resume';
 import Projects from './routes/Projects';
 import Footer from './Footer';
 
-export const ABOUT_PATH = "/About";
-export const PROJECTS_PATH = "/Projects";
-export const CONTACT_PATH = "/Contact";
-export const RESUME_PATH = "/Resume";
-
+//Give the pages an order for precedence and slide direction
 const pathMap = {
   [ABOUT_PATH] : 1,
   [PROJECTS_PATH]: 2,
   [RESUME_PATH]: 3,
   [CONTACT_PATH]: 4,
 };
+//transition duration for sliding pages
 const SLIDE_DUR = 500;
+//where to offset the pages when they slide
 const transistionDistance = "150%";
 
+/**
+ * Main render point, highest container that gets injected into the root div. Contains
+ * The header, navigation, footer and main content
+ */
 class App extends React.Component {
   
   constructor(props) {
@@ -43,19 +46,17 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    //console.log(prevProps, this.props, prevProps === this.props ? "true": "false");
-    //console.log(prevState, this.state, prevState === this.state);
     //slide direction on page change
     const newKey = this.props.location.key;
     const {pathname} = this.props.location;
     const oldPath = prevProps.location.pathname;
-    //console.log(oldPath, pathname);
+    
     //path change
     if(pathname !== oldPath) {
-      //console.log("new ", pathname, "old ", oldPath);
+      
+      //determine slide direction
       if(pathMap[pathname] > pathMap[oldPath])
       {
-
         this.setState({
           leftSlide: false,
           transitionKey: newKey,
@@ -72,25 +73,12 @@ class App extends React.Component {
       }
     }
 
-    //when link to URI fragment
-    const {hash} = this.props.location;
-    const prevHash = prevProps.location.hash;
-    
-    if(hash && (prevHash !== hash)) {
-      //console.log("hash ", hash, "prev ",prevHash);
-      //let id = hash.split("#")[1];
-      //this.scrollToID(id);
-    }
   }
-
-  // updateKey() {
-  //   const {location} = this.props;
-  //   console.log("updated key: ", location.key);
-  //   this.setState({transitionKey: location.key});
-  //   console.log("updated key: ", location.key);
-
-  // }
   
+  /**
+   * Scroll the page to an element and centers it as long as the top doesn't overflow
+   * @param {string} hash - The hash id of the element to scroll to
+   */
   scrollToID(hash) {
     let id = hash.split("#")[1];
     let element = document.getElementById(id);
@@ -105,35 +93,14 @@ class App extends React.Component {
         //center element
         window.scrollTo(0, element.getBoundingClientRect().top + scrollPosY - (window.innerHeight/2 - element.getBoundingClientRect().height / 2));
       }
-      
-      
     }
   }
 
-  // updateSlideDirection(e)
-  // {
-
-  //   const {location} = this.props;
-  //   if(pathMap[e.target.pathname] > pathMap[location.pathname])
-  //   {
-  //     this.setState({
-  //       leftSlide: false,
-  //     });
-  //   }
-  //   else if(pathMap[e.target.pathname] === pathMap[location.pathname])
-  //   {
-  //     e.preventDefault();
-  //   }
-  //   else
-  //   {
-  //     this.setState({
-  //       leftSlide: true,
-  //     });
-  //   }
-  // }
-
-   enter(node, isAppear) {
-    //console.log("enter ", this.state.leftSlide, node);
+  /**
+   * The handler for the first stage of the slide animation. Handles the entering of the next page
+   * @param {Object} node - The page element (div) that is entering
+   */
+  enter(node, isAppear) {
     
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
       this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3}ms linear`;
@@ -144,14 +111,19 @@ class App extends React.Component {
 
       node.style.transform = `translate(${this.state.leftSlide ? "-" + transistionDistance : transistionDistance},0)`;
 
+      //set parent container to page's size to keep footer and scroll consistent
       let container = node.parentElement;
       if(container) {
         container.style.height = `${node.getBoundingClientRect().height}px`;
       }
     }
   }
+  /**
+   * The handler for the second stage of the slide animation. Handles the active phase of the next page
+   * @param {Object} node - The page element (div) that is entering
+   */
   entering(node, isAppear) {
-    //console.log("entering", this.state.leftSlide, node);
+    
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true))
     {
       node.style.cssText += `
@@ -170,8 +142,12 @@ class App extends React.Component {
       this.scrollToID(this.state.currentLocation.hash);
     }
   }
+  /**
+   * The handler for the last stage of the slide animation. Persists the style.
+   * @param {Object} node - The page element (div) that is entering
+   */
   entered(node, isAppear) {
-    //console.log("entered", this.state.leftSlide, node);
+    
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true))
     {
       this.footer.current.style.transition = `opacity ${SLIDE_DUR / 3 * 2}ms ease-out`;
@@ -189,8 +165,12 @@ class App extends React.Component {
     }
     
   }
+  /**
+   * The handler for the first stage of the slide animation. Handles the exit of the old page
+   * @param {Object} node - The page element (div) that is leaving
+   */
   exit(node) {
-    //console.log("exit ", this.state.leftSlide, node);
+    
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
       node.style.cssText += `
       max-width:100%;
@@ -199,8 +179,12 @@ class App extends React.Component {
     }
     
   }
+  /**
+   * The handler for the first stage of the slide animation. Handles the active phase of the old page
+   * @param {Object} node - The page element (div) that is leaving
+   */
   exiting(node) {
-    //console.log("exiting ", this.state.leftSlide, node);
+
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
       node.style.cssText += `
       max-width:100%;
@@ -209,8 +193,12 @@ class App extends React.Component {
       node.style.transform = `translate(${this.state.leftSlide ? transistionDistance : "-" + transistionDistance},0)`;
     }
   }
+  /**
+   * The handler for the first stage of the slide animation. Persists the old page style until unmount
+   * @param {Object} node - The page element (div) that is leaving
+   */
   exited(node) {
-    //console.log("exited ", this.state.leftSlide, node);
+    
     if(node && (this.props.location.state ? this.props.location.state.Redirect : true)) {
 
       node.style.cssText += `
@@ -340,10 +328,8 @@ const styles = (theme) => ({
     },
   },
   page: {
-    // minWidth: '70%',
     margin: '5% 15%',
     position: 'relative',
-    // overflow: 'hidden',
   },
   footer: {
     flexGrow: 2,
@@ -353,7 +339,6 @@ const styles = (theme) => ({
     paddingTop: '2em',
     paddingBottom: '1em',
     
-    //transition: `opacity ${SLIDE_DUR / 2}ms ease-out`,
   },
   '@media(max-width: 1024px)': {
     page: {

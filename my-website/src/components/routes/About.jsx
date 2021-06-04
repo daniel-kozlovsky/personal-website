@@ -2,10 +2,13 @@ import React from 'react';
 import withStyles from 'react-jss';
 import { Link } from 'react-router-dom';
 
-import {PROJECTS_PATH} from '../App.jsx';
+import {PROJECTS_PATH} from '../../utility.js';
 
 import myPortrait from '../../media/img/headshot.png';
 
+/**
+ * About and homepage, giving an intro to me
+ */
 class About extends React.Component {
 
     render() {

@@ -11,15 +11,14 @@ import FadeOverlayLink from '../FadeOverlayLink';
 import {FiExternalLink} from 'react-icons/fi';
 import {GrDocumentDownload} from 'react-icons/gr';
 
-const PAPER_NAME = "Clustering_Android_Malware.pdf";
-const SS_HREF = "https://thesmartshopper.online";
-const KABLAN_HREF ="https://www.kablan.ca/";
+import {VIRTUAL_SHOWROOM_ID, RESEARCH_PAPER_ID, SMART_SHOPPER_ID, ONLINE_BOOKSTORE_ID,
+    SS_HREF, KABLAN_HREF, PAPER_NAME} from '../../utility.js';
 
-export const VIRTUAL_SHOWROOM_ID = "virtual-showroom";
-export const RESEARCH_PAPER_ID = "research-paper";
-export const SMART_SHOPPER_ID = "smart-shopper";
-export const ONLINE_BOOKSTORE_ID = "online-bookstore";
 
+
+/**
+ * Projects page showcasing some projects with media and description
+ */
 class Projects extends React.Component {
 
     render() {
@@ -158,18 +157,15 @@ const styles = (theme) => ({
         },
     },
     mediaContainer: {
-        // display: 'none',
         flexBasis: '35%',
         //for the overlays (positioned ancestor)
         position: 'relative',
         overflow: 'hidden',
         borderRadius: '10px',
         flexGrow: '1',
-        //minWidth: '15em',
     },
     media: {
         display: 'block',
-        //height: 'fit-content',
         width: 'auto',
         maxWidth: '100%',
     },
@@ -200,6 +196,21 @@ const styles = (theme) => ({
             bottom: 0,
         }
     },
+    //Smaller screens, like tablet and mobile
+    '@media(max-width: 1024px)': {
+        mediaContainer: {
+            minWidth: '90%',
+            margin: '1em 0.5em',
+        },
+        row: {
+            justifyContent: 'center',
+        },
+        even: {
+            '& $mediaContainer': {
+                order: 0,
+            },
+        },
+    },
     //For EdgeHTML
     '@supports (-ms-ime-align:auto)': {
         row: {
@@ -227,21 +238,6 @@ const styles = (theme) => ({
             '& $description': {
                 flex: '1 1 auto',
                 maxWidth: '100%',
-            },
-        },
-    },
-    //Smaller screens, like tablet and mobile
-    '@media(max-width: 1024px)': {
-        mediaContainer: {
-            minWidth: '90%',
-            margin: '1em 0.5em',
-        },
-        row: {
-            justifyContent: 'center',
-        },
-        even: {
-            '& $mediaContainer': {
-                order: 0,
             },
         },
     },

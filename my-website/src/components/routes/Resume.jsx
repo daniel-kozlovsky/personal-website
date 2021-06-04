@@ -5,9 +5,11 @@ import resume from '../../media/content/full_resume_web.pdf';
 
 import {GrDocumentDownload} from 'react-icons/gr';
 import Toggleable from '../Toggleable'
-import {PROJECTS_PATH} from '../App';
-import {VIRTUAL_SHOWROOM_ID, RESEARCH_PAPER_ID, SMART_SHOPPER_ID, ONLINE_BOOKSTORE_ID} from './Projects';
+import {VIRTUAL_SHOWROOM_ID, RESEARCH_PAPER_ID, SMART_SHOPPER_ID, ONLINE_BOOKSTORE_ID, PROJECTS_PATH, RESUME_NAME} from '../../utility.js';
 
+/**
+ * Interactive resume page that gives a summary of my work and education
+ */
 class Resume extends React.Component {
 
     constructor(props) {
@@ -20,6 +22,12 @@ class Resume extends React.Component {
         this.createSkillsHTML = this.createSkillsHTML.bind(this);
     }
 
+    /**
+     * Turns skills into labels
+     * @param {Array[string]} skillsArray - array of skills to turn into a pill label
+     * @param {string} className - the class name to assign the skills for CSS. Can be "highSkill" or "mediumSkill"
+     * @returns - an array of labels representing the skills
+     */
     createSkillsHTML(skillsArray, className) {
         const {classes} = this.props;
         let elements = [];
@@ -41,7 +49,7 @@ class Resume extends React.Component {
         const {classes} = this.props;
         return (
             <div className={classes.root}>
-                <a className={classes.download} rel="noopener noreferrer" target="_blank" href={resume} download="Daniel_Kozlovsky_Resume.pdf"><GrDocumentDownload/> Download My Comprehensive Resume</a>
+                <a className={classes.download} rel="noopener noreferrer" target="_blank" href={resume} download={RESUME_NAME}><GrDocumentDownload/> Download My Comprehensive Resume</a>
                 <div>
                     <hr className={`${classes.mainDivider} ${classes.sectionDivider}`}/>
                 </div>
@@ -232,14 +240,7 @@ const styles = (theme) => ({
 
     },
     even: {},
-    odd: {
-        //backgroundColor: '#FFF4',
-        // borderStyle: theme.sectionBox.borderStyle,
-        // borderWidth: theme.sectionBox.borderWidth,
-        // borderColor: theme.sectionBox.borderColor,
-        // borderRadius: theme.sectionBox.borderRadius,
-        // boxShadow: theme.sectionBox.boxShadow,
-    },
+    odd: {},
     sectionHeader: {
         
         font: theme.heading.font, 
@@ -253,7 +254,6 @@ const styles = (theme) => ({
             width: '100%',
             textAlign: 'left',
             padding: '0.8em',
-            //margin: '1em 0',
             fontSize: '1.2em',
             borderRadius: '5px',
         },
@@ -321,6 +321,7 @@ const styles = (theme) => ({
     mediumSkill: {
         backgroundColor: theme.palette.secondary,
     },
+    //Smaller devices
     '@media(max-width:700px)' :
     {
         sectionEntry: {

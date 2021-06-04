@@ -1,17 +1,16 @@
 import {createRef, Children, Component} from 'react';
 import withStyles from 'react-jss'
+import {addAlphaToRGB} from '../utility.js'
 
+/**
+ * Clickable overlay that fades when moused over. Typically used for images or visual, clickable content
+ */
 class FadeOverlayLink extends Component {
 
     constructor(props) {
         super(props);
+        //reference to the anchor for clicking
         this.anchor = createRef();
-        this.handleOverlayClick = this.handleOverlayClick.bind(this);
-    }
-
-    handleOverlayClick(e) {
-        console.log(e);
-        this.anchor.current.click();
     }
 
     render() {
@@ -35,14 +34,7 @@ class FadeOverlayLink extends Component {
 
 }
 
-//rgb(0,0,0)
-function addAlphaToRGB(rgb, alpha) {
-    let parts = rgb.split(",");
-    parts[0] = "rgba("+ parts[0].split("(")[1];
-    parts[2] = parts[2].split(")")[0];
-    parts[3] = `${alpha})`;
-    return parts.join();
-}
+
 const styles = (theme) => ({
     overlay: {
         position: 'absolute',

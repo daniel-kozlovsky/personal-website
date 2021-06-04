@@ -7,6 +7,8 @@ import {ThemeProvider} from 'react-jss';
 
 import App from './components/App';
 import './index.css';
+
+/* Other colour combinations I liked:
 //blue/yellow
 //DFE7F6
 //FFFD98
@@ -21,11 +23,15 @@ import './index.css';
   //   highlight: '#938e93',
   //   select: '#7395ae',
   // },
+*/
+/**
+ * Colour scheme for the entire site
+ */
 const theme = {
   page: {
     backgroundColor: '#DFE7F6',
   },
-  //Convert all to RGB for ie11?
+  //Convert all to RGB format?
   palette: {
     primary: '#91ACE0',
     secondary: '#ABC0E7',

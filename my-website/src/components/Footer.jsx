@@ -1,8 +1,13 @@
 import {Component} from 'react';
 import withStyles from 'react-jss';
 
+import {GoMarkGithub} from 'react-icons/go';
+
 import Modal from './Modal';
 
+/**
+ * The footer of the website. Should persist through all pages or views.
+ */
 class Footer extends Component {
 
     constructor(props) {
@@ -15,11 +20,18 @@ class Footer extends Component {
         this.handleCloseClick = this.handleCloseClick.bind(this);
     }
 
+    /**
+     * Enables the modal when the "about" button is clicked.
+     */ 
     handleAboutClick() {
         this.setState({
             showModal: true
         });
     }
+
+    /**
+     * When clicked outside the modal to close it.
+     */
     handleCloseClick() {
         this.setState({
             showModal: false
@@ -41,6 +53,10 @@ class Footer extends Component {
                         <p>
                             I built it with React.js on Node.js with a few modules like React Router and JSS. Various icons are from React Icons.
                             My portrait was drawn by my sister! 
+                        </p>
+                        <p>
+                            Interested in my code? Want to see how I did something? See on&nbsp;
+                            <a href="https://github.com/daniel-kozlovsky/personal-website" target="_blank" rel="noopener noreferrer">my Github <GoMarkGithub/></a>
                         </p>
                         <label className={classes.copyNotice}>&#169; Copyright 2021 Daniel Kozlovsky</label>
                     </div>

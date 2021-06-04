@@ -1,6 +1,9 @@
 import {Component} from 'react';
 import withStyles from 'react-jss';
 
+/**
+ * Fixed position modal for displaying alerts, or urgent information
+ */
 class Modal extends Component {
 
     render() {
@@ -34,13 +37,14 @@ const style = (theme) => ({
         maxWidth: '35%',
         borderRadius: '5px',
     },
+    //smaller devices like phones
     '@media(max-width: 700px)':
     {
         box: {
             maxWidth: '80%',
         },
     },
-    //for browsers that don't support backdrop blur
+    //for browsers that support backdrop blur
     '@supports ((-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px)))':
     {
         root: {
@@ -48,12 +52,5 @@ const style = (theme) => ({
             backdropFilter: 'blur(5px)',
         },
     },
-    // //for IE 10+
-    // '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)' : {
-    //     root: {
-    //         backgroundColor: 'transparent',
-    //         backdropFilter: 'blur(5px)',
-    //     },
-    // }
 });
 export default withStyles(style, {injectTheme: true})(Modal);
