@@ -9,17 +9,21 @@ class FadeOverlayLink extends Component {
         this.handleOverlayClick = this.handleOverlayClick.bind(this);
     }
 
-    handleOverlayClick() {
+    handleOverlayClick(e) {
+        console.log(e);
         this.anchor.current.click();
     }
 
     render() {
         const childImg = Children.only(this.props.children);
         const {classes} = this.props;
-        let overlay = 
-        <div onClick={this.handleOverlayClick} className={classes.overlay}>
-            <a ref={this.anchor} className={classes.link} href={this.props.href} download={this.props.download} rel={this.props.rel} target={this.props.target}>{this.props.linkText}</a> 
-        </div>;
+        let overlay =
+        <a ref={this.anchor} className={classes.link} href={this.props.href} download={this.props.download} rel={this.props.rel} target={this.props.target}>
+            <div className={classes.overlay}>
+                {this.props.linkText}
+            </div>
+        </a>
+        ;
 
         return (
             <>
