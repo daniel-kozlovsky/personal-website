@@ -3,8 +3,14 @@ import React from 'react';
 function HomeButton () {
 
     return (
-        <div></div>
+        <button onClick={scrollToTop}>
+            Home
+        </button>
     );
+}
+
+function scrollToTop () {
+
 }
 
 export default HomeButton;

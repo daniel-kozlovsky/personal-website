@@ -18,9 +18,9 @@ function MainPage () {
             <ContentsNav/>
             <Portrait />
             <Preface/>
-            <Heading/>
+            <h1>Projects</h1>
             <ProjectCard/>
-            <Heading/>
+            <h1>Experience</h1>
             <ExperienceCard/>
             <HomeButton/>
         </div>
