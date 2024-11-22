@@ -1,4 +1,6 @@
 import React, { ReactHTMLElement } from 'react';
+import styles from '../styles/ProjectCard.module.css';
+import theme from '../styles/Theme.module.css';
 import GitHubSVG from '../assets/GitHubIcon.svg'
 import { URL } from 'url';
 
@@ -15,16 +17,16 @@ function ProjectCard ({title, description, imageSrc, gitHubURL} : Props) {
     
 
     return (
-        <div className="project-card">
-            <img className="project-card-img" src={imageSrc}/>
-            <h2>
+        <div className={styles.container}>
+            <img className={styles.image} src={imageSrc}/>
+            <h2 className={styles.title}>
                 {title}
             </h2>
-            <p className="project-card-desc">
+            <p className={styles.description}>
                 {description}
             </p>
             {gitHubURL ? (
-                <a href={gitHubURL.toString()} target="_blank" rel="noopener noreferrer">
+                <a className={styles.githubLink} href={gitHubURL.toString()} target="_blank" rel="noopener noreferrer">
                     <img src={GitHubSVG}/>
                 </a>)
                 : null 

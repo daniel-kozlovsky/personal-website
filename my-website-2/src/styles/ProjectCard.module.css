@@ -1,0 +1,21 @@
+.container {
+ display:flex;
+ flex-direction: column;
+
+}
+
+.image {
+
+}
+
+.title {
+    font: bold;
+}
+
+.description {
+
+}
+
+.githubLink {
+
+}
