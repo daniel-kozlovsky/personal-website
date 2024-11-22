@@ -8,6 +8,8 @@ import Preface from './Preface';
 import ExperienceCard from './ExperienceCard';
 import HomeButton from './HomeButton';
 
+import styles from '../styles/MainPage.module.css';
+
 //project images
 import computerControlIcon from '../assets/CompControl.ico';
 import malwareAnalysisImage from '../assets/malware_paper_thumbnail.png'
@@ -26,16 +28,18 @@ function MainPage () {
     const contentsMap : Map<string, string> = new Map();
     contentsMap.set("heading-projects", PROJECT_HEADING);
     contentsMap.set("heading-experience", EXPERIENCE_HEADING);
-    console.log("here you go: ", smartShopperImage);
+    
     return (
         <div>
-            <EmailButton />
-            <GitHubButton/>
+            <div className={styles.contactIcons}>
+                <EmailButton />
+                <GitHubButton/>
+            </div>
             <ContentsNav contentsMap={contentsMap}/>
             <Portrait />
             <Preface/>
-            <div>
-                <h1 id="heading-projects" className="section">{PROJECT_HEADING}</h1>
+            <div className={styles.projectsContainer}>
+                <h1 className={styles.heading}>{PROJECT_HEADING}</h1>
                 <ProjectCard title="Virtual Showroom" description="Tile Sampling Showroom" imageSrc={virtualShowroomImage} gitHubURL={computerControlURL} />
                 <ProjectCard title="Malware Analysis" description="Analysis of DroidKungFu Malware" imageSrc={malwareAnalysisImage} gitHubURL={computerControlURL} />
                 <ProjectCard title="Smart Shopper" description="Online Shopping Website" imageSrc={smartShopperImage} gitHubURL={computerControlURL} />
@@ -44,8 +48,8 @@ function MainPage () {
                 <ProjectCard title="Ainsley Harriot" description="Little Virus" imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
                 <ProjectCard title="Computer Control" description="An app that let's you control your computer" imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
             </div>
-            <div>
-                <h1 id="heading-experience" className="section">{EXPERIENCE_HEADING}</h1>
+            <div className={styles.experienceContainer}>
+                <h1 className={styles.heading}>{EXPERIENCE_HEADING}</h1>
                 <ExperienceCard startDate="2021" role="Sr. Software Security Engineer" location="Sun Life Financial"/>
                 <ExperienceCard startDate="2020" role="Cyber Threat Intelligence Analyst" location="Bank of Montreal"/>
                 <ExperienceCard startDate="2019" role="Software Developer" location="Bank of Montreal"/>

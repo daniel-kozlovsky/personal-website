@@ -1,4 +1,3 @@
-import "../styles/App.css";
 import * as React from 'react';
 import MainPage from './MainPage';
 

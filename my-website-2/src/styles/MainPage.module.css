@@ -1,0 +1,25 @@
+.projectsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 5em;
+
+}
+
+.heading {
+    width: 100%;
+    min-width:fit-content;
+    text-align: center;
+}
+
+.experienceContainer {
+    display:flex;
+    flex-direction: column;
+}
+
+.contactIcons {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    min-width: fit-content;
+}

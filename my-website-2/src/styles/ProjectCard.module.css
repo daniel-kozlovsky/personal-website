@@ -1,6 +1,15 @@
 .container {
- display:flex;
- flex-direction: column;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: flex-start;
+    
+    /*As a flex item*/
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 30vw;
+    height: auto;
 
 }
 
@@ -17,5 +26,9 @@
 }
 
 .githubLink {
-
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    min-width: 30px;
+    height: auto;
 }
