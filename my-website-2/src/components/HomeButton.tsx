@@ -1,10 +1,11 @@
 import React from 'react';
 import BackToTopIcon from '../assets/BackToTopIcon.svg';
+import styles from '../styles/HomeButton.module.css';
 
 function HomeButton () {
 
     return (
-        <input type="image" src={BackToTopIcon} onClick={scrollToTop}></input>
+        <input className={styles.button} type="image" src={BackToTopIcon} onClick={scrollToTop}></input>
     );
 }
 

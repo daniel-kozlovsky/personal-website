@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import styles from '../styles/ContentsNav.module.css';
 
 function ContentsNav ({ contentsMap }: {contentsMap: Map<string,string>}) {
     
@@ -10,7 +11,7 @@ function ContentsNav ({ contentsMap }: {contentsMap: Map<string,string>}) {
     });
 
     return (
-        <ul>
+        <ul className={styles.list}>
             {contents}
         </ul>
     );

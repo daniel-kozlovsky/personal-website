@@ -1,0 +1,13 @@
+.card {
+    position: relative;
+    text-align: center;
+}
+
+.logo {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+
+    max-width: auto;
+    height: 100%;
+}

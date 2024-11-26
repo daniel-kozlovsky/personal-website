@@ -1,3 +1,15 @@
-.test {
+.preface {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.name {
     color: rgb(50,150,50);
+}
+
+.title {
+}
+
+.tagLine {
 }
