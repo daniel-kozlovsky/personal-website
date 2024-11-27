@@ -12,9 +12,12 @@ function ExperienceCard ({startDate, role, location, workLogoSrc} : Props) {
 
     return (
         <div className={styles.card}>
-            <p>{startDate}</p>
-            <p>{role}</p>
-            <p>{location}</p>
+            <h2>{role}</h2>
+            <p className={styles.info}>
+                <span>{location}</span>
+                <span> | </span>
+                <span>{startDate}</span>
+            </p>
             <img className={styles.logo} src={workLogoSrc}/>
         </div>
     );

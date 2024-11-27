@@ -1,13 +1,31 @@
 .card {
     position: relative;
+    justify-items: flex-start;
     text-align: center;
+    overflow: hidden;
+    min-width: 60%;
+    padding: 0px 10px;
+
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+
+    border-color: var(--global-border-color);
+    box-shadow: var(--global-box-shadow);
+}
+
+.info {
+
 }
 
 .logo {
     position: absolute;
     right: 0px;
     bottom: 0px;
-
-    max-width: auto;
-    height: 100%;
+    opacity: 60%;
+    z-index: -1;
+    height: auto;
+    width: 400px;
+    
 }
+

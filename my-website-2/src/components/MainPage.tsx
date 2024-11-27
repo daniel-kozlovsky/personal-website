@@ -56,11 +56,11 @@ function MainPage () {
             </div>
             <h1 className={styles.heading}>{EXPERIENCE_HEADING}</h1>
             <div className={styles.experienceContainer}>
-                <ExperienceCard startDate="2021" role="Sr. Software Security Engineer" location="Sun Life Financial" workLogoSrc={SLFLogo}/>
-                <ExperienceCard startDate="2020" role="Cyber Threat Intelligence Analyst" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
-                <ExperienceCard startDate="2019" role="Software Developer" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
-                <ExperienceCard startDate="2018" role="Quality Assurance Analyst" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
-                <ExperienceCard startDate="2021" role="B.Eng., Spec. Hons. Software Engineering (Security)" location="York University" workLogoSrc={YULogo}/>
+                <ExperienceCard startDate="3 Years" role="Sr. Software Security Engineer" location="Sun Life Financial" workLogoSrc={SLFLogo}/>
+                <ExperienceCard startDate="4 Months" role="Cyber Threat Intelligence Analyst" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
+                <ExperienceCard startDate="4 Months" role="Software Developer" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
+                <ExperienceCard startDate="1 Year" role="Quality Assurance Analyst" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
+                <ExperienceCard startDate="5 Years" role="B.Eng., Spec. Hons. Software Engineering (Security)" location="York University" workLogoSrc={YULogo}/>
             </div>
             <div className={styles.contactIcons}>
                 <EmailButton />
@@ -70,6 +70,13 @@ function MainPage () {
             <HomeButton/>
         </div>
     );
+}
+
+function getDiffFromTodayInYears(year : string) : number
+{
+    let diff :number = 0;
+
+    return diff;
 }
 
 

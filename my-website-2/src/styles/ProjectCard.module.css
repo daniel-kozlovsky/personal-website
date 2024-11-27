@@ -12,10 +12,10 @@
     padding: var(--card-padding);
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px 0px #a3a3a3;
     border-style: solid;
     border-width: 1px;
-    border-color: #a3a3a3;
+    border-color: var(--global-border-color);
+    box-shadow: var(--global-box-shadow);
 
 }
 

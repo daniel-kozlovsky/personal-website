@@ -5,8 +5,8 @@ function Preface () {
 
     return (
         <div className={styles.preface}>
-            <p className={styles.name}>Daniel Kozlovsky</p>
-            <p className={styles.title}>Software Security Engineer</p>
+            <h1 className={styles.name}>Daniel Kozlovsky</h1>
+            <h2 className={styles.title}>Software Security Engineer</h2>
             <p className={styles.tagLine}>I like security</p>
         </div>
     );
