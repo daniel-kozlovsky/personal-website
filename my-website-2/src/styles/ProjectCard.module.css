@@ -21,7 +21,8 @@
 
 .image {
     /* object-fit: cover; */
-    max-height: 70%;
+    height: 66%;
+    min-height: 66%;
     width: auto;
     margin: calc(-1 * var(--card-padding));
 }

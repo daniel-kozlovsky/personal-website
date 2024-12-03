@@ -66,7 +66,7 @@ function MainPage () {
                 <EmailButton />
                 <GitHubButton/>
             </div>
-            <ContentsNav contentsMap={contentsMap}/>
+            {/* <ContentsNav contentsMap={contentsMap}/> */}
             <HomeButton/>
         </div>
     );

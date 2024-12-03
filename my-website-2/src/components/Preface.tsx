@@ -7,7 +7,7 @@ function Preface () {
         <div className={styles.preface}>
             <h1 className={styles.name}>Daniel Kozlovsky</h1>
             <h2 className={styles.title}>Software Security Engineer</h2>
-            <p className={styles.tagLine}>I like security</p>
+            <p className={styles.tagLine}>I like cybersecurity</p>
         </div>
     );
 }

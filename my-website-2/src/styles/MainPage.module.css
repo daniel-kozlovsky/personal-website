@@ -24,13 +24,15 @@
     width: 100%;
     min-width:fit-content;
     text-align: center;
+    margin-top: 4em;
+    margin-bottom: 2em;
 }
 
 .experienceContainer {
     display:flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 4em;
+    row-gap: 3em;
 }
 
 .contactIcons {
