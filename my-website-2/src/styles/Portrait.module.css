@@ -1,5 +1,17 @@
+.imgContainer {
+    flex-grow: 1;
+    flex-basis: 0;
+    text-align: end;
+}
 .portrait {
     height: auto;
-    max-width: 20%;
-    min-width: 200px;
+    /* max-width: 20%; */
+    min-width: 250px;
+    max-width: 300px;
+}
+
+@media screen and (max-width: 700px){ 
+    .imgContainer {
+        text-align: center;
+    }
 }

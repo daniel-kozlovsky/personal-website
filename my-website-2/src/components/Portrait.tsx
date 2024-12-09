@@ -4,7 +4,10 @@ import styles from '../styles/Portrait.module.css';
 
 function Portrait () {
     return( 
-        <img className={styles.portrait} src={headshot}></img>
+        <div className={styles.imgContainer}>
+            <img className={styles.portrait} src={headshot}></img>
+        </div>
+        
     );
 }
 

@@ -29,6 +29,18 @@ const EXPERIENCE_HEADING = "Experience";
 //Project URLs
 const computerControlURL = new URL("https://github.com/daniel-kozlovsky/ComputerControl");
 
+//Project Descriptions
+const vrShowroomDesc = "Visualize different tiling and materials on home interior surfaces with virtual reality.";
+const malwareDesc = "Research paper on the TTPs, IoCs and impact of the DroidKungFu and Plankton malware families";
+const smartShopperDesc = "Imitation shopping website that can calculate the optimal route through the store from the user's cart. \
+    Complete with authentication, IAM, and product management.";
+const bookStoreDesc = "An e-commerce application, part of a school project, that allows users to view books, read \
+    and write book reviews, and manage the user's cart, account and orders";
+const encryptionDesc = "Various encryption utility functions";
+const ainsleyDesc = "A fun, non-malicious \"virus\" that forces the victim to watch a short, painful video";
+const ccDesc = "Lightweight utility app that provides a user interface to turn off, restart or hiberate your computer. This was created \
+at the time when Windows 8 was released and had no UI to turn off the computer.";
+
 function MainPage () {
 
     const contentsMap : Map<string, string> = new Map();
@@ -43,16 +55,13 @@ function MainPage () {
             </div>
             <h1 className={styles.heading}>{PROJECT_HEADING}</h1>
             <div className={styles.projectsContainer}>
-                <ProjectCard title="Virtual Showroom" description="Tile Sampling Showroom" imageSrc={virtualShowroomImage} gitHubURL={computerControlURL} />
-                <ProjectCard title="Malware Analysis" description="Analysis of DroidKungFu Malware; very lonmg sentence;a dfajhlfjasdlkfjsdlkjfasdlkfjsda'
-                asdfkjasdfkjlsdfjklAnalysis of DroidKungFu Malware; very lonmg sentence;a dfajhlfjasdlkfjsdlkjfasdlkfjsda'asdfkjasdfkjlsdfjklAnalysis of 
-                roidKungFu Malware; very lonmg sentence;a dfajhlfjasdlkfjsdlkjfasdlkfjsda'asdfkjasdfkjlsdfjklAnalysis of DroidKungFu Malware; very lonmg sentence;a 
-                dfajhlfjasdlkfjsdlkjfasdlkfjsda'asdfkjasdfkjlsdfjkl" imageSrc={malwareAnalysisImage} gitHubURL={computerControlURL} />
-                <ProjectCard title="Smart Shopper" description="Online Shopping Website" imageSrc={smartShopperImage} gitHubURL={computerControlURL} />
-                <ProjectCard title="Online Bookstore" description="Bookstore web" imageSrc={onlineBookstoreImage} gitHubURL={computerControlURL} />
-                <ProjectCard title="Encryption Coursework" description="encryption materials from school" imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
-                <ProjectCard title="Ainsley Harriot" description="Little Virus" imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
-                <ProjectCard title="Computer Control" description="An app that let's you control your computer" imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
+                <ProjectCard title="Virtual Showroom" description={vrShowroomDesc} imageSrc={virtualShowroomImage} gitHubURL={computerControlURL} />
+                <ProjectCard title="Malware Analysis" description={malwareDesc} imageSrc={malwareAnalysisImage} gitHubURL={computerControlURL} />
+                <ProjectCard title="Smart Shopper" description={smartShopperDesc} imageSrc={smartShopperImage} gitHubURL={computerControlURL} />
+                <ProjectCard title="Online Bookstore" description={bookStoreDesc} imageSrc={onlineBookstoreImage} gitHubURL={computerControlURL} />
+                <ProjectCard title="Encryption Coursework" description={encryptionDesc} imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
+                <ProjectCard title="Ainsley Harriot" description={ainsleyDesc} imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
+                <ProjectCard title="Computer Control" description={ccDesc} imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
             </div>
             <h1 className={styles.heading}>{EXPERIENCE_HEADING}</h1>
             <div className={styles.experienceContainer}>

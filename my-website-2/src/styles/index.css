@@ -11,9 +11,19 @@ body {
   --theme-trim: rgb(238 238 238 / 1 );
   --theme-background: rgba(49 54 63 / 1);
 
-  --global-border-color: #a3a3a3;
+  --global-primary-background: var(--theme-background);
+  --global-secondary-background: rgba(59 64 73 / 1);;
+  --global-trim: var(--theme-trim);
 
+  --global-border-color: rgba(39 44 53 / 1);
   --global-box-shadow: 5px 5px 5px 0px var(--global-border-color);
+
+  /* Global text colour */
+  color: var(--theme-secondary);
+
+  background-color: var(--theme-background);
+
+
 }
 
 code {

@@ -9,6 +9,8 @@
     
 
     /* beautification */
+    background-color: var(--global-secondary-background);
+    max-height: 500px;
     padding: var(--card-padding);
     overflow: hidden;
     border-radius: 10px;
@@ -20,9 +22,9 @@
 }
 
 .image {
-    /* object-fit: cover; */
-    height: 66%;
-    min-height: 66%;
+    object-fit: cover;
+    height: 70%;
+    min-height: 70%;
     width: auto;
     margin: calc(-1 * var(--card-padding));
 }
