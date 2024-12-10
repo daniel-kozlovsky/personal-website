@@ -1,4 +1,10 @@
 .button {
+    display: block;
     width: 40px;
     height: auto;
+    color: var(--theme-trim);
 }
+
+.button svg {
+    fill: var(--theme-trim);
+}   

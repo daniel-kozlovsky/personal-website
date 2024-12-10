@@ -1,7 +1,7 @@
 import React, { ReactHTMLElement } from 'react';
 import styles from '../styles/ProjectCard.module.css';
 import theme from '../styles/Theme.module.css';
-import GitHubSVG from '../assets/GitHubIcon.svg'
+import {ReactComponent as GitHubSVG} from '../assets/GitHubIcon.svg'
 import { URL } from 'url';
 
 type Props  = {
@@ -27,12 +27,10 @@ function ProjectCard ({title, description, imageSrc, gitHubURL} : Props) {
             </p>
             {gitHubURL ? (
                 <a className={styles.githubLink} href={gitHubURL.toString()} target="_blank" rel="noopener noreferrer">
-                    <img src={GitHubSVG}/>
+                    <GitHubSVG/>
                 </a>)
                 : null 
                 }
-                {/*video*/}
-                {/*link/demo*/}
         </div>
     );
 }

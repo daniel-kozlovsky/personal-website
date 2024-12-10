@@ -1,17 +1,19 @@
 import React from 'react';
-import BackToTopIcon from '../assets/BackToTopIcon.svg';
+import {ReactComponent as BackToTopIcon} from '../assets/BackToTopIcon.svg';
 import styles from '../styles/HomeButton.module.css';
 
 function HomeButton () {
 
     return (
-        <input className={styles.button} type="image" src={BackToTopIcon} onClick={scrollToTop}></input>
+        <a className={styles.button} type="image" onClick={scrollToTop}>
+            <BackToTopIcon />
+        </a>
     );
 }
 
 function scrollToTop () {
 
-    window.scrollTo(0,0);
+    window.scrollTo({top: 0, behavior: "smooth"});
 }
 
 export default HomeButton;

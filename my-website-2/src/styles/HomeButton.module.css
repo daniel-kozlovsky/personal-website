@@ -1,7 +1,13 @@
 .button {
-    width: 50px;
+    display: block;
+    width: 40px;
     height: auto;
     position: fixed;
-    right: 50px;
-    bottom: 20px;
+    right: 30px;
+    bottom: 30px;
+    
+}
+
+.button svg {
+    fill: var(--theme-trim);
 }

@@ -26,6 +26,7 @@
     text-align: center;
     margin-top: 4em;
     margin-bottom: 2em;
+    color: var(--global-heading);
 }
 
 .experienceContainer {
@@ -36,6 +37,7 @@
 }
 
 .contactIcons {
+    display: flex;
     position: fixed;
     top: 30px;
     right: 30px;

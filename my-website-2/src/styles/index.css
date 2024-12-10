@@ -13,9 +13,9 @@ body {
 
   --global-primary-background: var(--theme-background);
   --global-secondary-background: rgba(59 64 73 / 1);;
-  --global-trim: var(--theme-trim);
+  --global-heading: var(--theme-trim);
 
-  --global-border-color: rgba(39 44 53 / 1);
+  --global-border-color: rgba(from var(--theme-background) calc(r - 10) calc(g - 10) calc(b - 10) / 1);
   --global-box-shadow: 5px 5px 5px 0px var(--global-border-color);
 
   /* Global text colour */
@@ -23,7 +23,10 @@ body {
 
   background-color: var(--theme-background);
 
-
+  @font-face {
+    font-family: 'myOpenSans';
+    src: local('opensans-regular-webfont'), url(../assets/fonts/opensans-regular-webfont.woff) format('woff');
+  }
 }
 
 code {
