@@ -12,7 +12,9 @@ body {
   --theme-background: rgba(49 54 63 / 1);
 
   --global-primary-background: var(--theme-background);
-  --global-secondary-background: rgba(59 64 73 / 1);;
+
+  --global-secondary-background: rgba(59 64 73 / 1);
+  
   --global-heading: var(--theme-trim);
 
   --global-border-color: rgba(from var(--theme-background) calc(r - 10) calc(g - 10) calc(b - 10) / 1);

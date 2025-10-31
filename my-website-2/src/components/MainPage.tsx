@@ -28,6 +28,7 @@ const EXPERIENCE_HEADING = "Experience";
 
 //Project URLs
 const computerControlURL = new URL("https://github.com/daniel-kozlovsky/ComputerControl");
+const smartShopperURL = new URL("https://github.com/AkinAD/basedCode");
 
 //Project Descriptions
 const vrShowroomDesc = "Visualize different tiling and materials on home interior surfaces with virtual reality.";
@@ -57,7 +58,7 @@ function MainPage () {
             <div className={styles.projectsContainer}>
                 <ProjectCard title="Virtual Showroom" description={vrShowroomDesc} imageSrc={virtualShowroomImage} gitHubURL={computerControlURL} />
                 <ProjectCard title="Malware Analysis" description={malwareDesc} imageSrc={malwareAnalysisImage} gitHubURL={computerControlURL} />
-                <ProjectCard title="Smart Shopper" description={smartShopperDesc} imageSrc={smartShopperImage} gitHubURL={computerControlURL} />
+                <ProjectCard title="Smart Shopper" description={smartShopperDesc} imageSrc={smartShopperImage} gitHubURL={smartShopperURL} />
                 <ProjectCard title="Online Bookstore" description={bookStoreDesc} imageSrc={onlineBookstoreImage} gitHubURL={computerControlURL} />
                 <ProjectCard title="Encryption Coursework" description={encryptionDesc} imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
                 <ProjectCard title="Ainsley Harriot" description={ainsleyDesc} imageSrc={computerControlIcon} gitHubURL={computerControlURL} />
@@ -65,7 +66,7 @@ function MainPage () {
             </div>
             <h1 className={styles.heading}>{EXPERIENCE_HEADING}</h1>
             <div className={styles.experienceContainer}>
-                <ExperienceCard startDate="3 Years" role="Sr. Software Security Engineer" location="Sun Life Financial" workLogoSrc={SLFLogo}/>
+                <ExperienceCard startDate="Since 2021" role="Sr. Software Security Engineer" location="Sun Life Financial" workLogoSrc={SLFLogo}/>
                 <ExperienceCard startDate="4 Months" role="Cyber Threat Intelligence Analyst" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
                 <ExperienceCard startDate="4 Months" role="Software Developer" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
                 <ExperienceCard startDate="1 Year" role="Quality Assurance Analyst" location="Bank of Montreal" workLogoSrc={BMOLogo}/>
